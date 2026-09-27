@@ -871,20 +871,41 @@
           </div>
 
           <!-- Success Notification Box -->
-          <div id="form-sucesso" class="hidden p-6 sm:p-8 rounded-2xl bg-[#0E2A18] border border-[#00FF41] text-center max-w-xl mx-auto space-y-4">
+          <div id="form-sucesso" class="hidden p-6 sm:p-8 rounded-2xl bg-[#0B150E] border-2 border-[#00FF41] text-center max-w-xl mx-auto space-y-5 shadow-2xl">
             <div class="w-14 h-14 rounded-full bg-[#00FF41]/20 text-[#00FF41] flex items-center justify-center mx-auto">
-              <i data-lucide="check" class="w-8 h-8"></i>
+              <i data-lucide="check-circle" class="w-8 h-8"></i>
             </div>
-            <h5 class="text-white font-extrabold text-xl">Pedido Enviado com Sucesso!</h5>
-            <p class="text-xs sm:text-sm text-[#BAC2BC] leading-relaxed">
-              Recebemos suas informações na nossa central em <strong class="text-[#00FF41]">nx49digital@gmail.com</strong>.<br>
-              Nossa equipe entrará em contato imediatamente pelo seu WhatsApp ou e-mail com as instruções de pagamento e o instalador do sistema!
-            </p>
-            <div class="pt-2">
-              <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Acabei%20de%20enviar%20o%20formul%C3%A1rio%20no%20site%20para%20o%20email%20nx49digital%40gmail.com%20para%20adquirir%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica." target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-[#060907] font-extrabold text-xs px-5 py-3 rounded-xl hover:bg-[#20bd5a] transition">
-                <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
-                <span>Confirmar Recebimento pelo WhatsApp</span>
+            <div>
+              <h5 class="text-white font-extrabold text-xl">Pedido Pronto para Envio!</h5>
+              <p class="text-xs sm:text-sm text-[#BAC2BC] mt-1 leading-relaxed">
+                Seus dados foram organizados. Clique abaixo para enviar agora mesmo para <strong class="text-[#00FF41]">nx49digital@gmail.com</strong> ou falar no WhatsApp!
+              </p>
+            </div>
+
+            <!-- Resumo dos Dados -->
+            <div class="bg-[#060907] p-4 rounded-xl border border-[#1A261E] text-left text-xs font-mono text-[#D2DDD5] whitespace-pre-line overflow-x-auto max-h-48" id="resumo-dados-pedido"></div>
+
+            <!-- Botões de Envio Direto -->
+            <div class="space-y-2.5">
+              <a id="link-gmail" href="#" target="_blank" class="w-full bg-[#EA4335] hover:bg-[#d9382b] text-white font-bold text-sm py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Enviar pelo Gmail (Abre o Gmail com Tudo Pronto)</span>
               </a>
+
+              <a id="link-mailto" href="#" class="w-full bg-[#0E1812] hover:bg-[#14241A] text-white border border-[#1A3824] hover:border-white font-bold text-xs py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2">
+                <i data-lucide="inbox" class="w-4 h-4"></i>
+                <span>Enviar pelo Outlook ou Aplicativo de E-mail Padrão</span>
+              </a>
+
+              <a id="link-whats-pedido" href="#" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-[#050C07] font-extrabold text-sm py-3 px-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+                <span>Enviar esses Dados Direto pelo WhatsApp</span>
+              </a>
+
+              <button type="button" onclick="copiarDadosPedido()" id="btn-copiar-dados" class="w-full bg-[#070B08] hover:bg-[#0E1812] text-[#8C9990] hover:text-[#00FF41] border border-[#16221A] text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span id="txt-copiar">Copiar Texto do Pedido para a Área de Transferência</span>
+              </button>
             </div>
           </div>
 
@@ -1058,47 +1079,63 @@
       if (e.key === 'Escape') fecharModalImagem(null, true);
     });
 
-    // Enviar Pedido por E-mail para nx49digital@gmail.com
-    async function enviarPedidoEmail(e) {
+    // Processar Envio do Pedido Direto para nx49digital@gmail.com
+    let textoPedidoAtual = '';
+
+    function enviarPedidoEmail(e) {
       e.preventDefault();
       const form = e.target;
-      const btn = document.getElementById('btn-submit-form');
-      const btnTextoOriginal = btn.innerHTML;
+      const nome = form.Nome.value.trim();
+      const whatsapp = form.WhatsApp.value.trim();
+      const email = form.Email.value.trim();
+      const clinica = form.Clinica.value.trim() || 'Não informada';
+      const pagamento = form.Forma_Pagamento.value;
+      const mensagem = form.Mensagem.value.trim() || 'Nenhuma observação';
 
-      btn.disabled = true;
-      btn.innerHTML = '<span class="inline-block animate-spin mr-2">⏳</span><span>Enviando dados para nx49digital@gmail.com...</span>';
+      textoPedidoAtual = `Olá! Gostaria de adquirir o NX Gestão Estética com Licença Vitalícia por R$ 97,00.\n\n` +
+        `📋 DADOS DO PEDIDO:\n` +
+        `• Nome: ${nome}\n` +
+        `• WhatsApp: ${whatsapp}\n` +
+        `• E-mail: ${email}\n` +
+        `• Clínica/Salão: ${clinica}\n` +
+        `• Forma de Pagamento: ${pagamento}\n` +
+        `• Observações: ${mensagem}\n\n` +
+        `Por favor, me envie a Chave Vitalícia e as instruções para transferência/PIX!`;
 
-      const formData = new FormData(form);
-      formData.append('_subject', 'Novo Pedido: NX Gestão Estética Vitalício (R$ 97,00)');
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
+      const assunto = `Novo Pedido NX Gestão Estética (R$ 97,00) - ${nome}`;
 
-      try {
-        const resposta = await fetch('https://formsubmit.co/ajax/nx49digital@gmail.com', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+      // Montar URLs Diretas
+      const urlGmail = `https://mail.google.com/mail/?view=cm&fs=1&to=nx49digital@gmail.com&su=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoPedidoAtual)}`;
+      const urlMailto = `mailto:nx49digital@gmail.com?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoPedidoAtual)}`;
+      const urlWhats = `https://api.whatsapp.com/send?phone=553498408962&text=${encodeURIComponent(textoPedidoAtual)}`;
+
+      // Injetar nos botões
+      document.getElementById('link-gmail').href = urlGmail;
+      document.getElementById('link-mailto').href = urlMailto;
+      document.getElementById('link-whats-pedido').href = urlWhats;
+      document.getElementById('resumo-dados-pedido').innerText = textoPedidoAtual;
+
+      // Exibir tela de sucesso imediatamente sem depender de servidores terceiros
+      document.getElementById('form-pedido-container').classList.add('hidden');
+      document.getElementById('form-sucesso').classList.remove('hidden');
+      lucide.createIcons();
+
+      // Scroll suave até o painel
+      document.getElementById('form-sucesso').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Tentar abrir tela de envio do Gmail em nova aba
+      window.open(urlGmail, '_blank');
+    }
+
+    // Copiar dados do pedido para a área de transferência
+    function copiarDadosPedido() {
+      if (textoPedidoAtual) {
+        navigator.clipboard.writeText(textoPedidoAtual).then(() => {
+          const txt = document.getElementById('txt-copiar');
+          const original = txt.innerText;
+          txt.innerText = '✓ Dados Copiados com Sucesso!';
+          setTimeout(() => { txt.innerText = original; }, 3000);
         });
-
-        if (resposta.ok) {
-          document.getElementById('form-pedido-container').classList.add('hidden');
-          document.getElementById('form-sucesso').classList.remove('hidden');
-          lucide.createIcons();
-          // Scroll suave para confirmação
-          document.getElementById('form-sucesso').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          // Fallback nativo se AJAX for bloqueado
-          form.action = 'https://formsubmit.co/nx49digital@gmail.com';
-          form.method = 'POST';
-          form.submit();
-        }
-      } catch (erro) {
-        // Fallback nativo
-        form.action = 'https://formsubmit.co/nx49digital@gmail.com';
-        form.method = 'POST';
-        form.submit();
       }
     }
 
