@@ -169,15 +169,36 @@
       <!-- Hero Product Visual Mockup -->
       <div class="mt-12 relative max-w-5xl mx-auto">
         <div class="relative rounded-2xl p-2 sm:p-4 bg-gradient-to-b from-[#1A261E] to-[#0B100D] border border-[#1E2B21] shadow-2xl">
-          <img src="assets/mockup_3d.jpg" alt="NX Gestão Estética - Box e Laptop 3D" class="w-full h-auto rounded-xl object-cover shadow-2xl">
-          <div class="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 glass-card p-4 rounded-xl border border-[#00FF41]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-left">
-              <span class="text-white font-bold text-sm sm:text-base block">Interface Executiva Moderna em Modo Dark</span>
-              <span class="text-[#8C9990] text-xs">Desenvolvido sob medida para estéticas, dermatologia, biomédicos e salões</span>
+          <!-- Window Title Bar -->
+          <div class="bg-[#090D0A] rounded-t-xl px-4 py-2.5 border-b border-[#1A261E] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-[#EF4444] inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-[#F59E0B] inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block"></span>
+              <span class="text-xs text-[#8C9990] font-mono ml-2">NX Gestão Estética v1.0 • Painel Principal</span>
             </div>
-            <a href="#demonstracao" class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/40 hover:bg-[#00FF41] hover:text-[#060907] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
-              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
-              Testar Simulador Abaixo
+            <div class="text-[11px] font-semibold text-[#00FF41] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-pulse"></span> Sistema Instalado no Windows
+            </div>
+          </div>
+          <!-- Real Image with Zoom Click -->
+          <div class="relative group cursor-pointer overflow-hidden rounded-b-xl" onclick="abrirModalImagem('assets/real_dashboard.png', 'Painel Executivo Dashboard')">
+            <img src="assets/real_dashboard.png" alt="Interface Real do NX Gestão Estética" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-300">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+              <span class="bg-[#00FF41] text-[#060907] text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-xl">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i> Clique para Ampliar em Alta Definição
+              </span>
+            </div>
+          </div>
+
+          <div class="glass-card mt-3 p-4 rounded-xl border border-[#00FF41]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-left">
+              <span class="text-white font-bold text-sm sm:text-base block">Interface Real do Software em Dark Mode Executivo</span>
+              <span class="text-[#8C9990] text-xs">Visual moderno, gráficos em tempo real, sem poluição visual e rápido de navegar.</span>
+            </div>
+            <a href="#demonstracao" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-5 py-2.5 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap glow-neon">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              Ver Telas de Cada Módulo
             </a>
           </div>
         </div>
@@ -185,19 +206,19 @@
     </div>
   </section>
 
-  <!-- Interactive Live Simulator Section -->
+  <!-- Interactive Real Screens Gallery Section -->
   <section id="demonstracao" class="py-20 bg-[#080D0A] border-t border-b border-[#1A261E] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-xs font-bold mb-3 uppercase">
           <span class="w-2 h-2 rounded-full bg-[#00FF41]"></span>
-          Simulador Interativo
+          Capturas Reais do Software
         </div>
         <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-          Experimente as telas do sistema aqui mesmo
+          Conheça a interface real do NX Gestão Estética
         </h2>
         <p class="text-[#8C9990] text-sm sm:text-base">
-          Clique nas abas abaixo para navegar e ver como o NX Gestão Estética funciona no dia a dia da clínica.
+          Estas são as telas exatas que você usará no seu computador. Clique nas abas para navegar por cada módulo ou na imagem para ampliar em tela cheia.
         </p>
       </div>
 
@@ -207,59 +228,77 @@
         <div class="flex flex-wrap border-b border-[#1A261E] bg-[#070B09] p-2 gap-2">
           <button onclick="mudarAba('tab-dash')" id="btn-tab-dash" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition">
             <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-            <span>Dashboard Executivo</span>
+            <span>Dashboard</span>
           </button>
           <button onclick="mudarAba('tab-agenda')" id="btn-tab-agenda" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="calendar" class="w-4 h-4"></i>
             <span>Agenda & WhatsApp</span>
           </button>
-          <button onclick="mudarAba('tab-fotos')" id="btn-tab-fotos" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
-            <i data-lucide="sparkles" class="w-4 h-4"></i>
-            <span>Antes & Depois (Fotos)</span>
+          <button onclick="mudarAba('tab-atendimento')" id="btn-tab-atendimento" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+            <span>Atendimento & Fotos</span>
           </button>
           <button onclick="mudarAba('tab-pdv')" id="btn-tab-pdv" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
             <span>Frente de Caixa (PDV)</span>
           </button>
+          <button onclick="mudarAba('tab-financeiro')" id="btn-tab-financeiro" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+            <span>Financeiro & Comissões</span>
+          </button>
+          <button onclick="mudarAba('tab-pacotes')" id="btn-tab-pacotes" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="package" class="w-4 h-4"></i>
+            <span>Pacotes & Sessões</span>
+          </button>
+          <button onclick="mudarAba('tab-anamnese')" id="btn-tab-anamnese" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Anamnese Digital</span>
+          </button>
         </div>
 
         <!-- TAB 1: DASHBOARD -->
         <div id="tab-dash" class="p-6 sm:p-8 space-y-6">
-          <!-- Top KPI Cards -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#8C9990] text-xs font-medium block mb-1">Total de Clientes</span>
-              <span class="text-white font-extrabold text-2xl">1.240</span>
-              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">↑ +14 novos no mês</span>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Dashboard Executivo com Indicadores em Tempo Real</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Controle total dos números da sua clínica: clientes cadastrados, agendamentos, faturamento mensal, ranking e formas de pagamento.</p>
             </div>
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#8C9990] text-xs font-medium block mb-1">Agendamentos Hoje</span>
-              <span class="text-white font-extrabold text-2xl">34</span>
-              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">✓ 28 confirmados</span>
-            </div>
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#8C9990] text-xs font-medium block mb-1">Faturamento do Mês</span>
-              <span class="text-[#00FF41] font-extrabold text-2xl">R$ 45.200</span>
-              <span class="text-[#8C9990] text-[11px] font-semibold mt-1 block">Meta 100% atingida</span>
-            </div>
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#8C9990] text-xs font-medium block mb-1">Ticket Médio</span>
-              <span class="text-white font-extrabold text-2xl">R$ 180,00</span>
-              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">↑ +8.5% este mês</span>
-            </div>
+            <button onclick="abrirModalImagem('assets/real_dashboard.png', 'Dashboard Executivo')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
           </div>
 
-          <!-- Chart Area -->
-          <div class="bg-[#070B08] p-5 rounded-xl border border-[#16221A]">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-white font-bold text-sm flex items-center gap-2">
-                <i data-lucide="trending-up" class="w-4 h-4 text-[#00FF41]"></i>
-                Curva de Faturamento Diário & Mensal
-              </span>
-              <span class="text-xs text-[#8C9990] bg-[#0E1812] px-2.5 py-1 rounded border border-[#1A3824]">Tempo Real</span>
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_dashboard.png', 'Dashboard Executivo')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Dashboard Geral</span>
+              </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
             </div>
-            <div class="h-64 sm:h-72 w-full">
-              <canvas id="chartDemo"></canvas>
+            <img src="assets/real_dashboard.png" alt="Dashboard Real" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📈 Curva de Faturamento</span>
+              <p class="text-[#8C9990] text-xs">Gráfico dinâmico dia a dia para você acompanhar picos de receita e atingimento de metas.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🏆 Ranking dos Procedimentos</span>
+              <p class="text-[#8C9990] text-xs">Saiba exatamente quais serviços geram mais lucro (Limpeza de Pele, Botox, Massagem, etc.).</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">💳 Formas de Pagamento</span>
+              <p class="text-[#8C9990] text-xs">Divisão percentual entre PIX, Cartão de Crédito/Débito e Dinheiro no caixa.</p>
             </div>
           </div>
         </div>
@@ -268,161 +307,284 @@
         <div id="tab-agenda" class="p-6 sm:p-8 space-y-6 hidden">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
             <div>
-              <h3 class="text-white font-bold text-lg">Agenda do Dia com Disparo WhatsApp em 1 Clique</h3>
-              <p class="text-[#8C9990] text-xs">Reduza até 80% das faltas e atrasos avisando a cliente com mensagem pronta.</p>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Agenda Inteligente com Disparo WhatsApp em 1 Clique</span>
+                <span class="bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Organize atendimentos por horário, status de confirmação e especialista, com ícone de WhatsApp em cada cliente para avisar na hora.</p>
             </div>
-            <span class="bg-[#0E1812] text-[#25D366] border border-[#1A3824] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
-              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-              WhatsApp Desktop & Web
-            </span>
+            <button onclick="abrirModalImagem('assets/real_agenda.png', 'Agenda com WhatsApp')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
           </div>
 
-          <div class="space-y-3">
-            <!-- Appointment Row 1 -->
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
-                  <span class="text-white font-extrabold text-sm">09:00</span>
-                  <span class="text-[#00FF41] text-[9px] font-bold">CONFIRMADO</span>
-                </div>
-                <div>
-                  <span class="text-white font-bold text-sm block">Camila Rodrigues • Limpeza de Pele Profunda</span>
-                  <span class="text-[#8C9990] text-xs">Profissional: Dra. Juliana (Biomédica) • R$ 180,00</span>
-                </div>
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_agenda.png', 'Agenda com WhatsApp')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Fila de Agendamentos do Dia</span>
               </div>
-              <button onclick="simularEnvioWhatsApp('Camila Rodrigues', '09:00', 'Limpeza de Pele Profunda')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>Enviar Lembrete WhatsApp</span>
-              </button>
+              <span class="text-[10px] text-[#25D366] font-semibold">🔍 Clique para dar zoom</span>
             </div>
-
-            <!-- Appointment Row 2 -->
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
-                  <span class="text-white font-extrabold text-sm">10:30</span>
-                  <span class="text-[#00FF41] text-[9px] font-bold">EM CABINE</span>
-                </div>
-                <div>
-                  <span class="text-white font-bold text-sm block">Mariana Santos • Pacote Drenagem Linfática (Sessão 4 de 10)</span>
-                  <span class="text-[#8C9990] text-xs">Profissional: Amanda Rocha • Restam 6 sessões</span>
-                </div>
-              </div>
-              <button onclick="simularEnvioWhatsApp('Mariana Santos', '10:30', 'Drenagem Linfática')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>Enviar Lembrete WhatsApp</span>
-              </button>
-            </div>
-
-            <!-- Appointment Row 3 -->
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
-                  <span class="text-white font-extrabold text-sm">14:00</span>
-                  <span class="text-[#EAB308] text-[9px] font-bold">AGENDADO</span>
-                </div>
-                <div>
-                  <span class="text-white font-bold text-sm block">Fernanda Lima • Aplicação de Toxina Botulínica (Botox)</span>
-                  <span class="text-[#8C9990] text-xs">Profissional: Dr. Marcelo • R$ 850,00</span>
-                </div>
-              </div>
-              <button onclick="simularEnvioWhatsApp('Fernanda Lima', '14:00', 'Botox Facial')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>Enviar Lembrete WhatsApp</span>
-              </button>
-            </div>
+            <img src="assets/real_agenda.png" alt="Agenda Real com WhatsApp" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
           </div>
 
-          <!-- Toast Notification Simulator -->
-          <div id="toast-whats" class="hidden p-4 rounded-xl bg-[#0E2A18] border border-[#00FF41]/40 text-[#00FF41] text-xs font-semibold flex items-center gap-3 animate-fade-in">
-            <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
-            <span id="toast-whats-texto">Mensagem pré-formatada enviada para o WhatsApp da cliente!</span>
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#25D366] text-xs font-bold block mb-1">💬 Botão WhatsApp Nativo</span>
+              <p class="text-[#8C9990] text-xs">Clique no ícone verde ao lado do cliente para abrir a mensagem de confirmação já preenchida.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🟢 Status em Tempo Real</span>
+              <p class="text-[#8C9990] text-xs">Identifique na hora: Confirmado (verde), Em Atendimento (azul) ou Aguardando (amarelo).</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">👩‍⚕️ Filtro por Profissional</span>
+              <p class="text-[#8C9990] text-xs">Separe a visão por especialista (ex: Dra. Carolina Veiga, Talita Souza) ou veja as vagas livres do dia.</p>
+            </div>
           </div>
         </div>
 
-        <!-- TAB 3: ANTES & DEPOIS -->
-        <div id="tab-fotos" class="p-6 sm:p-8 space-y-6 hidden">
-          <div class="border-b border-[#1A261E] pb-4">
-            <h3 class="text-white font-bold text-lg">Prontuário com Comparador "Antes & Depois"</h3>
-            <p class="text-[#8C9990] text-xs">Tire fotos pelo celular ou computador, anexe ao prontuário e mostre a evolução lado a lado para o paciente.</p>
+        <!-- TAB 3: ATENDIMENTO & FOTOS -->
+        <div id="tab-atendimento" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Sala de Atendimento Clínico & Fotos Antes e Depois</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Cronômetro em tempo real, anotação técnica da sessão, orientações home care e registro comparativo fotográfico de evolução.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Fotos')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
           </div>
 
-          <!-- Comparison Box -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] text-center">
-              <span class="text-xs font-bold text-[#EAB308] uppercase tracking-wider block mb-2">📸 FOTO ANTES (Sessão 1)</span>
-              <div class="h-56 bg-[#0E1410] rounded-lg border border-[#1A261E] flex flex-col items-center justify-center text-[#8C9990]">
-                <i data-lucide="image" class="w-10 h-10 mb-2 text-[#8C9990]"></i>
-                <span class="text-xs">Registro Inicial da Pele / Tratamento</span>
-                <span class="text-[10px] text-[#BAC2BC]">15/08/2026 • Linhas finas e manchas</span>
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Fotos')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Sala Clínica & Evolução</span>
               </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
             </div>
-
-            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] text-center">
-              <span class="text-xs font-bold text-[#00FF41] uppercase tracking-wider block mb-2">✨ FOTO DEPOIS (Sessão 5)</span>
-              <div class="h-56 bg-[#0E1F14] rounded-lg border border-[#1A3824] flex flex-col items-center justify-center text-[#00FF41]">
-                <i data-lucide="sparkles" class="w-10 h-10 mb-2 text-[#00FF41]"></i>
-                <span class="text-xs font-bold">Evolução Notável do Procedimento</span>
-                <span class="text-[10px] text-[#A0B2A6]">25/09/2026 • Rejuvenescimento comprovado</span>
-              </div>
-            </div>
+            <img src="assets/real_atendimento_fotos.png" alt="Sala de Atendimento Clínico e Fotos" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
           </div>
 
-          <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex items-center justify-between text-xs text-[#BAC2BC]">
-            <span>💡 O comparador gera um comprovante digital pronto para exportar ou enviar no WhatsApp da cliente.</span>
-            <span class="text-[#00FF41] font-bold">100% Integrado</span>
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">⏱️ Cronômetro Integrado</span>
+              <p class="text-[#8C9990] text-xs">Controle rigoroso do tempo de cabine para evitar atrasos na sala de espera.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📝 Prontuário & Parecer Técnico</span>
+              <p class="text-[#8C9990] text-xs">Anote parâmetros usados (laser, ácidos) e orientações de Home Care para o cliente.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">✨ Comparador Antes & Depois</span>
+              <p class="text-[#8C9990] text-xs">Carregue fotos e clique em 'Comparar' para encantar seus pacientes com o resultado.</p>
+            </div>
           </div>
         </div>
 
-        <!-- TAB 4: FRENTE DE CAIXA (PDV) -->
+        <!-- TAB 4: PDV / FRENTE DE CAIXA -->
         <div id="tab-pdv" class="p-6 sm:p-8 space-y-6 hidden">
-          <div class="border-b border-[#1A261E] pb-4">
-            <h3 class="text-white font-bold text-lg">Frente de Caixa (PDV) & Comandas Rápidas</h3>
-            <p class="text-[#8C9990] text-xs">O atendimento finalizado na cabine vira comanda no caixa automaticamente.</p>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Frente de Caixa (PDV) com Comandas em Aberto</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Atendimentos finalizados chegam automaticamente no caixa. Lance produtos, pacotes ou aplique descontos em segundos.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_pdv.png', 'Frente de Caixa PDV')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="sm:col-span-2 bg-[#070B08] p-5 rounded-xl border border-[#16221A] space-y-3">
-              <span class="text-xs font-bold text-white block">Comanda #1048 • Beatriz Nogueira</span>
-              <div class="divide-y divide-[#16221A] text-xs">
-                <div class="py-2 flex justify-between">
-                  <span>Limpeza de Pele Profunda (Dra. Juliana)</span>
-                  <span class="text-white font-semibold">R$ 180,00</span>
-                </div>
-                <div class="py-2 flex justify-between">
-                  <span>Sérum Vitamina C 30ml (Home Care)</span>
-                  <span class="text-white font-semibold">R$ 89,00</span>
-                </div>
-                <div class="py-2 flex justify-between font-bold text-sm text-[#00FF41]">
-                  <span>TOTAL A PAGAR</span>
-                  <span>R$ 269,00</span>
-                </div>
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_pdv.png', 'Frente de Caixa PDV')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Frente de Caixa & Comanda</span>
               </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
             </div>
+            <img src="assets/real_pdv.png" alt="Frente de Caixa PDV Real" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
 
-            <div class="bg-[#070B08] p-5 rounded-xl border border-[#16221A] flex flex-col justify-between">
-              <span class="text-xs font-bold text-white block mb-2">Forma de Pagamento:</span>
-              <div class="space-y-2 text-xs">
-                <div class="p-2 rounded bg-[#0E1812] border border-[#00FF41]/40 text-[#00FF41] font-bold flex items-center justify-between">
-                  <span>PIX Instantâneo</span>
-                  <span>✓ Selecionado</span>
-                </div>
-                <div class="p-2 rounded bg-[#070A08] border border-[#16221A] text-[#8C9990] flex items-center justify-between">
-                  <span>Cartão de Crédito (até 12x)</span>
-                  <span>-</span>
-                </div>
-                <div class="p-2 rounded bg-[#070A08] border border-[#16221A] text-[#8C9990] flex items-center justify-between">
-                  <span>Cartão de Débito / Dinheiro</span>
-                  <span>-</span>
-                </div>
-              </div>
-              <button class="mt-4 w-full bg-[#00FF41] text-[#060907] font-bold text-xs py-2.5 rounded-lg flex items-center justify-center gap-1.5 glow-neon">
-                <i data-lucide="printer" class="w-4 h-4"></i>
-                <span>Finalizar & Imprimir Cupom</span>
-              </button>
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🧾 Comandas Rápidas</span>
+              <p class="text-[#8C9990] text-xs">Controle comandas em aberto sem perder nenhum serviço executado pela equipe.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">💳 PIX, Cartão e Dinheiro</span>
+              <p class="text-[#8C9990] text-xs">Botões de forma de pagamento rápida, cálculo automático de troco e descontos.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🎁 Venda de Pacotes & Produtos</span>
+              <p class="text-[#8C9990] text-xs">Abas rápidas para incluir cosméticos de home care e planos promocionais no mesmo cupom.</p>
             </div>
           </div>
         </div>
+
+        <!-- TAB 5: FINANCEIRO & COMISSÕES -->
+        <div id="tab-financeiro" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Fluxo de Caixa, Despesas & Comissões da Equipe</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Gráfico diário de entradas vs. saídas, despesas fixas a pagar e cálculo automático de comissões por profissional.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_financeiro.png', 'Financeiro e Comissões')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
+          </div>
+
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_financeiro.png', 'Financeiro e Comissões')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Gestão Financeira Completa</span>
+              </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
+            </div>
+            <img src="assets/real_financeiro.png" alt="Financeiro e Comissões Real" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📊 Gráfico de Fluxo de Caixa</span>
+              <p class="text-[#8C9990] text-xs">Barras verdes de receitas e vermelhas de saídas com linha de lucro líquido diário.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">💰 Comissões Automáticas</span>
+              <p class="text-[#8C9990] text-xs">Cálculo de cada porcentagem (ex: 35%, 40%) por especialista sem contas manuais.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📅 Previsão de Contas a Pagar</span>
+              <p class="text-[#8C9990] text-xs">Acompanhe boletos futuros, aluguel e pagamentos pendentes para nunca se endividar.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 6: PACOTES & SESSÕES -->
+        <div id="tab-pacotes" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Criação de Pacotes & Controle de Sessões Restantes</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Monte pacotes lucrativos (ex: Noiva Completa, SPA Deusa) e deixe o sistema gerenciar as sessões que o cliente ainda tem direito.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes de Sessões')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
+          </div>
+
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes de Sessões')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Pacotes & Combos</span>
+              </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
+            </div>
+            <img src="assets/real_pacotes.png" alt="Pacotes e Sessões Real" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🎁 Combos Promocionais</span>
+              <p class="text-[#8C9990] text-xs">Junte limpeza de pele, massagens e estética facial em pacotes com desconto atrativo.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📦 Saldo de Sessões</span>
+              <p class="text-[#8C9990] text-xs">O sistema abate cada sessão na cabine e exibe na tela: 'Restam X sessões'.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📈 Receita Antecipada</span>
+              <p class="text-[#8C9990] text-xs">Venda pacotes parcelados no cartão e garanta a fidelização da cliente por meses.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 7: ANAMNESE DIGITAL -->
+        <div id="tab-anamnese" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Fichas de Anamnese & Histórico Clínico A4</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Fichas com código ANM, histórico de alergias, contraindicações e botão para impressão física em folha A4.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_anamnese.png', 'Fichas de Anamnese')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
+          </div>
+
+          <!-- Window Container -->
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_anamnese.png', 'Fichas de Anamnese')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Fichas de Anamnese</span>
+              </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
+            </div>
+            <img src="assets/real_anamnese.png" alt="Anamnese Digital Real" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🖨️ Impressão em Folha A4</span>
+              <p class="text-[#8C9990] text-xs">Gere ficha em branco ou preenchida para assinatura manual ou arquivo em pasta.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🛡️ Segurança Jurídica</span>
+              <p class="text-[#8C9990] text-xs">Proteja seu estabelecimento registrando termos e histórico prévio de cada paciente.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🔍 Busca Instantânea</span>
+              <p class="text-[#8C9990] text-xs">Localize qualquer prontuário por código ANM, nome ou procedimento realizado.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -737,15 +899,31 @@
     <span class="hidden sm:inline text-xs font-extrabold uppercase">Tirar Dúvidas no WhatsApp</span>
   </a>
 
+  <!-- Lightbox Modal for Real Screenshots -->
+  <div id="modal-imagem" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8" onclick="fecharModalImagem(event)">
+    <div class="max-w-6xl w-full flex items-center justify-between text-white pb-3">
+      <span id="modal-titulo" class="font-bold text-sm sm:text-base text-[#00FF41] flex items-center gap-2">
+        <i data-lucide="monitor" class="w-4 h-4"></i> Captura Real do Software
+      </span>
+      <button onclick="fecharModalImagem(null, true)" class="bg-[#0E1812] hover:bg-[#1A261E] text-white px-3 py-1.5 rounded-lg border border-[#1A3824] flex items-center gap-1.5 text-xs font-bold transition">
+        <i data-lucide="x" class="w-4 h-4"></i> Fechar (ESC)
+      </button>
+    </div>
+    <div class="max-w-6xl w-full max-h-[85vh] overflow-auto rounded-xl border border-[#1A261E] bg-[#070B08] shadow-2xl">
+      <img id="modal-img-src" src="" alt="Tela Ampliada" class="w-full h-auto object-contain">
+    </div>
+    <p class="text-[#8C9990] text-xs mt-3">Dica: clique fora da janela ou pressione a tecla ESC para fechar.</p>
+  </div>
+
   <!-- Scripts -->
   <script>
     // Inicializar ícones Lucide
     lucide.createIcons();
 
-    // Alternar Abas do Simulador
+    // Alternar Abas do Simulador de Telas Reais
     function mudarAba(tabId) {
-      // Esconder todas as abas
-      ['tab-dash', 'tab-agenda', 'tab-fotos', 'tab-pdv'].forEach(id => {
+      const todasAbas = ['tab-dash', 'tab-agenda', 'tab-atendimento', 'tab-pdv', 'tab-financeiro', 'tab-pacotes', 'tab-anamnese'];
+      todasAbas.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
       });
@@ -768,16 +946,29 @@
       lucide.createIcons();
     }
 
-    // Simulação de Envio de WhatsApp no Simulador
-    function simularEnvioWhatsApp(nome, horario, proc) {
-      const toast = document.getElementById('toast-whats');
-      const texto = document.getElementById('toast-whats-texto');
-      texto.innerText = `💬 Disparo WhatsApp realizado com sucesso para ${nome} (${horario} - ${proc})! Mensagem pré-formatada pronta na conversa.`;
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 4000);
+    // Modal Lightbox de Zoom das Telas Reais
+    function abrirModalImagem(src, titulo) {
+      const modal = document.getElementById('modal-imagem');
+      const img = document.getElementById('modal-img-src');
+      const tit = document.getElementById('modal-titulo');
+      img.src = src;
+      tit.innerHTML = `<i data-lucide="monitor" class="w-4 h-4 text-[#00FF41]"></i> Tela Real: ${titulo}`;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
     }
+
+    function fecharModalImagem(e, forcar = false) {
+      if (forcar || (e && e.target.id === 'modal-imagem')) {
+        const modal = document.getElementById('modal-imagem');
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') fecharModalImagem(null, true);
+    });
 
     // Calculadora de Economia
     function atualizarCalculadora(anos) {
@@ -790,51 +981,6 @@
       document.getElementById('val-outros').innerText = 'R$ ' + custoOutros.toLocaleString('pt-BR') + ',00';
       document.getElementById('val-economia').innerText = 'Você economiza R$ ' + economia.toLocaleString('pt-BR') + ',00!';
     }
-
-    // Chart.js Gráfico do Dashboard
-    document.addEventListener('DOMContentLoaded', () => {
-      const ctx = document.getElementById('chartDemo');
-      if (ctx) {
-        new Chart(ctx.getContext('2d'), {
-          type: 'line',
-          data: {
-            labels: ['01/Set', '05/Set', '10/Set', '15/Set', '20/Set', '25/Set', '30/Set'],
-            datasets: [{
-              label: 'Faturamento Acumulado (R$)',
-              data: [4200, 11500, 19800, 28400, 36200, 41800, 45200],
-              borderColor: '#00FF41',
-              backgroundColor: 'rgba(0, 255, 65, 0.08)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.35,
-              pointBackgroundColor: '#00FF41',
-              pointRadius: 4
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false }
-            },
-            scales: {
-              x: {
-                grid: { color: 'rgba(26, 38, 30, 0.5)' },
-                ticks: { color: '#8C9990', font: { size: 10 } }
-              },
-              y: {
-                grid: { color: 'rgba(26, 38, 30, 0.5)' },
-                ticks: {
-                  color: '#8C9990',
-                  font: { size: 10 },
-                  callback: val => 'R$ ' + val.toLocaleString('pt-BR')
-                }
-              }
-            }
-          }
-        });
-      }
-    });
   </script>
 </body>
 </html>
