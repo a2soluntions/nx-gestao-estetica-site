@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NX Gestão Estética • O Software Definitivo para Clínicas e Salões</title>
+  <meta name="description" content="Software completo de gestão para clínicas de estética, harmonização e salões. Sem mensalidades, pagamento único e licença vitalícia.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#060907',
+              card: '#0B100D',
+              border: '#1A261E',
+              neon: '#00FF41',
+              neonHover: '#1AFF53',
+              whats: '#25D366',
+              textMuted: '#8C9990'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js for Live Interactive Demo -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Glow Effects */
+    .glow-neon {
+      box-shadow: 0 0 25px rgba(0, 255, 65, 0.25);
+    }
+    .glow-neon-strong {
+      box-shadow: 0 0 35px rgba(0, 255, 65, 0.45);
+    }
+    .text-glow {
+      text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    }
+    .glass-card {
+      background: rgba(11, 16, 13, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(26, 38, 30, 0.8);
+    }
+    /* Comparison Slider */
+    .slider-handle {
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+    }
+  </style>
+</head>
+<body class="bg-[#060907] text-[#D2DDD5] font-sans antialiased overflow-x-hidden selection:bg-[#00FF41] selection:text-[#060907]">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-[#0E1F14] via-[#0E2A18] to-[#0E1F14] border-b border-[#1A3824] py-2 px-4 text-center text-xs sm:text-sm font-semibold text-[#00FF41] flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-[#00FF41] animate-ping"></span>
+    <span>⚡ OFERTA DE LANÇAMENTO: PAGAMENTO ÚNICO • SEM MENSALIDADES • ACESSO VITALÍCIO</span>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 glass-card border-b border-[#1A261E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="NX Gestão Estética" class="h-10 w-auto object-contain">
+        <div>
+          <span class="text-white font-extrabold text-lg tracking-tight block leading-none">NX GESTÃO</span>
+          <span class="text-[#00FF41] text-[10px] font-bold tracking-widest uppercase">Estética & Salões</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#BAC2BC]">
+        <a href="#recursos" class="hover:text-[#00FF41] transition">Recursos</a>
+        <a href="#demonstracao" class="hover:text-[#00FF41] transition flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#00FF41]"></span>
+          Demonstração Ao Vivo
+        </a>
+        <a href="#economia" class="hover:text-[#00FF41] transition">Calculadora</a>
+        <a href="#precos" class="hover:text-[#00FF41] transition">Preço</a>
+        <a href="#faq" class="hover:text-[#00FF41] transition">Dúvidas</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/553498408962?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica." target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-[#8C9990] hover:text-white transition px-3 py-2">
+          <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
+          WhatsApp
+        </a>
+        <a href="#precos" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-bold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-lg transition duration-200 glow-neon flex items-center gap-2">
+          <span>Garantir Licença</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
+    <!-- Ambient Background Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00FF41]/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-10 w-[300px] h-[300px] bg-[#25D366]/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <!-- Tag Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-xs font-semibold uppercase tracking-wider mb-6">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        Software Oficial • Licença Vitalícia para Computador Windows
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+        Chega de pagar mensalidades caras.<br class="hidden sm:inline">
+        O sistema definitivo para <span class="text-[#00FF41] text-glow">Clínicas e Salões</span>.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-[#8C9990] max-w-2xl mx-auto mb-10 leading-relaxed">
+        Agenda inteligente com WhatsApp em 1 clique, prontuário com fotos antes e depois, controle de comissões, frente de caixa e estoque. <strong class="text-white">Pague uma única vez e use para sempre!</strong>
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#precos" class="w-full sm:w-auto bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+          <span>QUERO O SISTEMA SEM MENSALIDADE</span>
+        </a>
+        <a href="https://wa.me/553498408962?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20o%20teste%20gratuito%20de%2015%20dias%20do%20NX%20Gest%C3%A3o%20Est%C3%A9tica." target="_blank" class="w-full sm:w-auto bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] font-bold text-base px-6 py-4 rounded-xl transition flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>Solicitar Teste Grátis de 15 Dias</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-xs sm:text-sm text-[#BAC2BC] border-y border-[#1A261E] py-4">
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="check" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>100% Sem Mensalidade</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="wifi-off" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>Funciona Offline</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="laptop" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>Windows 10 e 11</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i data-lucide="hard-drive" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>Backup Automático</span>
+        </div>
+      </div>
+
+      <!-- Hero Product Visual Mockup -->
+      <div class="mt-12 relative max-w-5xl mx-auto">
+        <div class="relative rounded-2xl p-2 sm:p-4 bg-gradient-to-b from-[#1A261E] to-[#0B100D] border border-[#1E2B21] shadow-2xl">
+          <img src="assets/mockup_3d.jpg" alt="NX Gestão Estética - Box e Laptop 3D" class="w-full h-auto rounded-xl object-cover shadow-2xl">
+          <div class="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-12 sm:right-12 glass-card p-4 rounded-xl border border-[#00FF41]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-left">
+              <span class="text-white font-bold text-sm sm:text-base block">Interface Executiva Moderna em Modo Dark</span>
+              <span class="text-[#8C9990] text-xs">Desenvolvido sob medida para estéticas, dermatologia, biomédicos e salões</span>
+            </div>
+            <a href="#demonstracao" class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/40 hover:bg-[#00FF41] hover:text-[#060907] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+              Testar Simulador Abaixo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Live Simulator Section -->
+  <section id="demonstracao" class="py-20 bg-[#080D0A] border-t border-b border-[#1A261E] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-xs font-bold mb-3 uppercase">
+          <span class="w-2 h-2 rounded-full bg-[#00FF41]"></span>
+          Simulador Interativo
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
+          Experimente as telas do sistema aqui mesmo
+        </h2>
+        <p class="text-[#8C9990] text-sm sm:text-base">
+          Clique nas abas abaixo para navegar e ver como o NX Gestão Estética funciona no dia a dia da clínica.
+        </p>
+      </div>
+
+      <!-- Simulator Container -->
+      <div class="bg-[#0B100D] border border-[#1A261E] rounded-2xl shadow-2xl overflow-hidden">
+        <!-- Simulator Tab Navigation Bar -->
+        <div class="flex flex-wrap border-b border-[#1A261E] bg-[#070B09] p-2 gap-2">
+          <button onclick="mudarAba('tab-dash')" id="btn-tab-dash" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>Dashboard Executivo</span>
+          </button>
+          <button onclick="mudarAba('tab-agenda')" id="btn-tab-agenda" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Agenda & WhatsApp</span>
+          </button>
+          <button onclick="mudarAba('tab-fotos')" id="btn-tab-fotos" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Antes & Depois (Fotos)</span>
+          </button>
+          <button onclick="mudarAba('tab-pdv')" id="btn-tab-pdv" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+            <span>Frente de Caixa (PDV)</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: DASHBOARD -->
+        <div id="tab-dash" class="p-6 sm:p-8 space-y-6">
+          <!-- Top KPI Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#8C9990] text-xs font-medium block mb-1">Total de Clientes</span>
+              <span class="text-white font-extrabold text-2xl">1.240</span>
+              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">↑ +14 novos no mês</span>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#8C9990] text-xs font-medium block mb-1">Agendamentos Hoje</span>
+              <span class="text-white font-extrabold text-2xl">34</span>
+              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">✓ 28 confirmados</span>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#8C9990] text-xs font-medium block mb-1">Faturamento do Mês</span>
+              <span class="text-[#00FF41] font-extrabold text-2xl">R$ 45.200</span>
+              <span class="text-[#8C9990] text-[11px] font-semibold mt-1 block">Meta 100% atingida</span>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#8C9990] text-xs font-medium block mb-1">Ticket Médio</span>
+              <span class="text-white font-extrabold text-2xl">R$ 180,00</span>
+              <span class="text-[#00FF41] text-[11px] font-semibold mt-1 block">↑ +8.5% este mês</span>
+            </div>
+          </div>
+
+          <!-- Chart Area -->
+          <div class="bg-[#070B08] p-5 rounded-xl border border-[#16221A]">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-white font-bold text-sm flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-4 h-4 text-[#00FF41]"></i>
+                Curva de Faturamento Diário & Mensal
+              </span>
+              <span class="text-xs text-[#8C9990] bg-[#0E1812] px-2.5 py-1 rounded border border-[#1A3824]">Tempo Real</span>
+            </div>
+            <div class="h-64 sm:h-72 w-full">
+              <canvas id="chartDemo"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: AGENDA & WHATSAPP -->
+        <div id="tab-agenda" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg">Agenda do Dia com Disparo WhatsApp em 1 Clique</h3>
+              <p class="text-[#8C9990] text-xs">Reduza até 80% das faltas e atrasos avisando a cliente com mensagem pronta.</p>
+            </div>
+            <span class="bg-[#0E1812] text-[#25D366] border border-[#1A3824] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+              WhatsApp Desktop & Web
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Appointment Row 1 -->
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
+                  <span class="text-white font-extrabold text-sm">09:00</span>
+                  <span class="text-[#00FF41] text-[9px] font-bold">CONFIRMADO</span>
+                </div>
+                <div>
+                  <span class="text-white font-bold text-sm block">Camila Rodrigues • Limpeza de Pele Profunda</span>
+                  <span class="text-[#8C9990] text-xs">Profissional: Dra. Juliana (Biomédica) • R$ 180,00</span>
+                </div>
+              </div>
+              <button onclick="simularEnvioWhatsApp('Camila Rodrigues', '09:00', 'Limpeza de Pele Profunda')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Enviar Lembrete WhatsApp</span>
+              </button>
+            </div>
+
+            <!-- Appointment Row 2 -->
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
+                  <span class="text-white font-extrabold text-sm">10:30</span>
+                  <span class="text-[#00FF41] text-[9px] font-bold">EM CABINE</span>
+                </div>
+                <div>
+                  <span class="text-white font-bold text-sm block">Mariana Santos • Pacote Drenagem Linfática (Sessão 4 de 10)</span>
+                  <span class="text-[#8C9990] text-xs">Profissional: Amanda Rocha • Restam 6 sessões</span>
+                </div>
+              </div>
+              <button onclick="simularEnvioWhatsApp('Mariana Santos', '10:30', 'Drenagem Linfática')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Enviar Lembrete WhatsApp</span>
+              </button>
+            </div>
+
+            <!-- Appointment Row 3 -->
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex flex-col items-center justify-center text-center">
+                  <span class="text-white font-extrabold text-sm">14:00</span>
+                  <span class="text-[#EAB308] text-[9px] font-bold">AGENDADO</span>
+                </div>
+                <div>
+                  <span class="text-white font-bold text-sm block">Fernanda Lima • Aplicação de Toxina Botulínica (Botox)</span>
+                  <span class="text-[#8C9990] text-xs">Profissional: Dr. Marcelo • R$ 850,00</span>
+                </div>
+              </div>
+              <button onclick="simularEnvioWhatsApp('Fernanda Lima', '14:00', 'Botox Facial')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#25D366] border border-[#1A3824] hover:border-[#25D366] text-xs font-bold px-4 py-2 rounded-lg transition flex items-center gap-1.5">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Enviar Lembrete WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Toast Notification Simulator -->
+          <div id="toast-whats" class="hidden p-4 rounded-xl bg-[#0E2A18] border border-[#00FF41]/40 text-[#00FF41] text-xs font-semibold flex items-center gap-3 animate-fade-in">
+            <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0"></i>
+            <span id="toast-whats-texto">Mensagem pré-formatada enviada para o WhatsApp da cliente!</span>
+          </div>
+        </div>
+
+        <!-- TAB 3: ANTES & DEPOIS -->
+        <div id="tab-fotos" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="border-b border-[#1A261E] pb-4">
+            <h3 class="text-white font-bold text-lg">Prontuário com Comparador "Antes & Depois"</h3>
+            <p class="text-[#8C9990] text-xs">Tire fotos pelo celular ou computador, anexe ao prontuário e mostre a evolução lado a lado para o paciente.</p>
+          </div>
+
+          <!-- Comparison Box -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] text-center">
+              <span class="text-xs font-bold text-[#EAB308] uppercase tracking-wider block mb-2">📸 FOTO ANTES (Sessão 1)</span>
+              <div class="h-56 bg-[#0E1410] rounded-lg border border-[#1A261E] flex flex-col items-center justify-center text-[#8C9990]">
+                <i data-lucide="image" class="w-10 h-10 mb-2 text-[#8C9990]"></i>
+                <span class="text-xs">Registro Inicial da Pele / Tratamento</span>
+                <span class="text-[10px] text-[#BAC2BC]">15/08/2026 • Linhas finas e manchas</span>
+              </div>
+            </div>
+
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] text-center">
+              <span class="text-xs font-bold text-[#00FF41] uppercase tracking-wider block mb-2">✨ FOTO DEPOIS (Sessão 5)</span>
+              <div class="h-56 bg-[#0E1F14] rounded-lg border border-[#1A3824] flex flex-col items-center justify-center text-[#00FF41]">
+                <i data-lucide="sparkles" class="w-10 h-10 mb-2 text-[#00FF41]"></i>
+                <span class="text-xs font-bold">Evolução Notável do Procedimento</span>
+                <span class="text-[10px] text-[#A0B2A6]">25/09/2026 • Rejuvenescimento comprovado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A] flex items-center justify-between text-xs text-[#BAC2BC]">
+            <span>💡 O comparador gera um comprovante digital pronto para exportar ou enviar no WhatsApp da cliente.</span>
+            <span class="text-[#00FF41] font-bold">100% Integrado</span>
+          </div>
+        </div>
+
+        <!-- TAB 4: FRENTE DE CAIXA (PDV) -->
+        <div id="tab-pdv" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="border-b border-[#1A261E] pb-4">
+            <h3 class="text-white font-bold text-lg">Frente de Caixa (PDV) & Comandas Rápidas</h3>
+            <p class="text-[#8C9990] text-xs">O atendimento finalizado na cabine vira comanda no caixa automaticamente.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="sm:col-span-2 bg-[#070B08] p-5 rounded-xl border border-[#16221A] space-y-3">
+              <span class="text-xs font-bold text-white block">Comanda #1048 • Beatriz Nogueira</span>
+              <div class="divide-y divide-[#16221A] text-xs">
+                <div class="py-2 flex justify-between">
+                  <span>Limpeza de Pele Profunda (Dra. Juliana)</span>
+                  <span class="text-white font-semibold">R$ 180,00</span>
+                </div>
+                <div class="py-2 flex justify-between">
+                  <span>Sérum Vitamina C 30ml (Home Care)</span>
+                  <span class="text-white font-semibold">R$ 89,00</span>
+                </div>
+                <div class="py-2 flex justify-between font-bold text-sm text-[#00FF41]">
+                  <span>TOTAL A PAGAR</span>
+                  <span>R$ 269,00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-[#070B08] p-5 rounded-xl border border-[#16221A] flex flex-col justify-between">
+              <span class="text-xs font-bold text-white block mb-2">Forma de Pagamento:</span>
+              <div class="space-y-2 text-xs">
+                <div class="p-2 rounded bg-[#0E1812] border border-[#00FF41]/40 text-[#00FF41] font-bold flex items-center justify-between">
+                  <span>PIX Instantâneo</span>
+                  <span>✓ Selecionado</span>
+                </div>
+                <div class="p-2 rounded bg-[#070A08] border border-[#16221A] text-[#8C9990] flex items-center justify-between">
+                  <span>Cartão de Crédito (até 12x)</span>
+                  <span>-</span>
+                </div>
+                <div class="p-2 rounded bg-[#070A08] border border-[#16221A] text-[#8C9990] flex items-center justify-between">
+                  <span>Cartão de Débito / Dinheiro</span>
+                  <span>-</span>
+                </div>
+              </div>
+              <button class="mt-4 w-full bg-[#00FF41] text-[#060907] font-bold text-xs py-2.5 rounded-lg flex items-center justify-center gap-1.5 glow-neon">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+                <span>Finalizar & Imprimir Cupom</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI / Savings Calculator Section -->
+  <section id="economia" class="py-20 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl border border-[#1A261E] relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-[#00FF41]/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">💰 O Verdadeiro Custo dos Softwares Web</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+            Quanto dinheiro você joga fora pagando mensalidades?
+          </h2>
+          <p class="text-[#8C9990] text-sm">
+            Arraste o controle abaixo para simular quanto você gasta em sistemas convencionais vs. o NX Gestão Estética.
+          </p>
+        </div>
+
+        <!-- Slider Control -->
+        <div class="max-w-xl mx-auto mb-8">
+          <div class="flex justify-between text-xs font-semibold text-[#8C9990] mb-2">
+            <span>Período de Uso:</span>
+            <span id="label-anos" class="text-[#00FF41] font-bold text-sm">3 Anos</span>
+          </div>
+          <input type="range" id="sliderAnos" min="1" max="5" value="3" step="1" oninput="atualizarCalculadora(this.value)" class="w-full h-2 bg-[#1A261E] rounded-lg appearance-none cursor-pointer accent-[#00FF41]">
+          <div class="flex justify-between text-[11px] text-[#8C9990] mt-1.5">
+            <span>1 ano</span>
+            <span>2 anos</span>
+            <span>3 anos</span>
+            <span>4 anos</span>
+            <span>5 anos</span>
+          </div>
+        </div>
+
+        <!-- Comparison Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div class="bg-[#070A08] p-6 rounded-2xl border border-red-500/20 text-center">
+            <span class="text-red-400 text-xs font-bold uppercase tracking-wider block mb-1">Outros Softwares (R$ 150/mês)</span>
+            <span id="val-outros" class="text-3xl font-extrabold text-white block my-2">R$ 5.400,00</span>
+            <span class="text-[#8C9990] text-xs">Dinheiro perdido todo mês para sempre</span>
+          </div>
+
+          <div class="bg-[#0E1F14] p-6 rounded-2xl border border-[#00FF41] text-center glow-neon relative">
+            <div class="absolute -top-3 right-4 bg-[#00FF41] text-[#060907] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
+              Economia Real
+            </div>
+            <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-1">NX Gestão Estética (Taxa Única)</span>
+            <span class="text-3xl font-extrabold text-white block my-2">R$ 97,00</span>
+            <span id="val-economia" class="text-[#00FF41] text-xs font-bold">Você economiza R$ 5.303,00!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules Grid Section -->
+  <section id="recursos" class="py-20 bg-[#080D0A] border-t border-[#1A261E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
+          Tudo que uma clínica moderna precisa em um único lugar
+        </h2>
+        <p class="text-[#8C9990] text-sm sm:text-base">
+          Projetado para facilitar a rotina da recepção, dos profissionais e da dona da clínica.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Agenda com WhatsApp</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Visão diária, semanal e mensal. Dispare lembretes de horários direto no WhatsApp do cliente com 1 clique e acabe com as faltas.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Prontuário & Antes e Depois</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Anamnese completa com termo de consentimento, histórico de sessões e comparador fotográfico lado a lado para encantar suas pacientes.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Frente de Caixa & Comandas</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Abertura e fechamento de caixa diário, controle de sangria, suprimento e emissão de recibo para impressora térmica (80mm) ou PDF A4.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Comissões Automáticas</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Cálculo de comissões por porcentagem ou valor fixo sobre serviços e produtos. Relatórios individuais prontos para pagamento dos profissionais.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="package" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Estoque & Produtos</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Controle de produtos de cabine (uso interno) e revenda home care. Alerta automático de reposição quando o estoque atinge o limite mínimo.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Segurança Offline & Backup</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Seus dados ficam 100% seguros no seu computador. Funciona sem internet e cria cópia de segurança automática ao fechar o programa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="precos" class="py-20 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">🏷️ Oferta Especial</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+          Garanta sua Licença Vitalícia
+        </h2>
+        <p class="text-[#8C9990] text-sm sm:text-base">
+          Sem mensalidades, sem taxas de renovação e sem letras miúdas. Pagamento único!
+        </p>
+      </div>
+
+      <!-- Pricing Card -->
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border-2 border-[#00FF41] glow-neon-strong relative">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00FF41] text-[#060907] text-xs font-extrabold px-4 py-1 rounded-full uppercase tracking-wider">
+          Mais Vendido • Acesso Imediato
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#1A261E] pb-8 mb-8 text-center sm:text-left">
+          <div>
+            <h3 class="text-2xl font-extrabold text-white">NX Gestão Estética Vitalício</h3>
+            <span class="text-[#8C9990] text-xs">Instalador Completo + Licença Permanente para Windows</span>
+          </div>
+          <div>
+            <span class="text-[#8C9990] text-sm line-through block">De R$ 297,00</span>
+            <div class="flex items-baseline justify-center sm:justify-start gap-1">
+              <span class="text-white text-base font-bold">Por apenas</span>
+              <span class="text-[#00FF41] text-4xl sm:text-5xl font-extrabold text-glow">R$ 97,00</span>
+            </div>
+            <span class="text-[#8C9990] text-xs block mt-1">Pagamento Único à vista ou em até 12x no Cartão</span>
+          </div>
+        </div>
+
+        <!-- Checklist of benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-[#BAC2BC] mb-10">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Licença Vitalícia (Nunca expira)</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Zero mensalidades para sempre</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Cadastros ilimitados de clientes</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Agenda integrada com WhatsApp</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Prontuário com fotos Antes e Depois</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Controle de comissões por profissional</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Backup automático ao fechar</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
+            <span>Suporte no WhatsApp (34) 9840-8962</span>
+          </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="space-y-3">
+          <a id="btn-comprar" href="https://wa.me/553498408962?text=Ol%C3%A1!%20Gostaria%20de%20adquirir%20a%20Licen%C3%A7a%20Vital%C3%ADcia%20do%20NX%20Gest%C3%A3o%20Est%C3%A9tica." target="_blank" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-lg py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2 text-center">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+            <span>COMPRAR AGORA COM LICENÇA VITALÍCIA</span>
+          </a>
+          <div class="flex items-center justify-center gap-4 text-xs text-[#8C9990] pt-2">
+            <span class="flex items-center gap-1"><i data-lucide="lock" class="w-3.5 h-3.5 text-[#00FF41]"></i> Pagamento 100% Seguro</span>
+            <span class="flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5 text-[#00FF41]"></i> Envio Imediato</span>
+            <span class="flex items-center gap-1"><i data-lucide="shield" class="w-3.5 h-3.5 text-[#00FF41]"></i> 7 Dias de Garantia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-[#080D0A] border-t border-[#1A261E]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+          Perguntas Frequentes
+        </h2>
+        <p class="text-[#8C9990] text-sm">
+          Tire suas dúvidas antes de garantir a sua licença.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Q1 -->
+        <details class="glass-card p-5 rounded-xl border border-[#1A261E] group">
+          <summary class="font-bold text-white text-sm sm:text-base cursor-pointer flex items-center justify-between list-none">
+            <span>1. Realmente não tem mensalidade?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00FF41] group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-[#8C9990] text-xs sm:text-sm mt-3 leading-relaxed">
+            Exatamente! O NX Gestão Estética funciona sob licença vitalícia (pagamento único). Você paga uma única vez no valor anunciado e utiliza para sempre no seu computador, sem nenhuma cobrança surpresa.
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="glass-card p-5 rounded-xl border border-[#1A261E] group">
+          <summary class="font-bold text-white text-sm sm:text-base cursor-pointer flex items-center justify-between list-none">
+            <span>2. Precisa de internet para o sistema funcionar?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00FF41] group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-[#8C9990] text-xs sm:text-sm mt-3 leading-relaxed">
+            Não! O sistema roda 100% no seu computador (offline). Sua clínica nunca para de trabalhar mesmo que a internet oscile ou caia. A internet só é usada quando você clica para abrir o WhatsApp Web.
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="glass-card p-5 rounded-xl border border-[#1A261E] group">
+          <summary class="font-bold text-white text-sm sm:text-base cursor-pointer flex items-center justify-between list-none">
+            <span>3. Posso usar em mais de um computador na mesma clínica?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00FF41] group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-[#8C9990] text-xs sm:text-sm mt-3 leading-relaxed">
+            Sim! O sistema possui compatibilidade nativa com Rede Local (LAN), permitindo que a recepcionista e os profissionais usem a mesma base de dados. Caso deseje licenças extras para mais computadores, temos condições especiais facilitadas.
+          </p>
+        </details>
+
+        <!-- Q4 -->
+        <details class="glass-card p-5 rounded-xl border border-[#1A261E] group">
+          <summary class="font-bold text-white text-sm sm:text-base cursor-pointer flex items-center justify-between list-none">
+            <span>4. E se eu formatar o computador, perco os meus dados?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00FF41] group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-[#8C9990] text-xs sm:text-sm mt-3 leading-relaxed">
+            Não! O sistema cria cópias automáticas de segurança na pasta de backups todos os dias ao ser fechado. Basta guardar essa pasta em um pen drive ou nuvem. Se formatar, nosso suporte reativa sua licença rapidamente.
+          </p>
+        </details>
+
+        <!-- Q5 -->
+        <details class="glass-card p-5 rounded-xl border border-[#1A261E] group">
+          <summary class="font-bold text-white text-sm sm:text-base cursor-pointer flex items-center justify-between list-none">
+            <span>5. Como recebo o sistema após a compra?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00FF41] group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-[#8C9990] text-xs sm:text-sm mt-3 leading-relaxed">
+            O envio é 100% digital e imediato! Você recebe o link para download do instalador oficial. Ao abrir o programa pela primeira vez, ele exibirá o código da sua máquina (HWID). Você nos envia pelo WhatsApp e emitimos sua Chave de Ativação Vitalícia em poucos minutos!
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-[#1A261E] bg-[#060907] text-center text-xs text-[#8C9990]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex items-center justify-center gap-2 text-white font-bold">
+        <img src="assets/logo.png" alt="Logo" class="h-6 w-auto">
+        <span>NX GESTÃO ESTÉTICA</span>
+      </div>
+      <p>Desenvolvido para Clínicas de Estética, Harmonização Facial, Spas, Salões de Beleza e Barbearias.</p>
+      <p class="text-[#BAC2BC]">Suporte Oficial: WhatsApp (34) 9840-8962 • Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/553498408962?text=Ol%C3%A1!%20Estou%20no%20site%20do%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#2CEB73] text-[#040805] font-bold p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2 transition hover:scale-105 glow-neon">
+    <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+    <span class="hidden sm:inline text-xs font-extrabold uppercase">Tirar Dúvidas no WhatsApp</span>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Inicializar ícones Lucide
+    lucide.createIcons();
+
+    // Alternar Abas do Simulador
+    function mudarAba(tabId) {
+      // Esconder todas as abas
+      ['tab-dash', 'tab-agenda', 'tab-fotos', 'tab-pdv'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+
+      // Resetar botões
+      document.querySelectorAll('.aba-btn').forEach(b => {
+        b.className = 'aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition';
+      });
+
+      // Ativar aba selecionada
+      const abaAtiva = document.getElementById(tabId);
+      if (abaAtiva) abaAtiva.classList.remove('hidden');
+
+      // Estilizar botão ativo
+      const btnAtivo = document.getElementById('btn-' + tabId);
+      if (btnAtivo) {
+        btnAtivo.className = 'aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition';
+      }
+
+      lucide.createIcons();
+    }
+
+    // Simulação de Envio de WhatsApp no Simulador
+    function simularEnvioWhatsApp(nome, horario, proc) {
+      const toast = document.getElementById('toast-whats');
+      const texto = document.getElementById('toast-whats-texto');
+      texto.innerText = `💬 Disparo WhatsApp realizado com sucesso para ${nome} (${horario} - ${proc})! Mensagem pré-formatada pronta na conversa.`;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+
+    // Calculadora de Economia
+    function atualizarCalculadora(anos) {
+      document.getElementById('label-anos').innerText = anos + (anos == 1 ? ' Ano' : ' Anos');
+      const meses = anos * 12;
+      const custoOutros = meses * 150;
+      const nxPreco = 97;
+      const economia = custoOutros - nxPreco;
+
+      document.getElementById('val-outros').innerText = 'R$ ' + custoOutros.toLocaleString('pt-BR') + ',00';
+      document.getElementById('val-economia').innerText = 'Você economiza R$ ' + economia.toLocaleString('pt-BR') + ',00!';
+    }
+
+    // Chart.js Gráfico do Dashboard
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('chartDemo');
+      if (ctx) {
+        new Chart(ctx.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: ['01/Set', '05/Set', '10/Set', '15/Set', '20/Set', '25/Set', '30/Set'],
+            datasets: [{
+              label: 'Faturamento Acumulado (R$)',
+              data: [4200, 11500, 19800, 28400, 36200, 41800, 45200],
+              borderColor: '#00FF41',
+              backgroundColor: 'rgba(0, 255, 65, 0.08)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#00FF41',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(26, 38, 30, 0.5)' },
+                ticks: { color: '#8C9990', font: { size: 10 } }
+              },
+              y: {
+                grid: { color: 'rgba(26, 38, 30, 0.5)' },
+                ticks: {
+                  color: '#8C9990',
+                  font: { size: 10 },
+                  callback: val => 'R$ ' + val.toLocaleString('pt-BR')
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
