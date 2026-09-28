@@ -815,134 +815,189 @@
 
   <!-- Pricing Section -->
   <section id="precos" class="py-20 relative">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">🏷️ Oferta Especial</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">🏷️ Planos & Licenciamento Vitalício</span>
         <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
-          Garanta sua Licença Vitalícia
+          Escolha o Plano Ideal para a Sua Clínica
         </h2>
         <p class="text-[#8C9990] text-sm sm:text-base">
-          Sem mensalidades, sem taxas de renovação e sem letras miúdas. Pagamento único!
+          Sem mensalidades, sem taxas de renovação e sem letras miúdas. Pagamento único com acesso vitalício!
         </p>
       </div>
 
-      <!-- Pricing Card -->
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border-2 border-[#00FF41] glow-neon-strong relative">
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00FF41] text-[#060907] text-xs font-extrabold px-4 py-1 rounded-full uppercase tracking-wider">
-          Mais Vendido • Acesso Imediato
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#1A261E] pb-8 mb-8 text-center sm:text-left">
+      <!-- 4-Tier Pricing Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- PLANO 1: 1 PC -->
+        <div class="glass-card rounded-2xl p-6 border border-[#1A261E] hover:border-[#00FF41]/40 transition flex flex-col justify-between relative group">
           <div>
-            <h3 class="text-2xl font-extrabold text-white">NX Gestão Estética Vitalício</h3>
-            <span class="text-[#8C9990] text-xs">Instalador Completo + Licença Permanente para Windows</span>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-[11px] font-bold uppercase tracking-wider mb-4">
+              <i data-lucide="laptop" class="w-3.5 h-3.5"></i>
+              <span>Individual • 1 PC</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Clínica Inicial</h3>
+            <p class="text-[#8C9990] text-xs mb-5">Ideal para 1 computador de atendimento ou consultório único.</p>
+
+            <div class="border-y border-[#1A261E] py-4 mb-5">
+              <span class="text-[#8C9990] text-xs line-through block">De R$ 197,00</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-[#00FF41] text-3xl font-extrabold text-glow">R$ 97,00</span>
+                <span class="text-[#BAC2BC] text-xs font-semibold">à vista</span>
+              </div>
+              <span class="text-[#8C9990] text-[11px] block mt-0.5">Pagamento único vitalício</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-[#BAC2BC] mb-6">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>1 Licença Vitalícia</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Banco 100% Local (Zero Nuvem)</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Cadastros e Prontuários ilimitados</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Agenda com WhatsApp em 1 clique</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Frente de Caixa, PDV e Comandas</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Backup automático ao fechar</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>15 Dias de Teste Grátis inclusos</span></li>
+            </ul>
+          </div>
+
+          <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Comprar 1 PC (R$ 97)</span>
+          </a>
+        </div>
+
+        <!-- PLANO 2: 3 PCS (DESTAQUE) -->
+        <div class="glass-card rounded-2xl p-6 border-2 border-[#00FF41] glow-neon-strong transition flex flex-col justify-between relative group scale-[1.02]">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#00FF41] text-[#060907] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap shadow-lg">
+            ⭐ Mais Vendido • Economize R$ 94
+          </div>
+
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-[11px] font-bold uppercase tracking-wider mb-4 mt-2">
+              <i data-lucide="network" class="w-3.5 h-3.5"></i>
+              <span>Rede LAN • 3 PCs</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Clínica em Rede</h3>
+            <p class="text-[#8C9990] text-xs mb-5">Recepção + 2 Salas de Procedimento conectadas.</p>
+
+            <div class="border-y border-[#1A261E] py-4 mb-5">
+              <span class="text-[#8C9990] text-xs line-through block">De R$ 291,00</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-[#00FF41] text-3xl font-extrabold text-glow">R$ 197,00</span>
+                <span class="text-[#BAC2BC] text-xs font-semibold">à vista</span>
+              </div>
+              <span class="text-[#00FF41] text-[11px] font-semibold block mt-0.5">Apenas ~R$ 65 por computador!</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-[#BAC2BC] mb-6">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>3 Licenças Vitalícias Inclusas</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>Rede Local (LAN) em tempo real</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Assistente de Rede 1 Clique</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Banco compartilhado sem conflito</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Usuários e acessos por sala</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Todos os recursos liberados</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Suporte prioritário na rede</span></li>
+            </ul>
+          </div>
+
+          <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Gostaria%20de%20garantir%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20para%203%20PCs%20(R%24%20197%2C00)." target="_blank" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs py-3 px-4 rounded-xl transition duration-200 glow-neon-strong text-center flex items-center justify-center gap-1.5">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span>Garantir 3 PCs (R$ 197)</span>
+          </a>
+        </div>
+
+        <!-- PLANO 3: 6 PCS -->
+        <div class="glass-card rounded-2xl p-6 border border-[#1A261E] hover:border-[#00FF41]/40 transition flex flex-col justify-between relative group">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-[11px] font-bold uppercase tracking-wider mb-4">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Completo • Até 6 PCs</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Clínica Completa</h3>
+            <p class="text-[#8C9990] text-xs mb-5">Recepção, caixa e até 4 consultórios simultâneos.</p>
+
+            <div class="border-y border-[#1A261E] py-4 mb-5">
+              <span class="text-[#8C9990] text-xs line-through block">De R$ 582,00</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-[#00FF41] text-3xl font-extrabold text-glow">R$ 297,00</span>
+                <span class="text-[#BAC2BC] text-xs font-semibold">à vista</span>
+              </div>
+              <span class="text-[#00FF41] text-[11px] font-semibold block mt-0.5">Menos de R$ 50 por máquina!</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-[#BAC2BC] mb-6">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>Até 6 Licenças Vitalícias</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>Rede Local (LAN) Multi-Estações</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Comissões automáticas por sala</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Faturamento e estoque unificados</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Economia total de R$ 285,00</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Backup centralizado diário</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Suporte VIP de instalação</span></li>
+            </ul>
+          </div>
+
+          <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Gostaria%20de%20garantir%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20para%206%20PCs%20(R%24%20297%2C00)." target="_blank" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Garantir 6 PCs (R$ 297)</span>
+          </a>
+        </div>
+
+        <!-- PLANO 4: ACIMA DE 6 PCS -->
+        <div class="glass-card rounded-2xl p-6 border border-[#1A261E] hover:border-[#00FF41]/40 transition flex flex-col justify-between relative group">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#BAC2BC] text-[11px] font-bold uppercase tracking-wider mb-4">
+              <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+              <span>Corporativo • +6 PCs</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Franquias & Redes</h3>
+            <p class="text-[#8C9990] text-xs mb-5">Para grandes clínicas, policlínicas ou múltiplas unidades.</p>
+
+            <div class="border-y border-[#1A261E] py-4 mb-5">
+              <span class="text-[#8C9990] text-xs block">Proposta Sob Medida</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-white text-2xl font-extrabold">Sob Consulta</span>
+              </div>
+              <span class="text-[#8C9990] text-[11px] block mt-0.5">Condições especiais em lote</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-[#BAC2BC] mb-6">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span><strong>Licenças ilimitadas sob demanda</strong></span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Estruturação de servidor dedicado</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Múltiplos andares ou salas</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Treinamento remoto para equipe</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Customização de relatórios</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Canal direto com desenvolvedor</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#00FF41] shrink-0"></i><span>Emissão de NF-e corporativa</span></li>
+            </ul>
+          </div>
+
+          <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Tenho%20uma%20cl%C3%ADnica%20com%20mais%20de%206%20computadores%20e%20gostaria%20de%20uma%20proposta%20personalizada." target="_blank" class="w-full bg-[#141F18] hover:bg-[#1C2B21] text-white border border-[#24362B] font-bold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5">
+            <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
+            <span>Falar com Consultor</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Contact and Alternative Order Form -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mb-10">
+        <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20os%20planos%20do%20NX%20Gest%C3%A3o%20Est%C3%A9tica." target="_blank" class="p-4 rounded-xl bg-[#070B08] hover:bg-[#0D150F] border border-[#1A261E] hover:border-[#25D366] transition flex items-center gap-3 text-left">
+          <div class="w-10 h-10 rounded-lg bg-[#0E2A18] text-[#25D366] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
           </div>
           <div>
-            <span class="text-[#8C9990] text-sm line-through block">De R$ 297,00</span>
-            <div class="flex items-baseline justify-center sm:justify-start gap-1">
-              <span class="text-white text-base font-bold">Por apenas</span>
-              <span class="text-[#00FF41] text-4xl sm:text-5xl font-extrabold text-glow">R$ 97,00</span>
-            </div>
-            <span class="text-[#8C9990] text-xs block mt-1">Pagamento Único à vista ou em até 12x no Cartão</span>
+            <span class="text-white font-bold text-xs block">Tirar Dúvidas ou Comprar no WhatsApp</span>
+            <span class="text-[#8C9990] text-[11px]">(34) 9840-8962 • Atendimento direto</span>
           </div>
-        </div>
+        </a>
 
-        <!-- Checklist of benefits -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-[#BAC2BC] mb-10">
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Licença Vitalícia (Nunca expira)</span>
+        <button type="button" onclick="document.getElementById('form-pedido-container').classList.toggle('hidden'); document.getElementById('form-pedido-container').scrollIntoView({behavior: 'smooth'})" class="p-4 rounded-xl bg-[#070B08] hover:bg-[#0D150F] border border-[#1A261E] hover:border-[#00FF41] transition flex items-center gap-3 text-left">
+          <div class="w-10 h-10 rounded-lg bg-[#0E1812] text-[#00FF41] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="mail" class="w-5 h-5"></i>
           </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Zero mensalidades para sempre</span>
+          <div>
+            <span class="text-white font-bold text-xs block">Pedir por E-mail (Formulário)</span>
+            <span class="text-[#8C9990] text-[11px]">Enviar dados para nx49digital@gmail.com</span>
           </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Banco de Dados 100% Local (Zero Nuvem)</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>15 Dias de Teste Grátis Inclusos</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Cadastros ilimitados de clientes</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Agenda integrada com WhatsApp</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Prontuário com fotos Antes e Depois</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Controle de comissões por profissional</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Backup automático ao fechar</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#00FF41]"></i>
-            <span>Suporte no WhatsApp (34) 9840-8962</span>
-          </div>
-        </div>
-
-        <!-- Purchase Options (Kiwify Checkout + WhatsApp + Email Form) -->
-        <div class="space-y-6">
-          <!-- Primary: Kiwify Official Checkout -->
-          <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-[#0E1F14] to-[#070B08] border-2 border-[#00FF41] glow-neon text-center space-y-4">
-            <div class="flex items-center justify-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-[#00FF41] animate-ping"></span>
-              <span class="text-xs font-extrabold text-[#00FF41] uppercase tracking-widest">Plataforma Oficial Segura • Kiwify</span>
-            </div>
-
-            <div>
-              <span class="text-xs text-[#8C9990] block mb-1">Acesso Imediato ao Instalador + Chave Vitalícia</span>
-              <div class="flex items-baseline justify-center gap-2">
-                <span class="text-white text-lg font-bold">Por apenas</span>
-                <span class="text-[#00FF41] text-4xl sm:text-5xl font-extrabold text-glow">R$ 97,00</span>
-              </div>
-              <span class="text-[#8C9990] text-xs block mt-1">À vista no PIX com aprovação imediata ou em até 12x no Cartão de Crédito</span>
-            </div>
-
-            <a id="btn-comprar" href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base sm:text-lg py-4 px-6 rounded-xl transition duration-200 shadow-2xl glow-neon-strong flex items-center justify-center gap-2.5 text-center">
-              <i data-lucide="shield-check" class="w-6 h-6"></i>
-              <span>COMPRAR AGORA NO KIWIFY • R$ 97,00</span>
-            </a>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-[#BAC2BC] pt-1">
-              <span class="flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-[#00FF41]"></i> Entrega Automática</span>
-              <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-[#00FF41]"></i> Checkout 100% Seguro</span>
-              <span class="flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-[#00FF41]"></i> 7 Dias de Garantia</span>
-            </div>
-          </div>
-
-          <!-- Secondary Options: WhatsApp or Email -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Quero%20adquirir%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20por%20R%24%2097%2C00.%20Poderia%20me%20ajudar%20com%20o%20pagamento%20e%20instala%C3%A7%C3%A3o%3F" target="_blank" class="p-4 rounded-xl bg-[#070B08] hover:bg-[#0D150F] border border-[#1A261E] hover:border-[#25D366] transition flex items-center gap-3 text-left">
-              <div class="w-10 h-10 rounded-lg bg-[#0E2A18] text-[#25D366] flex items-center justify-center flex-shrink-0">
-                <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
-              </div>
-              <div>
-                <span class="text-white font-bold text-xs block">Tirar Dúvidas no WhatsApp</span>
-                <span class="text-[#8C9990] text-[11px]">(34) 9840-8962 • Falar com suporte</span>
-              </div>
-            </a>
-
-            <button type="button" onclick="document.getElementById('form-pedido-container').classList.toggle('hidden'); document.getElementById('form-pedido-container').scrollIntoView({behavior: 'smooth'})" class="p-4 rounded-xl bg-[#070B08] hover:bg-[#0D150F] border border-[#1A261E] hover:border-[#00FF41] transition flex items-center gap-3 text-left">
-              <div class="w-10 h-10 rounded-lg bg-[#0E1812] text-[#00FF41] flex items-center justify-center flex-shrink-0">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <span class="text-white font-bold text-xs block">Pedir por E-mail (Formulário)</span>
-                <span class="text-[#8C9990] text-[11px]">Enviar dados para nx49digital@gmail.com</span>
-              </div>
-            </button>
-          </div>
+        </button>
+      </div>
 
           <!-- Option 2: Email Form to nx49digital@gmail.com -->
           <div id="form-pedido-container" class="hidden p-6 sm:p-8 rounded-2xl bg-[#070B08] border border-[#1A261E] text-left">
@@ -975,13 +1030,24 @@
                 </div>
               </div>
 
-              <div>
-                <label class="block text-xs font-semibold text-[#BAC2BC] mb-1">Forma de Pagamento Preferida</label>
-                <select name="Forma_Pagamento" class="w-full bg-[#0D140F] border border-[#1A261E] focus:border-[#00FF41] focus:ring-1 focus:ring-[#00FF41] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition">
-                  <option value="PIX à vista (R$ 97,00 com liberação imediata)">PIX à vista (R$ 97,00 com liberação imediata)</option>
-                  <option value="Cartão de Crédito (em até 12x)">Cartão de Crédito (em até 12x)</option>
-                  <option value="Boleto Bancário">Boleto Bancário</option>
-                </select>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-[#BAC2BC] mb-1">Plano Desejado *</label>
+                  <select name="Plano" class="w-full bg-[#0D140F] border border-[#1A261E] focus:border-[#00FF41] focus:ring-1 focus:ring-[#00FF41] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition">
+                    <option value="Plano 1 PC - R$ 97,00 (Individual)">Plano 1 PC - R$ 97,00 (Individual)</option>
+                    <option value="Plano 3 PCs - R$ 197,00 (Clínica em Rede)">Plano 3 PCs - R$ 197,00 (Clínica em Rede)</option>
+                    <option value="Plano 6 PCs - R$ 297,00 (Clínica Completa)">Plano 6 PCs - R$ 297,00 (Clínica Completa)</option>
+                    <option value="Plano Corporativo (+6 PCs / Sob Consulta)">Plano Corporativo (+6 PCs / Sob Consulta)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#BAC2BC] mb-1">Forma de Pagamento Preferida</label>
+                  <select name="Forma_Pagamento" class="w-full bg-[#0D140F] border border-[#1A261E] focus:border-[#00FF41] focus:ring-1 focus:ring-[#00FF41] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition">
+                    <option value="PIX à vista (com liberação imediata)">PIX à vista (com liberação imediata)</option>
+                    <option value="Cartão de Crédito (em até 12x)">Cartão de Crédito (em até 12x)</option>
+                    <option value="Boleto Bancário">Boleto Bancário</option>
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -1040,8 +1106,6 @@
             <span class="flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5 text-[#00FF41]"></i> Envio Imediato</span>
             <span class="flex items-center gap-1"><i data-lucide="shield" class="w-3.5 h-3.5 text-[#00FF41]"></i> 7 Dias de Garantia</span>
           </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1258,6 +1322,7 @@
     function enviarPedidoEmail(e) {
       e.preventDefault();
       const form = e.target;
+      const plano = form.Plano ? form.Plano.value : 'Plano 1 PC - R$ 97,00 (Individual)';
       const nome = form.Nome.value.trim();
       const whatsapp = form.WhatsApp.value.trim();
       const email = form.Email.value.trim();
@@ -1265,7 +1330,8 @@
       const pagamento = form.Forma_Pagamento.value;
       const mensagem = form.Mensagem.value.trim() || 'Nenhuma observação';
 
-      textoPedidoAtual = `Olá! Gostaria de adquirir o NX Gestão Estética com Licença Vitalícia por R$ 97,00.\n\n` +
+      textoPedidoAtual = `Olá! Gostaria de adquirir o NX Gestão Estética com Licença Vitalícia.\n\n` +
+        `📦 PLANO ESCOLHIDO: ${plano}\n\n` +
         `📋 DADOS DO PEDIDO:\n` +
         `• Nome: ${nome}\n` +
         `• WhatsApp: ${whatsapp}\n` +
@@ -1275,7 +1341,7 @@
         `• Observações: ${mensagem}\n\n` +
         `Por favor, me envie a Chave Vitalícia e as instruções para transferência/PIX!`;
 
-      const assunto = `Novo Pedido NX Gestão Estética (R$ 97,00) - ${nome}`;
+      const assunto = `Novo Pedido NX Gestão Estética (${plano}) - ${nome}`;
 
       // Montar URLs Diretas
       const urlGmail = `https://mail.google.com/mail/?view=cm&fs=1&to=nx49digital@gmail.com&su=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoPedidoAtual)}`;
