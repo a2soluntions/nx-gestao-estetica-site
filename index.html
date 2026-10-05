@@ -135,7 +135,7 @@
 
       <!-- Subtitle -->
       <p class="text-base sm:text-lg text-[#8C9990] max-w-2xl mx-auto mb-10 leading-relaxed">
-        Agenda inteligente com WhatsApp em 1 clique, prontuário com fotos antes e depois, controle de comissões, frente de caixa e estoque. <strong class="text-white">Banco de dados 100% seguro no seu computador (Zero Nuvem). Pague uma única vez e use para sempre!</strong>
+        Agenda inteligente com WhatsApp em 1 clique, <strong class="text-white">Estúdio Clínico Antes e Depois com Paquímetro, Balões Direcionais e Projeção de Resultados</strong>, Pacotes Multi-Sessões, controle de comissões, PDV, estoque com ícones de estética e Manual Interativo embutido. <strong class="text-white">100% no seu computador (Zero Nuvem). Pague uma única vez e use para sempre!</strong>
       </p>
 
       <!-- Action Buttons -->
@@ -161,8 +161,8 @@
           <span>Funciona Offline</span>
         </div>
         <div class="flex items-center justify-center gap-2">
-          <i data-lucide="laptop" class="w-4 h-4 text-[#00FF41]"></i>
-          <span>Windows 10 e 11</span>
+          <i data-lucide="book-open" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>Manual Embutido no Sistema</span>
         </div>
         <div class="flex items-center justify-center gap-2">
           <i data-lucide="hard-drive" class="w-4 h-4 text-[#00FF41]"></i>
@@ -179,14 +179,14 @@
               <span class="w-3 h-3 rounded-full bg-[#EF4444] inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-[#F59E0B] inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block"></span>
-              <span class="text-xs text-[#8C9990] font-mono ml-2">NX Gestão Estética v1.0 • Painel Principal</span>
+              <span class="text-xs text-[#8C9990] font-mono ml-2">NX Gestão Estética v2.5 • Painel Principal Atualizado</span>
             </div>
             <div class="text-[11px] font-semibold text-[#00FF41] flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-pulse"></span> Sistema Instalado no Windows
+              <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-pulse"></span> Sistema Instalado no Windows • 15 Dias Grátis
             </div>
           </div>
           <!-- Real Image with Zoom Click -->
-          <div class="relative group cursor-pointer overflow-hidden rounded-b-xl" onclick="abrirModalImagem('assets/real_dashboard.png', 'Painel Executivo Dashboard')">
+          <div class="relative group cursor-pointer overflow-hidden rounded-b-xl" onclick="abrirModalImagem('assets/real_dashboard.png', 'Painel Executivo Dashboard v2.5')">
             <img src="assets/real_dashboard.png" alt="Interface Real do NX Gestão Estética" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-300">
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
               <span class="bg-[#00FF41] text-[#060907] text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-xl">
@@ -197,8 +197,8 @@
 
           <div class="glass-card mt-3 p-4 rounded-xl border border-[#00FF41]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-left">
-              <span class="text-white font-bold text-sm sm:text-base block">Interface Real do Software em Dark Mode Executivo</span>
-              <span class="text-[#8C9990] text-xs">Visual moderno, gráficos em tempo real, sem poluição visual e rápido de navegar.</span>
+              <span class="text-white font-bold text-sm sm:text-base block">Interface Real v2.5 • Dark Mode Executivo & Manual Interativo Embutido</span>
+              <span class="text-[#8C9990] text-xs">Gráfico de agendamentos com porcentagem em tempo real, Estúdio Antes/Depois com paquímetro e pacotes multi-sessões.</span>
             </div>
             <a href="#demonstracao" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-5 py-2.5 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap glow-neon">
               <i data-lucide="layout-grid" class="w-4 h-4"></i>
@@ -216,7 +216,7 @@
       <div class="text-center max-w-3xl mx-auto mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-xs font-bold mb-3 uppercase">
           <span class="w-2 h-2 rounded-full bg-[#00FF41]"></span>
-          Capturas Reais do Software
+          Capturas Reais do Software v2.5
         </div>
         <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
           Conheça a interface real do NX Gestão Estética
@@ -230,33 +230,41 @@
       <div class="bg-[#0B100D] border border-[#1A261E] rounded-2xl shadow-2xl overflow-hidden">
         <!-- Simulator Tab Navigation Bar -->
         <div class="flex flex-wrap border-b border-[#1A261E] bg-[#070B09] p-2 gap-2">
-          <button onclick="mudarAba('tab-dash')" id="btn-tab-dash" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition">
+          <button onclick="mudarAba('tab-dash')" id="btn-tab-dash" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition">
             <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
             <span>Dashboard</span>
           </button>
-          <button onclick="mudarAba('tab-agenda')" id="btn-tab-agenda" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+          <button onclick="mudarAba('tab-agenda')" id="btn-tab-agenda" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="calendar" class="w-4 h-4"></i>
             <span>Agenda & WhatsApp</span>
           </button>
-          <button onclick="mudarAba('tab-atendimento')" id="btn-tab-atendimento" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+          <button onclick="mudarAba('tab-atendimento')" id="btn-tab-atendimento" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="camera" class="w-4 h-4"></i>
-            <span>Atendimento & Fotos</span>
+            <span>Estúdio Antes/Depois & Projeção</span>
           </button>
-          <button onclick="mudarAba('tab-pdv')" id="btn-tab-pdv" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+          <button onclick="mudarAba('tab-pacotes')" id="btn-tab-pacotes" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="package" class="w-4 h-4"></i>
+            <span>Pacotes Multi-Sessões</span>
+          </button>
+          <button onclick="mudarAba('tab-estoque')" id="btn-tab-estoque" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Serviços & Estoque Estética</span>
+          </button>
+          <button onclick="mudarAba('tab-pdv')" id="btn-tab-pdv" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
             <span>Frente de Caixa (PDV)</span>
           </button>
-          <button onclick="mudarAba('tab-financeiro')" id="btn-tab-financeiro" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+          <button onclick="mudarAba('tab-financeiro')" id="btn-tab-financeiro" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="dollar-sign" class="w-4 h-4"></i>
             <span>Financeiro & Comissões</span>
           </button>
-          <button onclick="mudarAba('tab-pacotes')" id="btn-tab-pacotes" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
-            <i data-lucide="package" class="w-4 h-4"></i>
-            <span>Pacotes & Sessões</span>
-          </button>
-          <button onclick="mudarAba('tab-anamnese')" id="btn-tab-anamnese" class="aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+          <button onclick="mudarAba('tab-anamnese')" id="btn-tab-anamnese" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
             <i data-lucide="file-text" class="w-4 h-4"></i>
             <span>Anamnese Digital</span>
+          </button>
+          <button onclick="mudarAba('tab-manual')" id="btn-tab-manual" class="aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span>Manual Embutido</span>
           </button>
         </div>
 
@@ -354,49 +362,60 @@
           </div>
         </div>
 
-        <!-- TAB 3: ATENDIMENTO & FOTOS -->
+        <!-- TAB 3: ATENDIMENTO, ESTÚDIO ANTES/DEPOIS & PROJEÇÃO -->
         <div id="tab-atendimento" class="p-6 sm:p-8 space-y-6 hidden">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
             <div>
               <h3 class="text-white font-bold text-lg flex items-center gap-2">
-                <span>Sala de Atendimento Clínico & Fotos Antes e Depois</span>
-                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+                <span>Estúdio Clínico Antes & Depois, Paquímetro, Balões Direcionais e Projeção</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Novo v2.5</span>
               </h3>
-              <p class="text-[#8C9990] text-xs">Cronômetro em tempo real, anotação técnica da sessão, orientações home care e registro comparativo fotográfico de evolução.</p>
+              <p class="text-[#8C9990] text-xs">Cronômetro de cabine, abatimento rápido de insumos, paquímetro digital, balões de observação com seta esticável e simulador de projeção com relatório em PDF.</p>
             </div>
-            <button onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Fotos')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
-              <i data-lucide="zoom-in" class="w-4 h-4"></i>
-              <span>Ampliar Tela Cheia</span>
-            </button>
+            <div class="flex items-center gap-2">
+              <button onclick="abrirModalImagem('assets/real_estudio_antes_depois.png', 'Estúdio Antes e Depois com Balões Direcionais')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Ver Estúdio & Balões</span>
+              </button>
+              <button onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Projeção')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Ampliar Sala Clínica</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Window Container -->
-          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Fotos')">
-            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
-              <div class="flex items-center gap-1.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
-                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Sala Clínica & Evolução</span>
+          <!-- Dual Preview Grid: Sala Clínica + Estúdio Fotográfico -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_atendimento_fotos.png', 'Sala de Atendimento e Evolução Clínica')">
+              <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+                <span class="font-mono text-[11px] text-[#A0B2A6]">1. Sala de Atendimento, Cronômetro & Projeção</span>
+                <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Ampliar</span>
               </div>
-              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
+              <img src="assets/real_atendimento_fotos.png" alt="Sala de Atendimento Clínico e Projeção" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-200">
             </div>
-            <img src="assets/real_atendimento_fotos.png" alt="Sala de Atendimento Clínico e Fotos" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+
+            <div class="rounded-xl border border-[#00FF41]/40 bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_estudio_antes_depois.png', 'Estúdio Antes e Depois com Paquímetro e Balões Direcionais')">
+              <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+                <span class="font-mono text-[11px] text-[#00FF41] font-bold">2. Estúdio Antes/Depois • Paquímetro & Balões com Linha Esticável</span>
+                <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Ampliar</span>
+              </div>
+              <img src="assets/real_estudio_antes_depois.png" alt="Estúdio Clínico Antes e Depois" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-200">
+            </div>
           </div>
 
           <!-- Feature Bullets -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">⏱️ Cronômetro Integrado</span>
-              <p class="text-[#8C9990] text-xs">Controle rigoroso do tempo de cabine para evitar atrasos na sala de espera.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📏 Paquímetro & Balões Direcionais</span>
+              <p class="text-[#8C9990] text-xs">Meça simetrias na foto e estique a linha direcional do balão para apontar exatamente para a região tratada.</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">📝 Prontuário & Parecer Técnico</span>
-              <p class="text-[#8C9990] text-xs">Anote parâmetros usados (laser, ácidos) e orientações de Home Care para o cliente.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🧪 Abatimento Rápido de Insumos</span>
+              <p class="text-[#8C9990] text-xs">Dê baixa imediata nos produtos usados na cabine (ampolas, cremes, luvas) direto na tela de atendimento.</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">✨ Comparador Antes & Depois</span>
-              <p class="text-[#8C9990] text-xs">Carregue fotos e clique em 'Comparar' para encantar seus pacientes com o resultado.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📄 Relatório Fotográfico em PDF</span>
+              <p class="text-[#8C9990] text-xs">Exporte o comparativo Antes e Depois com observações clínicas e logotipo da sua clínica em PDF de alta nitidez.</p>
             </div>
           </div>
         </div>
@@ -495,30 +514,30 @@
           </div>
         </div>
 
-        <!-- TAB 6: PACOTES & SESSÕES -->
+        <!-- TAB 6: PACOTES MULTI-SESSÕES -->
         <div id="tab-pacotes" class="p-6 sm:p-8 space-y-6 hidden">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
             <div>
               <h3 class="text-white font-bold text-lg flex items-center gap-2">
-                <span>Criação de Pacotes & Controle de Sessões Restantes</span>
-                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
+                <span>Pacotes de Múltiplas Sessões & Controle Automático de Saldo</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Novo v2.5</span>
               </h3>
-              <p class="text-[#8C9990] text-xs">Monte pacotes lucrativos (ex: Noiva Completa, SPA Deusa) e deixe o sistema gerenciar as sessões que o cliente ainda tem direito.</p>
+              <p class="text-[#8C9990] text-xs">Monte combos e planos de 5, 10 ou mais sessões (Drenagem, Laser, Harmonização) e deixe o sistema controlar quantas sessões já foram feitas e quantas restam.</p>
             </div>
-            <button onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes de Sessões')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+            <button onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes Multi-Sessões')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
               <i data-lucide="zoom-in" class="w-4 h-4"></i>
               <span>Ampliar Tela Cheia</span>
             </button>
           </div>
 
           <!-- Window Container -->
-          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes de Sessões')">
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_pacotes.png', 'Pacotes Multi-Sessões')">
             <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
               <div class="flex items-center gap-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
-                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Pacotes & Combos</span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Pacotes Multi-Sessões</span>
               </div>
               <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
             </div>
@@ -528,21 +547,77 @@
           <!-- Feature Bullets -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">🎁 Combos Promocionais</span>
-              <p class="text-[#8C9990] text-xs">Junte limpeza de pele, massagens e estética facial em pacotes com desconto atrativo.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🎁 Planos de 5, 10 ou Mais Sessões</span>
+              <p class="text-[#8C9990] text-xs">Configure a quantidade exata de sessões de cada procedimento dentro do pacote promocional.</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">📦 Saldo de Sessões</span>
-              <p class="text-[#8C9990] text-xs">O sistema abate cada sessão na cabine e exibe na tela: 'Restam X sessões'.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📦 Baixa Automática por Sessão</span>
+              <p class="text-[#8C9990] text-xs">A cada atendimento concluído, o sistema atualiza o progresso (ex: Sessão 3/10 • Restam 7 sessões).</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">📈 Receita Antecipada</span>
-              <p class="text-[#8C9990] text-xs">Venda pacotes parcelados no cartão e garanta a fidelização da cliente por meses.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📈 Fidelização & Receita Recorrente</span>
+              <p class="text-[#8C9990] text-xs">Garanta o retorno da cliente e tenha controle total das sessões contratadas sem papelada.</p>
             </div>
           </div>
         </div>
 
-        <!-- TAB 7: ANAMNESE DIGITAL -->
+        <!-- TAB 7: SERVIÇOS & ESTOQUE COM ÍCONES DE ESTÉTICA -->
+        <div id="tab-estoque" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Serviços & Produtos com Ícones Exclusivos de Estética e Beleza</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Novo v2.5</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">16 ícones vetoriais exclusivos (Maca Clínica, Potes de Creme, Séruns, Laser, Pedras Quentes, Injetáveis) + Lista Automática de Reposição de Estoque.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="abrirModalImagem('assets/real_servicos_estetica.png', 'Catálogo de Serviços com Ícones de Estética')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Ver Serviços</span>
+              </button>
+              <button onclick="abrirModalImagem('assets/real_produtos_estetica.png', 'Produtos e Estoque com Ícones de Estética')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+                <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                <span>Ver Estoque</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_servicos_estetica.png', 'Catálogo de Serviços com Ícones de Estética')">
+              <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+                <span class="font-mono text-[11px] text-[#A0B2A6]">1. Catálogo de Procedimentos & Ícones Vetoriais</span>
+                <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Ampliar</span>
+              </div>
+              <img src="assets/real_servicos_estetica.png" alt="Catálogo de Serviços Estética" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-200">
+            </div>
+
+            <div class="rounded-xl border border-[#00FF41]/40 bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_produtos_estetica.png', 'Estoque e Produtos com Ícones de Estética')">
+              <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+                <span class="font-mono text-[11px] text-[#00FF41] font-bold">2. Controle de Produtos, Insumos & Alerta de Estoque</span>
+                <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Ampliar</span>
+              </div>
+              <img src="assets/real_produtos_estetica.png" alt="Estoque de Produtos Estética" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-200">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🎨 16 Ícones de Estética & Beleza</span>
+              <p class="text-[#8C9990] text-xs">Identifique visualmente Macas, Potes de Creme, Séruns, Laser, Massagem, Facial, Corporal e Injetáveis.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">⚠️ Alerta de Estoque Mínimo</span>
+              <p class="text-[#8C9990] text-xs">Saiba na hora quais dermocosméticos ou descartáveis estão acabando antes de faltar na cabine.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🛒 Lista de Reposição Inteligente</span>
+              <p class="text-[#8C9990] text-xs">Gere com 1 clique a lista de compras dos itens que precisam de reposição junto aos fornecedores.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 8: ANAMNESE DIGITAL -->
         <div id="tab-anamnese" class="p-6 sm:p-8 space-y-6 hidden">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
             <div>
@@ -550,7 +625,7 @@
                 <span>Fichas de Anamnese & Histórico Clínico A4</span>
                 <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Tela Real</span>
               </h3>
-              <p class="text-[#8C9990] text-xs">Fichas com código ANM, histórico de alergias, contraindicações e botão para impressão física em folha A4.</p>
+              <p class="text-[#8C9990] text-xs">Fichas com código ANM, histórico de alergias, contraindicações, assinatura digital na tela e botão para impressão em folha A4.</p>
             </div>
             <button onclick="abrirModalImagem('assets/real_anamnese.png', 'Fichas de Anamnese')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
               <i data-lucide="zoom-in" class="w-4 h-4"></i>
@@ -575,16 +650,61 @@
           <!-- Feature Bullets -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">🖨️ Impressão em Folha A4</span>
-              <p class="text-[#8C9990] text-xs">Gere ficha em branco ou preenchida para assinatura manual ou arquivo em pasta.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🖨️ Impressão em Folha A4 & PDF</span>
+              <p class="text-[#8C9990] text-xs">Gere ficha em branco ou preenchida com assinatura digital para arquivo ou impressão.</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
               <span class="text-[#00FF41] text-xs font-bold block mb-1">🛡️ Segurança Jurídica</span>
               <p class="text-[#8C9990] text-xs">Proteja seu estabelecimento registrando termos e histórico prévio de cada paciente.</p>
             </div>
             <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
-              <span class="text-[#00FF41] text-xs font-bold block mb-1">🔍 Busca Instantânea</span>
-              <p class="text-[#8C9990] text-xs">Localize qualquer prontuário por código ANM, nome ou procedimento realizado.</p>
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🔍 Perguntas Personalizáveis</span>
+              <p class="text-[#8C9990] text-xs">Adicione novas perguntas clínicas específicas para os procedimentos da sua clínica.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 9: MANUAL INTERATIVO EMBUTIDO -->
+        <div id="tab-manual" class="p-6 sm:p-8 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1A261E] pb-4">
+            <div>
+              <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <span>Manual de Instruções Interativo 100% Embutido no Sistema</span>
+                <span class="bg-[#00FF41]/10 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">Novo v2.5</span>
+              </h3>
+              <p class="text-[#8C9990] text-xs">Sua equipe aprende a usar em minutos! Basta clicar no botão '📖 Manual' no topo do sistema para consultar qualquer módulo, pesquisar dúvidas ou salvar em PDF.</p>
+            </div>
+            <button onclick="abrirModalImagem('assets/real_manual_interativo.png', 'Manual de Instruções Embutido no Sistema')" class="bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#1A3824] hover:border-[#00FF41] text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap">
+              <i data-lucide="zoom-in" class="w-4 h-4"></i>
+              <span>Ampliar Tela Cheia</span>
+            </button>
+          </div>
+
+          <div class="rounded-xl border border-[#1A261E] bg-[#070B08] overflow-hidden shadow-2xl group cursor-pointer relative" onclick="abrirModalImagem('assets/real_manual_interativo.png', 'Manual de Instruções Embutido no Sistema')">
+            <div class="bg-[#0D1510] px-4 py-2 border-b border-[#1A261E] flex items-center justify-between text-xs text-[#8C9990]">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] inline-block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] inline-block"></span>
+                <span class="ml-2 font-mono text-[11px] text-[#A0B2A6]">NX Gestão Estética • Manual Interativo Embutido</span>
+              </div>
+              <span class="text-[10px] text-[#00FF41] font-semibold">🔍 Clique para dar zoom</span>
+            </div>
+            <img src="assets/real_manual_interativo.png" alt="Manual Interativo Embutido" class="w-full h-auto object-cover group-hover:scale-[1.008] transition duration-200">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📖 10 Capítulos Passo a Passo</span>
+              <p class="text-[#8C9990] text-xs">Explicação clara desde o 1º acesso e Teste Grátis de 15 Dias até o uso em Rede Local (Multi-PC).</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">🔎 Busca Instantânea de Dúvidas</span>
+              <p class="text-[#8C9990] text-xs">Digite qualquer palavra (ex: pacote, balão, comissão, backup) e encontre a instrução na hora.</p>
+            </div>
+            <div class="bg-[#070B08] p-4 rounded-xl border border-[#16221A]">
+              <span class="text-[#00FF41] text-xs font-bold block mb-1">📄 Exportação em PDF com 1 Clique</span>
+              <p class="text-[#8C9990] text-xs">Salve ou imprima o manual completo para treinar novas recepcionistas e profissionais da clínica.</p>
             </div>
           </div>
         </div>
@@ -666,62 +786,95 @@
           </div>
           <h3 class="text-white font-bold text-lg mb-2">Agenda com WhatsApp</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Visão diária, semanal e mensal. Dispare lembretes de horários direto no WhatsApp do cliente com 1 clique e acabe com as faltas.
+            Visão diária, semanal e mensal com agendamento em 1 clique. Dispare lembretes de horários direto no WhatsApp do cliente e acabe com as faltas.
           </p>
         </div>
 
         <!-- Feature 2 -->
         <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
           <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
+            <i data-lucide="camera" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-white font-bold text-lg mb-2">Prontuário & Antes e Depois</h3>
+          <h3 class="text-white font-bold text-lg mb-2">Estúdio Antes/Depois & Projeção</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Anamnese completa com termo de consentimento, histórico de sessões e comparador fotográfico lado a lado para encantar suas pacientes.
+            Comparador fotográfico com <strong>Paquímetro Digital</strong>, <strong>Balões com Linha Direcional Esticável</strong> para apontar regiões e <strong>Simulador de Projeção</strong> com relatório em PDF.
           </p>
         </div>
 
         <!-- Feature 3 -->
         <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
           <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
-            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+            <i data-lucide="layers" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-white font-bold text-lg mb-2">Frente de Caixa & Comandas</h3>
+          <h3 class="text-white font-bold text-lg mb-2">Pacotes Multi-Sessões</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Abertura e fechamento de caixa diário, controle de sangria, suprimento e emissão de recibo para impressora térmica (80mm) ou PDF A4.
+            Monte pacotes promocionais de 5, 10 ou mais sessões. O sistema abate automaticamente cada sessão realizada e controla quantas sessões restam.
           </p>
         </div>
 
         <!-- Feature 4 -->
         <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
           <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
-            <i data-lucide="users" class="w-6 h-6"></i>
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-white font-bold text-lg mb-2">Comissões Automáticas</h3>
+          <h3 class="text-white font-bold text-lg mb-2">16 Ícones de Estética & Beleza</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Cálculo de comissões por porcentagem ou valor fixo sobre serviços e produtos. Relatórios individuais prontos para pagamento dos profissionais.
+            Personalize seus serviços e produtos com ícones vetoriais exclusivos: Maca Clínica, Potes de Creme, Séruns, Laser, Massagem, Facial, Corporal e Injetáveis.
           </p>
         </div>
 
         <!-- Feature 5 -->
         <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
           <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
-            <i data-lucide="package" class="w-6 h-6"></i>
+            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-white font-bold text-lg mb-2">Estoque & Produtos</h3>
+          <h3 class="text-white font-bold text-lg mb-2">Frente de Caixa & Comandas</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Controle de produtos de cabine (uso interno) e revenda home care. Alerta automático de reposição quando o estoque atinge o limite mínimo.
+            Receba atendimentos da sala clínica direto no PDV, venda produtos Home Care, aplique descontos e emita recibo térmico (80mm) ou PDF A4.
           </p>
         </div>
 
         <!-- Feature 6 -->
         <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
           <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Comissões & Financeiro</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Fluxo de caixa, contas a pagar/receber e cálculo automático de comissões por porcentagem para cada especialista da equipe.
+          </p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="package" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Estoque & Abatimento em Cabine</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Dê baixa rápida nos insumos usados durante o atendimento, acompanhe alertas de estoque mínimo e gere a Lista de Reposição automaticamente.
+          </p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
+            <i data-lucide="book-open" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">Manual 100% Embutido no Sistema</h3>
+          <p class="text-[#8C9990] text-sm leading-relaxed">
+            Guia interativo dividido em 10 capítulos com barra de pesquisa rápida e botão para salvar em PDF direto dentro do próprio software.
+          </p>
+        </div>
+
+        <!-- Feature 9 -->
+        <div class="glass-card p-6 rounded-2xl hover:border-[#00FF41]/40 transition group">
+          <div class="w-12 h-12 rounded-xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-5 group-hover:scale-110 transition">
             <i data-lucide="shield-check" class="w-6 h-6"></i>
           </div>
           <h3 class="text-white font-bold text-lg mb-2">Segurança Offline & Backup</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed">
-            Seus dados ficam 100% seguros no seu computador. Funciona sem internet e cria cópia de segurança automática ao fechar o programa.
+            Seus dados ficam 100% seguros no seu computador (Zero Nuvem / LGPD). Funciona sem internet e faz backup automático ao fechar o programa.
           </p>
         </div>
       </div>
@@ -1268,7 +1421,7 @@
 
     // Alternar Abas do Simulador de Telas Reais
     function mudarAba(tabId) {
-      const todasAbas = ['tab-dash', 'tab-agenda', 'tab-atendimento', 'tab-pdv', 'tab-financeiro', 'tab-pacotes', 'tab-anamnese'];
+      const todasAbas = ['tab-dash', 'tab-agenda', 'tab-atendimento', 'tab-pdv', 'tab-financeiro', 'tab-pacotes', 'tab-estoque', 'tab-anamnese', 'tab-manual'];
       todasAbas.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
@@ -1276,7 +1429,7 @@
 
       // Resetar botões
       document.querySelectorAll('.aba-btn').forEach(b => {
-        b.className = 'aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition';
+        b.className = 'aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-[#8C9990] hover:text-white hover:bg-[#0E1812] transition';
       });
 
       // Ativar aba selecionada
@@ -1286,7 +1439,7 @@
       // Estilizar botão ativo
       const btnAtivo = document.getElementById('btn-' + tabId);
       if (btnAtivo) {
-        btnAtivo.className = 'aba-btn flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition';
+        btnAtivo.className = 'aba-btn flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-bold bg-[#00FF41] text-[#060907] transition';
       }
 
       lucide.createIcons();
