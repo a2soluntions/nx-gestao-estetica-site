@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Web Ao Vivo • NX Gestão Estética v2.5</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #060907;
+      color: #D2DDD5;
+      user-select: none;
+    }
+    .sidebar-btn.active {
+      background: linear-gradient(90deg, rgba(0, 255, 65, 0.16) 0%, rgba(14, 24, 18, 0.4) 100%);
+      color: #00FF41;
+      border-left: 3px solid #00FF41;
+      font-weight: 700;
+    }
+    .glow-neon {
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #060907; }
+    ::-webkit-scrollbar-thumb { background: #1A2E20; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00FF41; }
+  </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+  <!-- Barra de Topo do Simulador Web (Aviso Modo Sem Banco de Dados + CTAs) -->
+  <header class="h-12 bg-[#09120C] border-b border-[#1A2E20] px-4 flex items-center justify-between shrink-0 z-30">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full bg-[#EF4444]"></span>
+        <span class="w-3 h-3 rounded-full bg-[#F59E0B]"></span>
+        <span class="w-3 h-3 rounded-full bg-[#10B981]"></span>
+      </div>
+      <span class="text-xs font-extrabold text-white tracking-wide flex items-center gap-2">
+        <img src="assets/logo.png" class="h-5 w-auto" alt="NX">
+        <span>NX GESTÃO ESTÉTICA v2.5</span>
+      </span>
+      <span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0E2416] border border-[#00FF41]/40 text-[#00FF41] text-[11px] font-bold">
+        <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-pulse"></span>
+        Simulador Web Interativo (Sem Banco de Dados • Teste Livre na Memória)
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2.5">
+      <button onclick="abrirSecao('manual')" class="bg-[#0E1A12] hover:bg-[#16291C] text-[#00FF41] border border-[#1E3A27] text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap">
+        <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+        <span>📖 Manual Embutido</span>
+      </button>
+      <a href="https://github.com/a2soluntions/nx-gestao-estetica-site/releases/download/v2.5/Instalador_NX_Gestao_Estetica.exe" target="_top" class="hidden sm:inline-flex bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border border-[#00FF41]/50 text-xs font-bold px-3 py-1.5 rounded-lg items-center gap-1.5 transition whitespace-nowrap">
+        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+        <span>Baixar no PC (15 Dias Grátis)</span>
+      </a>
+      <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition glow-neon whitespace-nowrap">
+        <span>Garantir Licença R$ 97</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Corpo Principal do Sistema -->
+  <div class="flex-1 flex overflow-hidden">
+
+    <!-- Sidebar Lateral Idêntica ao Sistema Real -->
+    <aside class="w-56 bg-[#080C09] border-r border-[#162219] flex flex-col justify-between shrink-0 overflow-y-auto">
+      <div class="p-3 space-y-1">
+        <div class="px-3 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#6E8073]">Menu Principal</div>
+
+        <button onclick="abrirSecao('dash')" id="nav-dash" class="sidebar-btn active w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i>
+          <span>Painel Executivo</span>
+        </button>
+
+        <button onclick="abrirSecao('agenda')" id="nav-agenda" class="sidebar-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="calendar" class="w-4 h-4 shrink-0"></i>
+            <span>Agendamentos</span>
+          </span>
+          <span id="badge-agenda-count" class="bg-[#00FF41]/20 text-[#00FF41] text-[10px] font-bold px-1.5 py-0.5 rounded">5</span>
+        </button>
+
+        <button onclick="abrirSecao('estudio')" id="nav-estudio" class="sidebar-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="camera" class="w-4 h-4 shrink-0"></i>
+            <span>Estúdio Antes/Depois</span>
+          </span>
+          <span class="bg-[#00FF41] text-[#060907] text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase">Novo</span>
+        </button>
+
+        <button onclick="abrirSecao('pacotes')" id="nav-pacotes" class="sidebar-btn w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="layers" class="w-4 h-4 shrink-0"></i>
+          <span>Pacotes & Sessões</span>
+        </button>
+
+        <button onclick="abrirSecao('catalogo')" id="nav-catalogo" class="sidebar-btn w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="sparkles" class="w-4 h-4 shrink-0"></i>
+          <span>Serviços & Estoque</span>
+        </button>
+
+        <button onclick="abrirSecao('pdv')" id="nav-pdv" class="sidebar-btn w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="shopping-cart" class="w-4 h-4 shrink-0"></i>
+          <span>PDV / Frente de Caixa</span>
+        </button>
+
+        <button onclick="abrirSecao('financeiro')" id="nav-financeiro" class="sidebar-btn w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="dollar-sign" class="w-4 h-4 shrink-0"></i>
+          <span>Financeiro & Comissões</span>
+        </button>
+
+        <button onclick="abrirSecao('manual')" id="nav-manual" class="sidebar-btn w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+          <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i>
+          <span>Manual do Sistema</span>
+        </button>
+      </div>
+
+      <!-- Status de Licença Trial 15 Dias na Sidebar -->
+      <div class="p-3 border-t border-[#162219] space-y-2">
+        <div class="bg-[#0C160F] border border-[#1E3B27] rounded-xl p-3">
+          <div class="flex items-center justify-between text-[11px] font-bold text-[#00FF41] mb-1">
+            <span>🎁 Teste Grátis Ativo</span>
+            <span>15 Dias</span>
+          </div>
+          <div class="w-full h-1.5 bg-[#16241A] rounded-full overflow-hidden mb-1.5">
+            <div class="w-full h-full bg-[#00FF41]"></div>
+          </div>
+          <p class="text-[10px] text-[#8C9990] leading-snug">Banco 100% Local na versão instalada no Windows.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área de Conteúdo Dinâmico -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#060907]">
+
+      <!-- ==================== 1. PAINEL EXECUTIVO (DASHBOARD) ==================== -->
+      <section id="sec-dash" class="space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#162219] pb-4">
+          <div>
+            <h1 class="text-lg sm:text-xl font-extrabold text-white">Painel Executivo • Visão Geral da Clínica</h1>
+            <p class="text-xs text-[#8C9990]">Clique nos botões abaixo para interagir em tempo real com o simulador.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="filtrarPeriodoDash('hoje')" id="periodo-hoje" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]">Hoje</button>
+            <button onclick="filtrarPeriodoDash('7dias')" id="periodo-7dias" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20] hover:border-[#00FF41]">7 Dias</button>
+            <button onclick="filtrarPeriodoDash('mes')" id="periodo-mes" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20] hover:border-[#00FF41]">Este Mês</button>
+          </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4">
+            <span class="text-[11px] text-[#8C9990] font-semibold block">Faturamento do Período</span>
+            <span id="kpi-faturamento" class="text-xl sm:text-2xl font-extrabold text-[#00FF41] mt-1 block">R$ 2.480,00</span>
+            <span class="text-[11px] text-[#10B981] font-semibold mt-1 block">▲ +18,4% vs período anterior</span>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4">
+            <span class="text-[11px] text-[#8C9990] font-semibold block">Atendimentos Realizados</span>
+            <span id="kpi-atendimentos" class="text-xl sm:text-2xl font-extrabold text-white mt-1 block">14 sessões</span>
+            <span class="text-[11px] text-[#00FF41] font-semibold mt-1 block">● 92% taxa de presença</span>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4">
+            <span class="text-[11px] text-[#8C9990] font-semibold block">Ticket Médio por Cliente</span>
+            <span id="kpi-ticket" class="text-xl sm:text-2xl font-extrabold text-white mt-1 block">R$ 177,14</span>
+            <span class="text-[11px] text-[#8C9990] mt-1 block">Pacotes + Procedimentos</span>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4">
+            <span class="text-[11px] text-[#8C9990] font-semibold block">Pacotes Multi-Sessões Ativos</span>
+            <span id="kpi-pacotes" class="text-xl sm:text-2xl font-extrabold text-[#00FF41] mt-1 block">19 pacotes</span>
+            <span class="text-[11px] text-[#BAC2BC] mt-1 block">Receita recorrente garantida</span>
+          </div>
+        </div>
+
+        <!-- Gráfico Rosca sem Borda + Próximos Agendamentos -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <div class="lg:col-span-5 bg-[#0B110D] border border-[#1A281E] rounded-xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold text-white">Status de Agendamentos (%)</h3>
+                <span class="text-[10px] font-bold text-[#00FF41] bg-[#0E2014] px-2 py-0.5 rounded">Rosca Sem Borda v2.5</span>
+              </div>
+              <div class="h-48 flex items-center justify-center relative">
+                <canvas id="chartRoscaDash"></canvas>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 pt-3 border-t border-[#162219] text-center text-xs">
+              <div>
+                <span class="text-[#00FF41] font-extrabold block">60%</span>
+                <span class="text-[#8C9990] text-[11px]">Confirmados</span>
+              </div>
+              <div>
+                <span class="text-[#38BDF8] font-extrabold block">25%</span>
+                <span class="text-[#8C9990] text-[11px]">Concluídos</span>
+              </div>
+              <div>
+                <span class="text-[#FBBF24] font-extrabold block">15%</span>
+                <span class="text-[#8C9990] text-[11px]">Aguardando</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-[#0B110D] border border-[#1A281E] rounded-xl p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-white">Atalhos Rápidos de Demonstração</h3>
+              <span class="text-[11px] text-[#00FF41] font-semibold">Clique para testar cada módulo 👇</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <button onclick="abrirSecao('estudio')" class="p-3.5 rounded-xl bg-[#0E1912] hover:bg-[#13261A] border border-[#1E3B27] hover:border-[#00FF41] text-left transition group">
+                <div class="flex items-center justify-between text-[#00FF41] font-bold text-xs mb-1">
+                  <span>📸 Testar Estúdio Antes/Depois</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+                <p class="text-[11px] text-[#8C9990]">Arraste a régua comparadora, adicione balões direcionais e simule projeções.</p>
+              </button>
+
+              <button onclick="abrirSecao('pacotes')" class="p-3.5 rounded-xl bg-[#0E1912] hover:bg-[#13261A] border border-[#1E3B27] hover:border-[#00FF41] text-left transition group">
+                <div class="flex items-center justify-between text-[#00FF41] font-bold text-xs mb-1">
+                  <span>🎁 Dar Baixa em Pacote de Sessões</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+                <p class="text-[11px] text-[#8C9990]">Clique para abater sessões (ex: Sessão 3/10 ➔ 4/10) ao vivo.</p>
+              </button>
+
+              <button onclick="abrirSecao('pdv')" class="p-3.5 rounded-xl bg-[#0E1912] hover:bg-[#13261A] border border-[#1E3B27] hover:border-[#00FF41] text-left transition group">
+                <div class="flex items-center justify-between text-[#00FF41] font-bold text-xs mb-1">
+                  <span>🛒 Simular Venda & Recibo no PDV</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+                <p class="text-[11px] text-[#8C9990]">Monte uma comanda e gere o cupom térmico 80mm na tela.</p>
+              </button>
+
+              <button onclick="abrirSecao('agenda')" class="p-3.5 rounded-xl bg-[#0E1912] hover:bg-[#13261A] border border-[#1E3B27] hover:border-[#00FF41] text-left transition group">
+                <div class="flex items-center justify-between text-[#00FF41] font-bold text-xs mb-1">
+                  <span>📲 Testar Agenda & WhatsApp 1 Clique</span>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+                <p class="text-[11px] text-[#8C9990]">Cadastre um agendamento de teste e veja a mensagem automática.</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. AGENDA & WHATSAPP ==================== -->
+      <section id="sec-agenda" class="space-y-5 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#162219] pb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-white">Agenda Inteligente & Lembrete WhatsApp</h2>
+            <p class="text-xs text-[#8C9990]">Adicione um agendamento de teste na memória ou dispare a confirmação de WhatsApp.</p>
+          </div>
+          <button onclick="adicionarAgendamentoDemo()" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs px-4 py-2.5 rounded-lg flex items-center gap-1.5 transition glow-neon">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>+ Novo Agendamento de Teste</span>
+          </button>
+        </div>
+
+        <!-- Form Rápido de Agendamento -->
+        <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4 grid grid-cols-1 sm:grid-cols-4 gap-3">
+          <input id="ag-cliente" type="text" placeholder="Nome da Paciente (ex: Juliana Paes)" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+          <select id="ag-servico" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+            <option value="Botox Facial Completo">💉 Botox Facial Completo</option>
+            <option value="Limpeza de Pele Profunda">🧖‍♀️ Limpeza de Pele Profunda</option>
+            <option value="Drenagem Linfática (Sessão 4/10)">💆‍♀️ Drenagem Linfática (Sessão 4/10)</option>
+            <option value="Depilação a Laser">⚡ Depilação a Laser</option>
+          </select>
+          <input id="ag-hora" type="time" value="15:30" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+          <button onclick="adicionarAgendamentoDemo()" class="bg-[#0E2215] hover:bg-[#15331F] text-[#00FF41] border border-[#00FF41]/40 font-bold text-xs rounded-lg py-2 transition">
+            Inserir na Agenda Agora
+          </button>
+        </div>
+
+        <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl overflow-hidden">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-[#0E1711] text-[#8C9990] border-b border-[#1A281E]">
+                <th class="p-3">Horário</th>
+                <th class="p-3">Paciente</th>
+                <th class="p-3">Procedimento</th>
+                <th class="p-3">Profissional</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Ações Rápidas</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-agenda-body" class="divide-y divide-[#141F17]"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== 3. ESTÚDIO CLÍNICO ANTES & DEPOIS ==================== -->
+      <section id="sec-estudio" class="space-y-5 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#162219] pb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-white">Estúdio Clínico Antes & Depois • Paquímetro e Projeção</h2>
+            <p class="text-xs text-[#8C9990]">Clique nos botões de ferramentas abaixo ou interaja com as telas reais do Estúdio v2.5.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="trocarFotoEstudio('balao')" id="est-btn-balao" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]">📌 Balão Direcional Esticável</button>
+            <button onclick="trocarFotoEstudio('medidor')" id="est-btn-medidor" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">📏 Paquímetro Digital (mm/cm)</button>
+            <button onclick="trocarFotoEstudio('projecao')" id="est-btn-projecao" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">🔮 Projeção de Resultados</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          <div class="lg:col-span-8 bg-[#0B110D] border border-[#1A281E] rounded-xl overflow-hidden shadow-2xl">
+            <div class="bg-[#0E1711] px-4 py-2.5 border-b border-[#1A281E] flex items-center justify-between text-xs">
+              <span id="est-titulo-barra" class="text-[#00FF41] font-bold">📌 Balões com Linha Direcional Esticável (Clique na imagem para adicionar marcador)</span>
+              <span class="text-[#8C9990] text-[11px]">Paciente: Mariana Costa • Sessão 3/5</span>
+            </div>
+            <div id="estudio-canvas-wrap" class="relative cursor-crosshair overflow-hidden" onclick="adicionarMarcadorEstudio(event)">
+              <img id="est-img-ativa" src="assets/real_antes_depois.png" class="w-full h-auto block" alt="Estúdio Clínico">
+              <div id="estudio-marcadores-layer" class="absolute inset-0 pointer-events-none"></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 bg-[#0B110D] border border-[#1A281E] rounded-xl p-5 space-y-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-[#00FF41]"></i>
+              <span>Simulador de Evolução Clínica</span>
+            </h3>
+            <p class="text-xs text-[#8C9990] leading-relaxed">
+              Arraste o controle de evolução ou clique na imagem ao lado para testar a marcação de pontos clínicos como no software instalado:
+            </p>
+
+            <div class="space-y-2 bg-[#070B08] p-3.5 rounded-xl border border-[#162219]">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-[#BAC2BC]">Projeção de Resultado Esperado:</span>
+                <span id="lbl-proj-pct" class="text-[#00FF41]">85% na 5ª Sessão</span>
+              </div>
+              <input type="range" min="20" max="100" value="85" oninput="document.getElementById('lbl-proj-pct').innerText = this.value + '% na 5ª Sessão'" class="w-full accent-[#00FF41] cursor-pointer">
+            </div>
+
+            <div class="space-y-2 text-xs text-[#BAC2BC]">
+              <div class="p-2.5 rounded-lg bg-[#080E0A] border border-[#152419]">
+                <strong class="text-[#00FF41] block">✓ Balão com Ponta Direcional</strong>
+                Arraste a ponta da seta até a ruga, mancha ou medida exata sem cobrir o rosto.
+              </div>
+              <div class="p-2.5 rounded-lg bg-[#080E0A] border border-[#152419]">
+                <strong class="text-[#00FF41] block">✓ Paquímetro Facial e Corporal</strong>
+                Calibre em milímetros (mm) ou centímetros (cm) para comprovar a redução real.
+              </div>
+            </div>
+
+            <button onclick="limparMarcadoresEstudio()" class="w-full bg-[#121D15] hover:bg-[#192A1E] text-[#BAC2BC] border border-[#223527] text-xs font-bold py-2.5 rounded-lg transition">
+              Limpar Marcadores de Teste
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. PACOTES MULTI-SESSÕES ==================== -->
+      <section id="sec-pacotes" class="space-y-5 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#162219] pb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-white">Controle de Pacotes Multi-Sessões</h2>
+            <p class="text-xs text-[#8C9990]">Clique em <strong>"✅ Realizar +1 Sessão"</strong> em qualquer pacote abaixo para testar a baixa automática!</p>
+          </div>
+        </div>
+
+        <div id="grid-pacotes-demo" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- ==================== 5. SERVIÇOS & ESTOQUE COM ÍCONES DE ESTÉTICA ==================== -->
+      <section id="sec-catalogo" class="space-y-5 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#162219] pb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-white">Catálogo de Serviços & Produtos (16 Ícones de Estética)</h2>
+            <p class="text-xs text-[#8C9990]">Identificação visual exclusiva para clínicas de estética e geração de Lista de Reposição em 1 clique.</p>
+          </div>
+          <button onclick="mostrarAlertaSimulador('🛒 Lista de Reposição Gerada!\n\n• Ácido Hialurônico 1ml (Restam 2 un)\n• Sérum Vitamina C 30ml (Restam 3 un)\n• Gel Condutor Ultrassom 1kg (Restam 1 un)')" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs px-4 py-2 rounded-lg transition glow-neon">
+            🛒 Gerar Lista de Reposição
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-[#0B110D] border border-[#1A281E] hover:border-[#00FF41] rounded-xl p-3.5 flex items-center gap-3 transition">
+            <span class="text-2xl">🛏️</span>
+            <div>
+              <strong class="text-white text-xs block">Maca Clínica</strong>
+              <span class="text-[#00FF41] text-[11px] font-bold">Massagem / Corporal</span>
+            </div>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] hover:border-[#00FF41] rounded-xl p-3.5 flex items-center gap-3 transition">
+            <span class="text-2xl">🧴</span>
+            <div>
+              <strong class="text-white text-xs block">Pote de Creme</strong>
+              <span class="text-[#00FF41] text-[11px] font-bold">Dermocosméticos</span>
+            </div>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] hover:border-[#00FF41] rounded-xl p-3.5 flex items-center gap-3 transition">
+            <span class="text-2xl">💧</span>
+            <div>
+              <strong class="text-white text-xs block">Sérum & Ativos</strong>
+              <span class="text-[#00FF41] text-[11px] font-bold">Skin Care Facial</span>
+            </div>
+          </div>
+          <div class="bg-[#0B110D] border border-[#1A281E] hover:border-[#00FF41] rounded-xl p-3.5 flex items-center gap-3 transition">
+            <span class="text-2xl">💉</span>
+            <div>
+              <strong class="text-white text-xs block">Injetáveis / HOF</strong>
+              <span class="text-[#00FF41] text-[11px] font-bold">Botox & Preenchimento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <img src="assets/real_servicos_estetica.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Serviços">
+          <img src="assets/real_produtos_estetica.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Produtos">
+        </div>
+      </section>
+
+      <!-- ==================== 6. PDV / FRENTE DE CAIXA INTERATIVO ==================== -->
+      <section id="sec-pdv" class="space-y-5 hidden">
+        <div class="border-b border-[#162219] pb-4">
+          <h2 class="text-lg sm:text-xl font-extrabold text-white">PDV / Frente de Caixa & Emissão de Recibo</h2>
+          <p class="text-xs text-[#8C9990]">Clique nos procedimentos abaixo para adicionar ao carrinho e simular o fechamento de caixa.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <div class="lg:col-span-7 space-y-3">
+            <span class="text-xs font-bold text-[#BAC2BC] block">Clique para adicionar à Comanda:</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button onclick="addPdvItem('Limpeza de Pele Profunda', 150)" class="p-3.5 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between transition text-left">
+                <div>
+                  <strong class="text-white text-xs block">🧖‍♀️ Limpeza de Pele Profunda</strong>
+                  <span class="text-[#8C9990] text-[11px]">Procedimento Facial</span>
+                </div>
+                <span class="text-[#00FF41] font-extrabold text-xs">+ R$ 150,00</span>
+              </button>
+
+              <button onclick="addPdvItem('Aplicação Toxina Botulínica', 890)" class="p-3.5 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between transition text-left">
+                <div>
+                  <strong class="text-white text-xs block">💉 Toxina Botulínica (Botox)</strong>
+                  <span class="text-[#8C9990] text-[11px]">Harmonização Facial</span>
+                </div>
+                <span class="text-[#00FF41] font-extrabold text-xs">+ R$ 890,00</span>
+              </button>
+
+              <button onclick="addPdvItem('Pacote 10x Drenagem Linfática', 750)" class="p-3.5 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between transition text-left">
+                <div>
+                  <strong class="text-white text-xs block">🎁 Pacote 10x Drenagem</strong>
+                  <span class="text-[#8C9990] text-[11px]">Pacote Multi-Sessões</span>
+                </div>
+                <span class="text-[#00FF41] font-extrabold text-xs">+ R$ 750,00</span>
+              </button>
+
+              <button onclick="addPdvItem('Sérum Vitamina C Home Care', 120)" class="p-3.5 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between transition text-left">
+                <div>
+                  <strong class="text-white text-xs block">💧 Sérum Vitamina C 30ml</strong>
+                  <span class="text-[#8C9990] text-[11px]">Produto Home Care</span>
+                </div>
+                <span class="text-[#00FF41] font-extrabold text-xs">+ R$ 120,00</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-[#0B110D] border border-[#1A281E] rounded-xl p-5 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between border-b border-[#162219] pb-3 mb-3">
+                <h3 class="text-sm font-bold text-white">🧾 Comanda #0148</h3>
+                <button onclick="limparPdv()" class="text-[11px] text-red-400 hover:underline">Limpar</button>
+              </div>
+              <div id="pdv-lista" class="space-y-2 max-h-44 overflow-y-auto text-xs"></div>
+            </div>
+
+            <div class="border-t border-[#162219] pt-3 space-y-3">
+              <div class="flex items-center justify-between text-base font-extrabold">
+                <span class="text-white">Total a Receber:</span>
+                <span id="pdv-total" class="text-[#00FF41] text-xl">R$ 0,00</span>
+              </div>
+              <button onclick="finalizarVendaDemo()" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs py-3 rounded-xl transition glow-neon">
+                ✅ Finalizar Venda & Emitir Cupom 80mm
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 7. FINANCEIRO & COMISSÕES ==================== -->
+      <section id="sec-financeiro" class="space-y-5 hidden">
+        <div class="border-b border-[#162219] pb-4">
+          <h2 class="text-lg sm:text-xl font-extrabold text-white">Controle Financeiro & Rateio Automático de Comissões</h2>
+          <p class="text-xs text-[#8C9990]">O sistema calcula automaticamente a porcentagem de cada profissional a cada comanda fechada.</p>
+        </div>
+        <img src="assets/real_financeiro.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Financeiro Real">
+      </section>
+
+      <!-- ==================== 8. MANUAL INTERATIVO EMBUTIDO ==================== -->
+      <section id="sec-manual" class="space-y-5 hidden">
+        <div class="border-b border-[#162219] pb-4">
+          <h2 class="text-lg sm:text-xl font-extrabold text-white">📖 Manual de Instruções Interativo Embutido</h2>
+          <p class="text-xs text-[#8C9990]">Presente na tela de Login e no topo do sistema para treinar sua equipe sem depender de ninguém.</p>
+        </div>
+        <img src="assets/real_manual_interativo.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Manual Embutido">
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal de Feedback Rápido do Simulador -->
+  <div id="modal-sim-feedback" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="this.classList.add('hidden')">
+    <div class="max-w-md w-full bg-[#0B120D] border-2 border-[#00FF41] rounded-2xl p-6 space-y-4 shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between">
+        <span class="text-[#00FF41] text-xs font-extrabold uppercase">✨ Simulador Ao Vivo NX v2.5</span>
+        <button onclick="document.getElementById('modal-sim-feedback').classList.add('hidden')" class="text-[#8C9990] hover:text-white">✕</button>
+      </div>
+      <div id="modal-sim-texto" class="text-xs sm:text-sm text-white whitespace-pre-line font-mono bg-[#060907] p-4 rounded-xl border border-[#1A2E20]"></div>
+      <button onclick="document.getElementById('modal-sim-feedback').classList.add('hidden')" class="w-full bg-[#00FF41] text-[#060907] font-extrabold text-xs py-2.5 rounded-lg">
+        Perfeito, Continuar Testando
+      </button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Dados em Memória (Sem Banco de Dados)
+    let agendamentosDemo = [
+      { hora: '09:00', cliente: 'Dra. Fernanda Lima', servico: '💉 Botox Facial Completo', prof: 'Dra. Camila', status: 'Confirmado' },
+      { hora: '10:30', cliente: 'Patrícia Abravanel', servico: '💆‍♀️ Drenagem Linfática (Sessão 3/10)', prof: 'Juliana Rocha', status: 'Em Atendimento' },
+      { hora: '13:00', cliente: 'Mariana Ximenes', servico: '🧖‍♀️ Limpeza de Pele Profunda', prof: 'Ana Paula', status: 'Confirmado' },
+      { hora: '14:30', cliente: 'Carolina Dieckmann', servico: '⚡ Depilação a Laser', prof: 'Dra. Camila', status: 'Aguardando' },
+      { hora: '16:00', cliente: 'Bianca Andrade', servico: '💧 Peeling de Diamante + Sérum', prof: 'Juliana Rocha', status: 'Confirmado' }
+    ];
+
+    let pacotesDemo = [
+      { id: 1, cliente: 'Patrícia Abravanel', nome: 'Combo Redução de Medidas', feitas: 3, total: 10, valor: 'R$ 850,00' },
+      { id: 2, cliente: 'Mariana Costa', nome: 'Protocolo Rejuvenescimento Facial', feitas: 3, total: 5, valor: 'R$ 1.200,00' },
+      { id: 3, cliente: ' Letícia Spiller', nome: 'Depilação a Laser Completa', feitas: 5, total: 8, valor: 'R$ 960,00' }
+    ];
+
+    let pdvItens = [
+      { nome: 'Limpeza de Pele Profunda', preco: 150 },
+      { nome: 'Sérum Vitamina C Home Care', preco: 120 }
+    ];
+
+    function abrirSecao(sec) {
+      ['dash', 'agenda', 'estudio', 'pacotes', 'catalogo', 'pdv', 'financeiro', 'manual'].forEach(id => {
+        document.getElementById('sec-' + id).classList.add('hidden');
+        const btn = document.getElementById('nav-' + id);
+        if (btn) btn.classList.remove('active');
+      });
+      document.getElementById('sec-' + sec).classList.remove('hidden');
+      const activeBtn = document.getElementById('nav-' + sec);
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function filtrarPeriodoDash(p) {
+      const dados = {
+        'hoje': { fat: 'R$ 2.480,00', at: '14 sessões', tk: 'R$ 177,14', pk: '19 pacotes' },
+        '7dias': { fat: 'R$ 14.920,00', at: '82 sessões', tk: 'R$ 181,95', pk: '27 pacotes' },
+        'mes': { fat: 'R$ 58.450,00', at: '318 sessões', tk: 'R$ 183,80', pk: '46 pacotes' }
+      }[p];
+      document.getElementById('kpi-faturamento').innerText = dados.fat;
+      document.getElementById('kpi-atendimentos').innerText = dados.at;
+      document.getElementById('kpi-ticket').innerText = dados.tk;
+      document.getElementById('kpi-pacotes').innerText = dados.pk;
+
+      ['hoje', '7dias', 'mes'].forEach(k => {
+        const b = document.getElementById('periodo-' + k);
+        b.className = (k === p)
+          ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]'
+          : 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20] hover:border-[#00FF41]';
+      });
+    }
+
+    function renderAgenda() {
+      const tbody = document.getElementById('tabela-agenda-body');
+      tbody.innerHTML = '';
+      agendamentosDemo.forEach((ag, i) => {
+        const corStatus = ag.status === 'Confirmado' ? 'text-[#00FF41] bg-[#00FF41]/10' : (ag.status === 'Em Atendimento' ? 'text-[#38BDF8] bg-[#38BDF8]/10' : 'text-[#FBBF24] bg-[#FBBF24]/10');
+        tbody.innerHTML += `
+          <tr class="hover:bg-[#0E1812] transition">
+            <td class="p-3 font-mono font-bold text-[#00FF41]">${ag.hora}</td>
+            <td class="p-3 font-bold text-white">${ag.cliente}</td>
+            <td class="p-3 text-[#BAC2BC]">${ag.servico}</td>
+            <td class="p-3 text-[#8C9990]">${ag.prof}</td>
+            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${corStatus}">● ${ag.status}</span></td>
+            <td class="p-3 text-right">
+              <button onclick="dispararWhatsDemo(${i})" class="bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-[#040805] border border-[#25D366]/40 px-2.5 py-1 rounded-lg text-[11px] font-bold transition">
+                📲 WhatsApp 1 Clique
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+      document.getElementById('badge-agenda-count').innerText = agendamentosDemo.length;
+    }
+
+    function adicionarAgendamentoDemo() {
+      const cli = document.getElementById('ag-cliente').value.trim() || 'Cliente Teste Online';
+      const srv = document.getElementById('ag-servico').value;
+      const hr = document.getElementById('ag-hora').value || '17:00';
+      agendamentosDemo.unshift({ hora: hr, cliente: cli, servico: srv, prof: 'Dra. Camila', status: 'Confirmado' });
+      document.getElementById('ag-cliente').value = '';
+      renderAgenda();
+      mostrarAlertaSimulador(`✅ Agendamento Criado na Hora!\n\nPaciente: ${cli}\nHorário: ${hr}\nProcedimento: ${srv}`);
+    }
+
+    function dispararWhatsDemo(idx) {
+      const ag = agendamentosDemo[idx];
+      mostrarAlertaSimulador(
+        `📲 MENSAGEM PRONTA PARA O WHATSAPP:\n\n` +
+        `"Olá, *${ag.cliente}*! Tudo bem?\n` +
+        `Seu agendamento está confirmado hoje às *${ag.hora}* na *Clínica NX Estética*! ✨\n\n` +
+        `💆 Procedimento: ${ag.servico}\n` +
+        `👩‍⚕️ Profissional: ${ag.prof}\n\n` +
+        `Esperamos por você!"`
+      );
+    }
+
+    function trocarFotoEstudio(modo) {
+      const img = document.getElementById('est-img-ativa');
+      const tit = document.getElementById('est-titulo-barra');
+      if (modo === 'balao') {
+        img.src = 'assets/real_antes_depois.png';
+        tit.innerText = '📌 Balões com Linha Direcional Esticável (Clique na foto para adicionar marcador)';
+      } else if (modo === 'medidor') {
+        img.src = 'assets/real_estudio_medidor.png';
+        tit.innerText = '📏 Paquímetro Digital Facial e Corporal (Medição precisa em mm e cm)';
+      } else {
+        img.src = 'assets/real_atendimento_evolucao.png';
+        tit.innerText = '🔮 Simulador de Projeção de Resultados & Evolução de Sessões';
+      }
+      ['balao', 'medidor', 'projecao'].forEach(m => {
+        document.getElementById('est-btn-' + m).className = (m === modo)
+          ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]'
+          : 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]';
+      });
+    }
+
+    function adicionarMarcadorEstudio(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      const layer = document.getElementById('estudio-marcadores-layer');
+      const badge = document.createElement('div');
+      badge.style.left = `${x}%`;
+      badge.style.top = `${y}%`;
+      badge.className = 'absolute -translate-x-1/2 -translate-y-1/2 bg-[#060907]/95 border-2 border-[#00FF41] text-[#00FF41] text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1';
+      badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-[#00FF41]"></span> Ponto Clínico (-1,4 cm)`;
+      layer.appendChild(badge);
+    }
+
+    function limparMarcadoresEstudio() {
+      document.getElementById('estudio-marcadores-layer').innerHTML = '';
+    }
+
+    function renderPacotes() {
+      const grid = document.getElementById('grid-pacotes-demo');
+      grid.innerHTML = '';
+      pacotesDemo.forEach((pk, idx) => {
+        const pct = Math.min(100, Math.round((pk.feitas / pk.total) * 100));
+        const restam = Math.max(0, pk.total - pk.feitas);
+        grid.innerHTML += `
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-5 space-y-3 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-[#00FF41] font-bold">🎁 Pacote #0${pk.id}</span>
+                <span class="text-white font-bold">${pk.valor}</span>
+              </div>
+              <h4 class="text-white font-extrabold text-sm">${pk.nome}</h4>
+              <p class="text-[#8C9990] text-xs mt-0.5">Paciente: ${pk.cliente}</p>
+              <div class="mt-3">
+                <div class="flex justify-between text-xs font-bold mb-1">
+                  <span class="text-[#00FF41]">Sessão ${pk.feitas} de ${pk.total}</span>
+                  <span class="text-[#BAC2BC]">Restam ${restam}</span>
+                </div>
+                <div class="w-full h-2.5 bg-[#142018] rounded-full overflow-hidden">
+                  <div class="h-full bg-[#00FF41] transition-all duration-300" style="width:${pct}%"></div>
+                </div>
+              </div>
+            </div>
+            <button onclick="darBaixaSessaoDemo(${idx})" class="w-full bg-[#0E2014] hover:bg-[#00FF41] text-[#00FF41] hover:text-[#060907] border border-[#00FF41]/40 font-extrabold text-xs py-2.5 rounded-lg transition">
+              ✅ Realizar +1 Sessão Agora
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    function darBaixaSessaoDemo(idx) {
+      if (pacotesDemo[idx].feitas < pacotesDemo[idx].total) {
+        pacotesDemo[idx].feitas++;
+        renderPacotes();
+        const pk = pacotesDemo[idx];
+        mostrarAlertaSimulador(`✅ Baixa de Sessão Registrada!\n\nPacote: ${pk.nome}\nPaciente: ${pk.cliente}\nProgresso Atual: Sessão ${pk.feitas} de ${pk.total} (${pk.total - pk.feitas} restantes)`);
+      } else {
+        mostrarAlertaSimulador(`🎉 Este pacote já teve todas as ${pacotesDemo[idx].total} sessões concluídas!`);
+      }
+    }
+
+    function renderPdv() {
+      const lista = document.getElementById('pdv-lista');
+      lista.innerHTML = '';
+      let soma = 0;
+      pdvItens.forEach((it, i) => {
+        soma += it.preco;
+        lista.innerHTML += `
+          <div class="flex items-center justify-between bg-[#070B08] p-2.5 rounded-lg border border-[#162219]">
+            <span class="text-white font-semibold">${it.nome}</span>
+            <span class="text-[#00FF41] font-bold">R$ ${it.preco.toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+      });
+      document.getElementById('pdv-total').innerText = 'R$ ' + soma.toFixed(2).replace('.', ',');
+    }
+
+    function addPdvItem(nome, preco) {
+      pdvItens.push({ nome, preco });
+      renderPdv();
+    }
+
+    function limparPdv() {
+      pdvItens = [];
+      renderPdv();
+    }
+
+    function finalizarVendaDemo() {
+      if (pdvItens.length === 0) {
+        mostrarAlertaSimulador('Adicione pelo menos 1 item na comanda para emitir o recibo!');
+        return;
+      }
+      const total = pdvItens.reduce((acc, i) => acc + i.preco, 0);
+      const linhas = pdvItens.map(i => `• ${i.nome}: R$ ${i.preco.toFixed(2).replace('.', ',')}`).join('\n');
+      mostrarAlertaSimulador(
+        `🧾 CUPOM TÉRMICO 80MM EMITIDO COM SUCESSO!\n` +
+        `----------------------------------------\n` +
+        `CLÍNICA NX GESTÃO ESTÉTICA\n` +
+        `${linhas}\n` +
+        `----------------------------------------\n` +
+        `TOTAL PAGO (PIX): R$ ${total.toFixed(2).replace('.', ',')}\n` +
+        `Comissão Profissional (40%): R$ ${(total * 0.4).toFixed(2).replace('.', ',')}\n` +
+        `Status: Baixado no Caixa e Estoque!`
+      );
+    }
+
+    function mostrarAlertaSimulador(msg) {
+      document.getElementById('modal-sim-texto').innerText = msg;
+      document.getElementById('modal-sim-feedback').classList.remove('hidden');
+    }
+
+    // Inicializar tudo
+    renderAgenda();
+    renderPacotes();
+    renderPdv();
+
+    const ctx = document.getElementById('chartRoscaDash');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Confirmados (60%)', 'Concluídos (25%)', 'Aguardando (15%)'],
+          datasets: [{
+            data: [60, 25, 15],
+            backgroundColor: ['#00FF41', '#38BDF8', '#FBBF24'],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          cutout: '72%',
+          plugins: {
+            legend: { display: false }
+          },
+          maintainAspectRatio: false
+        }
+      });
+    }
+  </script>
+</body>
+</html>

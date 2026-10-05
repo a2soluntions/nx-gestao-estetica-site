@@ -142,7 +142,7 @@
       </p>
 
       <!-- Action Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
         <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="w-full sm:w-auto bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2">
           <i data-lucide="shield-check" class="w-5 h-5"></i>
           <span>COMPRAR AGORA NO KIWIFY (R$ 97,00)</span>
@@ -150,6 +150,18 @@
         <a href="https://github.com/a2soluntions/nx-gestao-estetica-site/releases/download/v2.5/Instalador_NX_Gestao_Estetica.exe" onclick="abrirModalDownload()" class="w-full sm:w-auto bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border-2 border-[#00FF41]/60 hover:border-[#00FF41] font-extrabold text-base px-7 py-4 rounded-xl transition flex items-center justify-center gap-2 glow-neon">
           <i data-lucide="download" class="w-5 h-5"></i>
           <span>BAIXAR INSTALADOR (TESTE GRÁTIS 15 DIAS)</span>
+        </a>
+      </div>
+
+      <!-- Interactive Demo & Video Quick Triggers -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <a href="#video-e-simulador" onclick="alternarModoExperiencia('simulador')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0D1A11] hover:bg-[#14281B] border border-[#00FF41]/50 text-white text-xs sm:text-sm font-bold transition shadow-lg">
+          <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>🎮 Testar Versão Web Agora no Navegador (Sem Instalar)</span>
+        </a>
+        <a href="#video-e-simulador" onclick="alternarModoExperiencia('video'); iniciarVideoTour(true);" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0D1A11] hover:bg-[#14281B] border border-[#1E3B27] hover:border-[#00FF41] text-[#BAC2BC] hover:text-white text-xs sm:text-sm font-bold transition">
+          <i data-lucide="play-circle" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>🎬 Assistir Vídeo das Funcionalidades (2 min)</span>
         </a>
       </div>
 
@@ -203,10 +215,140 @@
               <span class="text-white font-bold text-sm sm:text-base block">Interface Real v2.5 • Dark Mode Executivo & Manual Interativo Embutido</span>
               <span class="text-[#8C9990] text-xs">Gráfico de agendamentos com porcentagem em tempo real, Estúdio Antes/Depois com paquímetro e pacotes multi-sessões.</span>
             </div>
-            <a href="#demonstracao" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-5 py-2.5 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap glow-neon">
-              <i data-lucide="layout-grid" class="w-4 h-4"></i>
-              Ver Telas de Cada Módulo
+            <a href="#video-e-simulador" onclick="alternarModoExperiencia('simulador')" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-5 py-2.5 rounded-lg transition flex items-center gap-1.5 whitespace-nowrap glow-neon">
+              <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+              Testar Sistema Online Agora
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO: SIMULADOR WEB AO VIVO + VÍDEO DE FUNCIONALIDADES ==================== -->
+  <section id="video-e-simulador" class="py-16 bg-[#070C09] border-t border-[#1A261E] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0E1812] border border-[#00FF41]/40 text-[#00FF41] text-xs font-extrabold mb-3 uppercase">
+          <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-ping"></span>
+          Experiência Interativa Ao Vivo • Sem Instalar Nada
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+          Sinta na prática como é usar o <span class="text-[#00FF41]">NX Gestão Estética</span>
+        </h2>
+        <p class="text-[#8C9990] text-sm sm:text-base">
+          Escolha abaixo: <strong>clique e use a Versão Web de Demonstração</strong> (sem banco de dados, direto no navegador) ou <strong>assista ao Vídeo Guiado das Funcionalidades</strong> com narração!
+        </p>
+      </div>
+
+      <!-- Seletor de Modo: Simulador Web vs Vídeo de Apresentação -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+        <button id="btn-modo-simulador" onclick="alternarModoExperiencia('simulador')" class="px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#00FF41] text-[#060907] glow-neon flex items-center gap-2 transition">
+          <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+          <span>🎮 Usar Simulador Web Interativo (Sem Banco de Dados)</span>
+        </button>
+        <button id="btn-modo-video" onclick="alternarModoExperiencia('video')" class="px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#0E1812] text-[#BAC2BC] hover:text-white border border-[#1A3824] hover:border-[#00FF41] flex items-center gap-2 transition">
+          <i data-lucide="play-circle" class="w-4 h-4 text-[#00FF41]"></i>
+          <span>🎬 Assistir Vídeo Oficial das Funcionalidades</span>
+        </button>
+        <a href="simulador.html" target="_blank" class="px-4 py-3 rounded-xl font-bold text-xs bg-[#0B120D] text-[#00FF41] border border-[#1A2E20] hover:border-[#00FF41] flex items-center gap-1.5 transition">
+          <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+          <span>Abrir Simulador em Tela Cheia</span>
+        </a>
+      </div>
+
+      <!-- PAINEL 1: SIMULADOR WEB INTERATIVO (IFRAME EMBUTIDO) -->
+      <div id="painel-exp-simulador" class="rounded-2xl overflow-hidden border-2 border-[#00FF41]/60 shadow-2xl bg-[#060907] glow-neon">
+        <iframe src="simulador.html" title="Simulador Web NX Gestão Estética v2.5" class="w-full h-[680px] border-0"></iframe>
+      </div>
+
+      <!-- PAINEL 2: VÍDEO DE APRESENTAÇÃO INTERATIVO COM NARRAÇÃO E CURSOR ANIMADO -->
+      <div id="painel-exp-video" class="hidden rounded-2xl overflow-hidden border-2 border-[#00FF41]/60 shadow-2xl bg-[#060907] glow-neon">
+        <!-- Barra Superior do Player -->
+        <div class="bg-[#0B120D] px-4 py-3 border-b border-[#1A2E20] flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span>
+            <span class="text-xs font-extrabold text-white ml-1">🎬 Tour Oficial em Vídeo • NX Gestão Estética v2.5</span>
+            <span id="video-badge-modulo" class="bg-[#00FF41]/15 text-[#00FF41] border border-[#00FF41]/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Módulo 1 de 10</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="alternarVozVideo()" id="btn-voz-video" class="bg-[#0E1D14] hover:bg-[#162E1F] text-[#00FF41] border border-[#00FF41]/40 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+              <span id="lbl-voz-video">Narração em Voz: Ativada</span>
+            </button>
+            <button onclick="alternarModoExperiencia('simulador')" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] text-xs font-extrabold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+              <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i>
+              <span>Interagir no Simulador</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tela do Vídeo com Cursor Demonstrativo Animado -->
+        <div class="relative bg-[#050806] overflow-hidden select-none cursor-pointer" onclick="alternarPlayVideoTour()">
+          <img id="video-tour-img" src="assets/real_dashboard.png" alt="Vídeo Tour NX" class="w-full max-h-[540px] object-contain mx-auto transition-all duration-500">
+
+          <!-- Cursor Demonstrativo Animado -->
+          <div id="video-tour-cursor" class="absolute pointer-events-none transition-all duration-1000 ease-in-out z-20" style="left: 45%; top: 42%;">
+            <div class="relative">
+              <span class="w-7 h-7 rounded-full bg-[#00FF41]/30 border-2 border-[#00FF41] flex items-center justify-center animate-ping absolute -left-1 -top-1"></span>
+              <div class="bg-[#060907]/95 border-2 border-[#00FF41] text-[#00FF41] text-[11px] font-extrabold px-3 py-1 rounded-full shadow-2xl whitespace-nowrap flex items-center gap-1.5">
+                <span>👆</span>
+                <span id="video-cursor-label">Gráfico Rosca com % em Tempo Real</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlay Play Central quando pausado -->
+          <div id="video-overlay-play" class="absolute inset-0 bg-black/55 flex flex-col items-center justify-center gap-3 transition">
+            <div class="w-20 h-20 rounded-full bg-[#00FF41] text-[#060907] flex items-center justify-center shadow-2xl glow-neon-strong hover:scale-105 transition">
+              <i data-lucide="play" class="w-10 h-10 fill-current ml-1"></i>
+            </div>
+            <span class="bg-[#060907]/90 border border-[#00FF41]/50 text-white font-extrabold text-xs sm:text-sm px-4 py-2 rounded-full">
+              Clique para Assistir a Apresentação Guiada (com Narração em Português)
+            </span>
+          </div>
+
+          <!-- Legenda Inferior estilo Cinema -->
+          <div class="bg-gradient-to-t from-[#040705] via-[#070D09]/95 to-transparent p-5 pt-8 border-t border-[#16261B]">
+            <div class="max-w-4xl mx-auto text-center space-y-1">
+              <h4 id="video-tour-titulo" class="text-white font-extrabold text-base sm:text-xl">1. Painel Executivo (Dashboard v2.5) com Gráfico em Porcentagem</h4>
+              <p id="video-tour-desc" class="text-[#BAC2BC] text-xs sm:text-sm">Veja o faturamento do dia, agendamentos por status em porcentagem, ticket médio e alertas automáticos assim que abre o sistema.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles do Player & Linha do Tempo -->
+        <div class="bg-[#0B120D] p-4 border-t border-[#1A2E20] space-y-3">
+          <!-- Barra de Progresso -->
+          <div class="w-full h-2 bg-[#16241B] rounded-full overflow-hidden cursor-pointer" onclick="pularParaPosicaoVideo(event)">
+            <div id="video-tour-progress" class="h-full bg-[#00FF41] transition-all duration-300" style="width: 10%"></div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <button onclick="alternarPlayVideoTour()" id="btn-play-pause-video" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs px-4 py-2 rounded-lg flex items-center gap-1.5 transition">
+                <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                <span id="lbl-play-pause-video">Iniciar Vídeo</span>
+              </button>
+              <button onclick="passoAnteriorVideo()" class="bg-[#121E16] hover:bg-[#192A1E] text-white text-xs font-bold px-3 py-2 rounded-lg border border-[#203526]">⏮ Anterior</button>
+              <button onclick="proximoPassoVideo()" class="bg-[#121E16] hover:bg-[#192A1E] text-white text-xs font-bold px-3 py-2 rounded-lg border border-[#203526]">Próximo ⏭</button>
+            </div>
+
+            <!-- Capítulos Rápidos -->
+            <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+              <button onclick="irParaCapituloVideo(0)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">1. Dashboard</button>
+              <button onclick="irParaCapituloVideo(1)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">2. Agenda Whats</button>
+              <button onclick="irParaCapituloVideo(2)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">3. Antes/Depois</button>
+              <button onclick="irParaCapituloVideo(3)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">4. Paquímetro</button>
+              <button onclick="irParaCapituloVideo(4)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">5. Projeção</button>
+              <button onclick="irParaCapituloVideo(5)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">6. Pacotes</button>
+              <button onclick="irParaCapituloVideo(6)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">7. Estética/Estoque</button>
+              <button onclick="irParaCapituloVideo(7)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">8. PDV/Caixa</button>
+              <button onclick="irParaCapituloVideo(8)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">9. Financeiro</button>
+              <button onclick="irParaCapituloVideo(9)" class="px-2.5 py-1 rounded bg-[#121E16] hover:bg-[#00FF41] text-[#BAC2BC] hover:text-[#060907] font-bold transition">10. Manual</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1657,6 +1799,210 @@
 
       document.getElementById('val-outros').innerText = 'R$ ' + custoOutros.toLocaleString('pt-BR') + ',00';
       document.getElementById('val-economia').innerText = 'Você economiza R$ ' + economia.toLocaleString('pt-BR') + ',00!';
+    }
+
+    // ==================== CONTROLADOR: SIMULADOR WEB & VÍDEO TOUR OFICIAL ====================
+    const capitulosVideo = [
+      {
+        img: 'assets/real_dashboard.png',
+        titulo: '1. Painel Executivo (Dashboard v2.5) com Gráfico em Porcentagem',
+        desc: 'Veja o faturamento do dia, agendamentos por status em porcentagem, ticket médio e alertas automáticos assim que abre o sistema.',
+        narracao: 'Bem-vindo ao NX Gestão Estética versão dois ponto cinco. No painel executivo, você acompanha o faturamento, os agendamentos em gráfico de rosca com porcentagem e todos os indicadores da sua clínica em tempo real.',
+        cursorX: '72%', cursorY: '52%', cursorLabel: 'Gráfico Rosca com % sem Borda'
+      },
+      {
+        img: 'assets/real_agenda.png',
+        titulo: '2. Agenda Inteligente & Lembrete no WhatsApp em 1 Clique',
+        desc: 'Visualize os horários por profissional, confirme presenças e dispare lembretes automáticos direto para o WhatsApp do cliente.',
+        narracao: 'Na agenda inteligente, você organiza os horários de cada profissional e envia lembretes de confirmação no WhatsApp com apenas um clique, acabando com as faltas.',
+        cursorX: '64%', cursorY: '38%', cursorLabel: 'Envio Direto para o WhatsApp'
+      },
+      {
+        img: 'assets/real_antes_depois.png',
+        titulo: '3. Estúdio Antes e Depois com Balões de Linha Esticável',
+        desc: 'Compare fotos lado a lado e puxe a ponta da linha direcional até o ponto exato do procedimento sem cobrir o rosto do paciente.',
+        narracao: 'No exclusivo Estúdio Antes e Depois, você posiciona balões com linha direcional esticável para apontar exatamente cada resultado facial ou corporal sem tampar a foto.',
+        cursorX: '48%', cursorY: '45%', cursorLabel: 'Linha Direcional Esticável'
+      },
+      {
+        img: 'assets/real_estudio_medidor.png',
+        titulo: '4. Paquímetro Digital Facial e Corporal (mm e cm)',
+        desc: 'Meça simetria facial, redução de medidas corporais e distâncias reais calibradas em milímetros ou centímetros.',
+        narracao: 'Utilize o paquímetro digital integrado para medir simetria facial em milímetros ou redução de medidas corporais em centímetros com precisão clínica.',
+        cursorX: '54%', cursorY: '48%', cursorLabel: 'Medição Calibrada em mm / cm'
+      },
+      {
+        img: 'assets/real_atendimento_evolucao.png',
+        titulo: '5. Simulador de Projeção de Resultados & Evolução',
+        desc: 'Mostre ao paciente a projeção visual do tratamento sessão a sessão e gere o Relatório Clínico em PDF A4.',
+        narracao: 'Encante seus pacientes com o simulador de projeção de resultados e gere relatórios em PDF de alta definição para enviar no WhatsApp.',
+        cursorX: '62%', cursorY: '56%', cursorLabel: 'Projeção de Evolução Clínica'
+      },
+      {
+        img: 'assets/real_pacotes.png',
+        titulo: '6. Pacotes Multi-Sessões (5, 10 ou Mais Sessões)',
+        desc: 'Venda combos promocionais e deixe o sistema controlar automaticamente quantas sessões já foram feitas e quantas restam.',
+        narracao: 'No módulo de pacotes multi-sessões, você cria combos de cinco, dez ou mais sessões, e o sistema dá baixa automática a cada atendimento concluído.',
+        cursorX: '50%', cursorY: '40%', cursorLabel: 'Controle Automático de Sessões'
+      },
+      {
+        img: 'assets/real_produtos_estetica.png',
+        titulo: '7. Serviços & Estoque com 16 Ícones Exclusivos de Estética',
+        desc: 'Identifique macas, potes de creme, séruns, laser e injetáveis, receba alertas de estoque mínimo e gere a Lista de Reposição.',
+        narracao: 'Personalize seus serviços e produtos com dezesseis ícones exclusivos de estética e gere a lista de compras e reposição de estoque com um clique.',
+        cursorX: '38%', cursorY: '44%', cursorLabel: 'Ícones de Estética & Reposição'
+      },
+      {
+        img: 'assets/real_pdv.png',
+        titulo: '8. Frente de Caixa (PDV), Comandas & Cupom 80mm / A4',
+        desc: 'Feche comandas em segundos com PIX, Cartão ou Dinheiro, aplique descontos e imprima o recibo para o cliente.',
+        narracao: 'No frente de caixa PDV, você recebe atendimentos e produtos home care em PIX, cartão ou dinheiro e emite o recibo térmico ou em folha A4.',
+        cursorX: '75%', cursorY: '62%', cursorLabel: 'Fechamento Rápido & Recibo'
+      },
+      {
+        img: 'assets/real_financeiro.png',
+        titulo: '9. Controle Financeiro & Comissões Automáticas',
+        desc: 'Fluxo de caixa completo com cálculo automático da comissão de cada profissional da clínica sem precisar de planilhas.',
+        narracao: 'No financeiro completo, o sistema calcula automaticamente as comissões de cada profissional e mostra o lucro líquido real da sua clínica.',
+        cursorX: '58%', cursorY: '36%', cursorLabel: 'Cálculo Automático de Comissões'
+      },
+      {
+        img: 'assets/real_manual_interativo.png',
+        titulo: '10. Manual Interativo Embutido + 15 Dias Grátis no seu PC',
+        desc: 'Manual completo dentro do sistema, banco de dados 100% local (Zero Nuvem) e pagamento único vitalício sem mensalidades!',
+        narracao: 'E o melhor: o manual de instruções já vem embutido dentro do próprio sistema, e você pode baixar agora para testar grátis por quinze dias no seu computador!',
+        cursorX: '46%', cursorY: '42%', cursorLabel: 'Manual Embutido + 15 Dias Grátis'
+      }
+    ];
+
+    let capAtualVideo = 0;
+    let videoTocando = false;
+    let vozAtivaVideo = true;
+    let timerVideoTour = null;
+
+    function alternarModoExperiencia(modo) {
+      const pSim = document.getElementById('painel-exp-simulador');
+      const pVid = document.getElementById('painel-exp-video');
+      const bSim = document.getElementById('btn-modo-simulador');
+      const bVid = document.getElementById('btn-modo-video');
+
+      if (modo === 'video') {
+        pSim.classList.add('hidden');
+        pVid.classList.remove('hidden');
+        bVid.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#00FF41] text-[#060907] glow-neon flex items-center gap-2 transition';
+        bSim.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#0E1812] text-[#BAC2BC] hover:text-white border border-[#1A3824] hover:border-[#00FF41] flex items-center gap-2 transition';
+      } else {
+        pausarVideoTour();
+        pVid.classList.add('hidden');
+        pSim.classList.remove('hidden');
+        bSim.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#00FF41] text-[#060907] glow-neon flex items-center gap-2 transition';
+        bVid.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-[#0E1812] text-[#BAC2BC] hover:text-white border border-[#1A3824] hover:border-[#00FF41] flex items-center gap-2 transition';
+      }
+      lucide.createIcons();
+    }
+
+    function renderCapituloVideo(idx) {
+      capAtualVideo = (idx + capitulosVideo.length) % capitulosVideo.length;
+      const cap = capitulosVideo[capAtualVideo];
+      document.getElementById('video-tour-img').src = cap.img;
+      document.getElementById('video-tour-titulo').innerText = cap.titulo;
+      document.getElementById('video-tour-desc').innerText = cap.desc;
+      document.getElementById('video-badge-modulo').innerText = `Módulo ${capAtualVideo + 1} de ${capitulosVideo.length}`;
+      document.getElementById('video-tour-progress').style.width = `${((capAtualVideo + 1) / capitulosVideo.length) * 100}%`;
+
+      const cur = document.getElementById('video-tour-cursor');
+      cur.style.left = cap.cursorX;
+      cur.style.top = cap.cursorY;
+      document.getElementById('video-cursor-label').innerText = cap.cursorLabel;
+
+      if (videoTocando && vozAtivaVideo && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(cap.narracao);
+        u.lang = 'pt-BR';
+        u.rate = 1.08;
+        u.onend = () => {
+          if (videoTocando) {
+            timerVideoTour = setTimeout(() => {
+              if (capAtualVideo < capitulosVideo.length - 1) {
+                renderCapituloVideo(capAtualVideo + 1);
+              } else {
+                pausarVideoTour();
+              }
+            }, 900);
+          }
+        };
+        window.speechSynthesis.speak(u);
+      } else if (videoTocando) {
+        clearTimeout(timerVideoTour);
+        timerVideoTour = setTimeout(() => {
+          if (capAtualVideo < capitulosVideo.length - 1) {
+            renderCapituloVideo(capAtualVideo + 1);
+          } else {
+            pausarVideoTour();
+          }
+        }, 5500);
+      }
+    }
+
+    function iniciarVideoTour(reiniciar = false) {
+      if (reiniciar) capAtualVideo = 0;
+      videoTocando = true;
+      document.getElementById('video-overlay-play').classList.add('hidden');
+      document.getElementById('lbl-play-pause-video').innerText = 'Pausar Vídeo';
+      renderCapituloVideo(capAtualVideo);
+    }
+
+    function pausarVideoTour() {
+      videoTocando = false;
+      clearTimeout(timerVideoTour);
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      const ov = document.getElementById('video-overlay-play');
+      if (ov) ov.classList.remove('hidden');
+      const lbl = document.getElementById('lbl-play-pause-video');
+      if (lbl) lbl.innerText = 'Continuar Vídeo';
+    }
+
+    function alternarPlayVideoTour() {
+      if (videoTocando) {
+        pausarVideoTour();
+      } else {
+        iniciarVideoTour(false);
+      }
+    }
+
+    function irParaCapituloVideo(idx) {
+      clearTimeout(timerVideoTour);
+      if (!videoTocando) {
+        videoTocando = true;
+        document.getElementById('video-overlay-play').classList.add('hidden');
+        document.getElementById('lbl-play-pause-video').innerText = 'Pausar Vídeo';
+      }
+      renderCapituloVideo(idx);
+    }
+
+    function proximoPassoVideo() {
+      irParaCapituloVideo(capAtualVideo + 1);
+    }
+
+    function passoAnteriorVideo() {
+      irParaCapituloVideo(capAtualVideo - 1);
+    }
+
+    function pularParaPosicaoVideo(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      const idx = Math.min(capitulosVideo.length - 1, Math.max(0, Math.floor(ratio * capitulosVideo.length)));
+      irParaCapituloVideo(idx);
+    }
+
+    function alternarVozVideo() {
+      vozAtivaVideo = !vozAtivaVideo;
+      document.getElementById('lbl-voz-video').innerText = vozAtivaVideo ? 'Narração em Voz: Ativada' : 'Narração em Voz: Mudo';
+      if (!vozAtivaVideo && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      } else if (vozAtivaVideo && videoTocando) {
+        renderCapituloVideo(capAtualVideo);
+      }
     }
   </script>
 </body>
