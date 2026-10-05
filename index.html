@@ -251,15 +251,304 @@
           <i data-lucide="play-circle" class="w-4 h-4 text-[#00FF41]"></i>
           <span>🎬 Assistir Vídeo Oficial das Funcionalidades</span>
         </button>
-        <a href="simulador.html" target="_blank" class="px-4 py-3 rounded-xl font-bold text-xs bg-[#0B120D] text-[#00FF41] border border-[#1A2E20] hover:border-[#00FF41] flex items-center gap-1.5 transition">
+        <button type="button" onclick="alternarTelaCheiaSimulador()" class="px-4 py-3 rounded-xl font-bold text-xs bg-[#0B120D] text-[#00FF41] border border-[#1A2E20] hover:border-[#00FF41] flex items-center gap-1.5 transition">
           <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
-          <span>Abrir Simulador em Tela Cheia</span>
-        </a>
+          <span id="lbl-fullscreen-sim">Expandir Simulador em Tela Cheia</span>
+        </button>
       </div>
 
-      <!-- PAINEL 1: SIMULADOR WEB INTERATIVO (IFRAME EMBUTIDO) -->
-      <div id="painel-exp-simulador" class="rounded-2xl overflow-hidden border-2 border-[#00FF41]/60 shadow-2xl bg-[#060907] glow-neon">
-        <iframe src="simulador.html" title="Simulador Web NX Gestão Estética v2.5" class="w-full h-[680px] border-0"></iframe>
+      <!-- PAINEL 1: SIMULADOR WEB INTERATIVO 100% NATIVO (SEM IFRAME E SEM BANCO DE DADOS) -->
+      <div id="painel-exp-simulador" class="rounded-2xl overflow-hidden border-2 border-[#00FF41]/60 shadow-2xl bg-[#060907] glow-neon flex flex-col h-[700px] text-left">
+        <!-- Barra Superior do Simulador -->
+        <div class="h-12 bg-[#09120C] border-b border-[#1A2E20] px-4 flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#EF4444]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#F59E0B]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#10B981]"></span>
+            </div>
+            <span class="text-xs font-extrabold text-white tracking-wide flex items-center gap-2 whitespace-nowrap">
+              <img src="assets/logo.png" class="h-5 w-auto" alt="NX">
+              <span>NX GESTÃO ESTÉTICA v2.5</span>
+            </span>
+            <span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0E2416] border border-[#00FF41]/40 text-[#00FF41] text-[11px] font-bold whitespace-nowrap">
+              <span class="w-2 h-2 rounded-full bg-[#00FF41] animate-pulse"></span>
+              Simulador Web Ao Vivo (Sem Banco de Dados • Clique nos Menus!)
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="simAbrirSecao('manual')" class="bg-[#0E1A12] hover:bg-[#16291C] text-[#00FF41] border border-[#1E3A27] text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap">
+              <span>📖 Manual</span>
+            </button>
+            <button type="button" onclick="alternarTelaCheiaSimulador()" class="bg-[#0E1812] hover:bg-[#14241A] text-white border border-[#1E3A27] text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap">
+              <span id="btn-top-fullscreen-sim">⛶ Tela Cheia</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Corpo do Simulador (Sidebar + Área Principal) -->
+        <div class="flex-1 flex overflow-hidden">
+          <!-- Sidebar Lateral -->
+          <aside class="w-48 sm:w-56 bg-[#080C09] border-r border-[#162219] flex flex-col justify-between shrink-0 overflow-y-auto">
+            <div class="p-2.5 space-y-1">
+              <div class="px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#6E8073]">Módulos do Sistema</div>
+              <button type="button" onclick="simAbrirSecao('dash')" id="sim-nav-dash" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-bold bg-[#0E2215] text-[#00FF41] border-l-2 border-[#00FF41] transition text-left">
+                <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i>
+                <span>Painel Executivo</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('agenda')" id="sim-nav-agenda" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <span class="flex items-center gap-2.5"><i data-lucide="calendar" class="w-4 h-4 shrink-0"></i><span>Agendamentos</span></span>
+                <span id="sim-badge-agenda" class="bg-[#00FF41]/20 text-[#00FF41] text-[10px] font-bold px-1.5 py-0.5 rounded">5</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('estudio')" id="sim-nav-estudio" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <span class="flex items-center gap-2.5"><i data-lucide="camera" class="w-4 h-4 shrink-0"></i><span>Estúdio Antes/Depois</span></span>
+                <span class="bg-[#00FF41] text-[#060907] text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase">Novo</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('pacotes')" id="sim-nav-pacotes" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <i data-lucide="layers" class="w-4 h-4 shrink-0"></i>
+                <span>Pacotes & Sessões</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('catalogo')" id="sim-nav-catalogo" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <i data-lucide="sparkles" class="w-4 h-4 shrink-0"></i>
+                <span>Serviços & Estoque</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('pdv')" id="sim-nav-pdv" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <i data-lucide="shopping-cart" class="w-4 h-4 shrink-0"></i>
+                <span>PDV / Caixa</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('financeiro')" id="sim-nav-financeiro" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <i data-lucide="dollar-sign" class="w-4 h-4 shrink-0"></i>
+                <span>Financeiro & Comissões</span>
+              </button>
+              <button type="button" onclick="simAbrirSecao('manual')" id="sim-nav-manual" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left">
+                <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i>
+                <span>Manual Embutido</span>
+              </button>
+            </div>
+
+            <div class="p-2.5 border-t border-[#162219]">
+              <div class="bg-[#0C160F] border border-[#1E3B27] rounded-xl p-2.5">
+                <div class="flex items-center justify-between text-[11px] font-bold text-[#00FF41] mb-1">
+                  <span>🎁 Teste Grátis</span>
+                  <span>15 Dias</span>
+                </div>
+                <div class="w-full h-1.5 bg-[#16241A] rounded-full overflow-hidden mb-1">
+                  <div class="w-full h-full bg-[#00FF41]"></div>
+                </div>
+                <p class="text-[10px] text-[#8C9990]">Versão instalada salva em C:\NX_Gestao_Estetica</p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Conteúdo Dinâmico do Simulador -->
+          <div class="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#060907]">
+            <!-- 1. DASHBOARD -->
+            <div id="sim-sec-dash" class="space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#162219] pb-3">
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-white">Painel Executivo • Visão Geral</h3>
+                  <p class="text-xs text-[#8C9990]">Alterne os períodos ou clique nos cards abaixo para testar os módulos:</p>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="simFiltrarDash('hoje')" id="sim-per-hoje" class="px-3 py-1 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]">Hoje</button>
+                  <button type="button" onclick="simFiltrarDash('7dias')" id="sim-per-7dias" class="px-3 py-1 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">7 Dias</button>
+                  <button type="button" onclick="simFiltrarDash('mes')" id="sim-per-mes" class="px-3 py-1 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">Este Mês</button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-3.5">
+                  <span class="text-[11px] text-[#8C9990] block">Faturamento</span>
+                  <span id="sim-kpi-fat" class="text-lg sm:text-xl font-extrabold text-[#00FF41] mt-0.5 block">R$ 2.480,00</span>
+                  <span class="text-[10px] text-[#10B981]">▲ +18,4% no período</span>
+                </div>
+                <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-3.5">
+                  <span class="text-[11px] text-[#8C9990] block">Atendimentos</span>
+                  <span id="sim-kpi-at" class="text-lg sm:text-xl font-extrabold text-white mt-0.5 block">14 sessões</span>
+                  <span class="text-[10px] text-[#00FF41]">● 92% presença</span>
+                </div>
+                <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-3.5">
+                  <span class="text-[11px] text-[#8C9990] block">Ticket Médio</span>
+                  <span id="sim-kpi-tk" class="text-lg sm:text-xl font-extrabold text-white mt-0.5 block">R$ 177,14</span>
+                  <span class="text-[10px] text-[#8C9990]">Procedimentos + Home Care</span>
+                </div>
+                <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-3.5">
+                  <span class="text-[11px] text-[#8C9990] block">Pacotes Ativos</span>
+                  <span id="sim-kpi-pk" class="text-lg sm:text-xl font-extrabold text-[#00FF41] mt-0.5 block">19 pacotes</span>
+                  <span class="text-[10px] text-[#BAC2BC]">Controle multi-sessões</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-1">
+                <button type="button" onclick="simAbrirSecao('estudio')" class="p-4 rounded-xl bg-[#0D1710] hover:bg-[#132418] border border-[#1E3B27] hover:border-[#00FF41] text-left transition">
+                  <span class="text-[#00FF41] font-extrabold text-xs block mb-1">📸 Testar Estúdio Antes/Depois + Paquímetro ➔</span>
+                  <span class="text-[#8C9990] text-xs">Clique na foto para marcar pontos clínicos e simular a evolução do paciente.</span>
+                </button>
+                <button type="button" onclick="simAbrirSecao('pacotes')" class="p-4 rounded-xl bg-[#0D1710] hover:bg-[#132418] border border-[#1E3B27] hover:border-[#00FF41] text-left transition">
+                  <span class="text-[#00FF41] font-extrabold text-xs block mb-1">🎁 Testar Baixa de Pacotes Multi-Sessões ➔</span>
+                  <span class="text-[#8C9990] text-xs">Abata sessões ao vivo (ex: Sessão 3/10 ➔ 4/10) e acompanhe o saldo restante.</span>
+                </button>
+                <button type="button" onclick="simAbrirSecao('agenda')" class="p-4 rounded-xl bg-[#0D1710] hover:bg-[#132418] border border-[#1E3B27] hover:border-[#00FF41] text-left transition">
+                  <span class="text-[#00FF41] font-extrabold text-xs block mb-1">📅 Testar Agenda & Confirmação WhatsApp ➔</span>
+                  <span class="text-[#8C9990] text-xs">Cadastre um horário de teste na memória e dispare o lembrete automático.</span>
+                </button>
+                <button type="button" onclick="simAbrirSecao('pdv')" class="p-4 rounded-xl bg-[#0D1710] hover:bg-[#132418] border border-[#1E3B27] hover:border-[#00FF41] text-left transition">
+                  <span class="text-[#00FF41] font-extrabold text-xs block mb-1">🛒 Simular Venda no PDV & Cupom 80mm ➔</span>
+                  <span class="text-[#8C9990] text-xs">Adicione procedimentos à comanda e emita o recibo térmico na hora.</span>
+                </button>
+              </div>
+
+              <div class="rounded-xl border border-[#1A281E] overflow-hidden">
+                <img src="assets/real_dashboard.png" class="w-full h-auto" alt="Dashboard Real">
+              </div>
+            </div>
+
+            <!-- 2. AGENDA -->
+            <div id="sim-sec-agenda" class="space-y-4 hidden">
+              <div class="border-b border-[#162219] pb-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">Agenda Inteligente & WhatsApp em 1 Clique</h3>
+                <p class="text-xs text-[#8C9990]">Cadastre um paciente de teste abaixo (fica apenas na memória do seu navegador):</p>
+              </div>
+              <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-3 grid grid-cols-1 sm:grid-cols-4 gap-2.5">
+                <input id="sim-ag-cliente" type="text" placeholder="Nome da Paciente (ex: Juliana)" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+                <select id="sim-ag-servico" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+                  <option value="💉 Botox Facial Completo">💉 Botox Facial Completo</option>
+                  <option value="🧖‍♀️ Limpeza de Pele Profunda">🧖‍♀️ Limpeza de Pele Profunda</option>
+                  <option value="💆‍♀️ Drenagem Linfática (Sessão 4/10)">💆‍♀️ Drenagem Linfática (Sessão 4/10)</option>
+                  <option value="⚡ Depilação a Laser">⚡ Depilação a Laser</option>
+                </select>
+                <input id="sim-ag-hora" type="time" value="15:30" class="bg-[#060907] border border-[#1E2E22] rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-[#00FF41]">
+                <button type="button" onclick="simAddAgendamento()" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs rounded-lg py-2 transition">
+                  + Agendar Agora
+                </button>
+              </div>
+              <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr class="bg-[#0E1711] text-[#8C9990] border-b border-[#1A281E]">
+                      <th class="p-3">Horário</th>
+                      <th class="p-3">Paciente</th>
+                      <th class="p-3">Procedimento</th>
+                      <th class="p-3">Status</th>
+                      <th class="p-3 text-right">WhatsApp</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sim-tabela-agenda" class="divide-y divide-[#141F17]"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 3. ESTÚDIO ANTES/DEPOIS -->
+            <div id="sim-sec-estudio" class="space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#162219] pb-3">
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-white">Estúdio Clínico Antes & Depois (Interativo)</h3>
+                  <p class="text-xs text-[#8C9990]">Clique sobre a imagem abaixo para adicionar um marcador clínico ou alterne a ferramenta:</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <button type="button" onclick="simTrocarEstudio('balao')" id="sim-est-balao" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]">📌 Balão Esticável</button>
+                  <button type="button" onclick="simTrocarEstudio('medidor')" id="sim-est-medidor" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">📏 Paquímetro Digital</button>
+                  <button type="button" onclick="simTrocarEstudio('projecao')" id="sim-est-projecao" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]">🔮 Projeção</button>
+                </div>
+              </div>
+              <div class="relative rounded-xl border border-[#00FF41]/40 overflow-hidden cursor-crosshair" onclick="simAddMarcadorFoto(event)">
+                <img id="sim-est-img" src="assets/real_antes_depois.png" class="w-full h-auto block" alt="Estúdio Antes e Depois">
+                <div id="sim-est-markers" class="absolute inset-0 pointer-events-none"></div>
+              </div>
+            </div>
+
+            <!-- 4. PACOTES MULTI-SESSÕES -->
+            <div id="sim-sec-pacotes" class="space-y-4 hidden">
+              <div class="border-b border-[#162219] pb-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">Pacotes Multi-Sessões (Teste a Baixa Automática)</h3>
+                <p class="text-xs text-[#8C9990]">Clique em <strong>"✅ Realizar +1 Sessão"</strong> para ver o sistema descontar a sessão na hora:</p>
+              </div>
+              <div id="sim-grid-pacotes" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+              <img src="assets/real_pacotes.png" class="rounded-xl border border-[#1A281E] w-full h-auto mt-2" alt="Pacotes Real">
+            </div>
+
+            <!-- 5. CATÁLOGO & ESTOQUE -->
+            <div id="sim-sec-catalogo" class="space-y-4 hidden">
+              <div class="flex items-center justify-between border-b border-[#162219] pb-3">
+                <div>
+                  <h3 class="text-base sm:text-lg font-extrabold text-white">Serviços & Estoque (16 Ícones de Estética)</h3>
+                  <p class="text-xs text-[#8C9990]">Macas, potes de creme, séruns, laser, injetáveis e alerta automático de estoque mínimo.</p>
+                </div>
+                <button type="button" onclick="simFeedback('🛒 LISTA DE REPOSIÇÃO GERADA:\n\n• Toxina Botulínica 100U (Restam 2 un)\n• Sérum Vitamina C 30ml (Restam 3 un)\n• Gel Condutor 1kg (Restam 1 un)')" class="bg-[#00FF41] text-[#060907] font-extrabold text-xs px-3.5 py-2 rounded-lg">
+                  🛒 Gerar Lista de Reposição
+                </button>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                <img src="assets/real_servicos_estetica.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Serviços">
+                <img src="assets/real_produtos_estetica.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Produtos">
+              </div>
+            </div>
+
+            <!-- 6. PDV / CAIXA -->
+            <div id="sim-sec-pdv" class="space-y-4 hidden">
+              <div class="border-b border-[#162219] pb-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">PDV / Frente de Caixa Interativo</h3>
+                <p class="text-xs text-[#8C9990]">Clique nos itens para adicionar à comanda e emita o cupom térmico 80mm:</p>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <button type="button" onclick="simAddPdv('Limpeza de Pele Profunda', 150)" class="p-3 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between text-left">
+                    <span class="text-white text-xs font-bold">🧖‍♀️ Limpeza de Pele</span>
+                    <span class="text-[#00FF41] text-xs font-extrabold">+ R$ 150</span>
+                  </button>
+                  <button type="button" onclick="simAddPdv('Aplicação de Botox', 890)" class="p-3 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between text-left">
+                    <span class="text-white text-xs font-bold">💉 Aplicação Botox</span>
+                    <span class="text-[#00FF41] text-xs font-extrabold">+ R$ 890</span>
+                  </button>
+                  <button type="button" onclick="simAddPdv('Pacote 10x Drenagem', 750)" class="p-3 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between text-left">
+                    <span class="text-white text-xs font-bold">🎁 Pacote 10x Drenagem</span>
+                    <span class="text-[#00FF41] text-xs font-extrabold">+ R$ 750</span>
+                  </button>
+                  <button type="button" onclick="simAddPdv('Sérum Vitamina C', 120)" class="p-3 rounded-xl bg-[#0B110D] hover:bg-[#122117] border border-[#1A281E] hover:border-[#00FF41] flex items-center justify-between text-left">
+                    <span class="text-white text-xs font-bold">💧 Sérum Home Care</span>
+                    <span class="text-[#00FF41] text-xs font-extrabold">+ R$ 120</span>
+                  </button>
+                </div>
+                <div class="lg:col-span-5 bg-[#0B110D] border border-[#1A281E] rounded-xl p-4 flex flex-col justify-between space-y-3">
+                  <div>
+                    <div class="flex justify-between text-xs font-bold text-white border-b border-[#162219] pb-2 mb-2">
+                      <span>🧾 Comanda #0148</span>
+                      <button type="button" onclick="simLimparPdv()" class="text-red-400 hover:underline">Limpar</button>
+                    </div>
+                    <div id="sim-pdv-lista" class="space-y-1.5 max-h-36 overflow-y-auto text-xs"></div>
+                  </div>
+                  <div class="border-t border-[#162219] pt-2.5 space-y-2">
+                    <div class="flex justify-between font-extrabold">
+                      <span class="text-white text-xs">Total:</span>
+                      <span id="sim-pdv-total" class="text-[#00FF41] text-base">R$ 0,00</span>
+                    </div>
+                    <button type="button" onclick="simFinalizarPdv()" class="w-full bg-[#00FF41] text-[#060907] font-extrabold text-xs py-2.5 rounded-lg">
+                      ✅ Fechar Venda & Emitir Cupom 80mm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. FINANCEIRO -->
+            <div id="sim-sec-financeiro" class="space-y-4 hidden">
+              <div class="border-b border-[#162219] pb-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">Controle Financeiro & Rateio Automático de Comissões</h3>
+                <p class="text-xs text-[#8C9990]">Fluxo de caixa detalhado e comissão automática de cada profissional.</p>
+              </div>
+              <img src="assets/real_financeiro.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Financeiro">
+            </div>
+
+            <!-- 8. MANUAL -->
+            <div id="sim-sec-manual" class="space-y-4 hidden">
+              <div class="border-b border-[#162219] pb-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-white">📖 Manual Interativo 100% Embutido no Sistema</h3>
+                <p class="text-xs text-[#8C9990]">10 capítulos completos com busca rápida e exportação em PDF dentro do software.</p>
+              </div>
+              <img src="assets/real_manual_interativo.png" class="rounded-xl border border-[#1A281E] w-full h-auto" alt="Manual">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- PAINEL 2: VÍDEO DE APRESENTAÇÃO INTERATIVO COM NARRAÇÃO E CURSOR ANIMADO -->
@@ -2004,6 +2293,242 @@
         renderCapituloVideo(capAtualVideo);
       }
     }
+
+    // ==================== LÓGICA DO SIMULADOR WEB NATIVO (SEM BANCO DE DADOS) ====================
+    let simAgendamentos = [
+      { hora: '09:00', cliente: 'Dra. Fernanda Lima', servico: '💉 Botox Facial Completo', status: 'Confirmado' },
+      { hora: '10:30', cliente: 'Patrícia Abravanel', servico: '💆‍♀️ Drenagem Linfática (Sessão 3/10)', status: 'Em Atendimento' },
+      { hora: '13:00', cliente: 'Mariana Ximenes', servico: '🧖‍♀️ Limpeza de Pele Profunda', status: 'Confirmado' },
+      { hora: '14:30', cliente: 'Carolina Dieckmann', servico: '⚡ Depilação a Laser', status: 'Aguardando' },
+      { hora: '16:00', cliente: 'Bianca Andrade', servico: '💧 Peeling de Diamante + Sérum', status: 'Confirmado' }
+    ];
+
+    let simPacotes = [
+      { id: 1, cliente: 'Patrícia Abravanel', nome: 'Combo Redução de Medidas', feitas: 3, total: 10, valor: 'R$ 850,00' },
+      { id: 2, cliente: 'Mariana Costa', nome: 'Protocolo Rejuvenescimento', feitas: 3, total: 5, valor: 'R$ 1.200,00' },
+      { id: 3, cliente: 'Letícia Spiller', nome: 'Depilação a Laser Completa', feitas: 5, total: 8, valor: 'R$ 960,00' }
+    ];
+
+    let simPdvItens = [
+      { nome: 'Limpeza de Pele Profunda', preco: 150 },
+      { nome: 'Sérum Vitamina C Home Care', preco: 120 }
+    ];
+
+    let simTelaCheia = false;
+
+    function alternarTelaCheiaSimulador() {
+      const painel = document.getElementById('painel-exp-simulador');
+      simTelaCheia = !simTelaCheia;
+      if (simTelaCheia) {
+        painel.className = 'fixed inset-3 z-[120] rounded-2xl overflow-hidden border-2 border-[#00FF41] shadow-2xl bg-[#060907] glow-neon flex flex-col text-left';
+        document.getElementById('btn-top-fullscreen-sim').innerText = '✕ Sair da Tela Cheia';
+        document.getElementById('lbl-fullscreen-sim').innerText = 'Sair da Tela Cheia';
+      } else {
+        painel.className = 'rounded-2xl overflow-hidden border-2 border-[#00FF41]/60 shadow-2xl bg-[#060907] glow-neon flex flex-col h-[700px] text-left';
+        document.getElementById('btn-top-fullscreen-sim').innerText = '⛶ Tela Cheia';
+        document.getElementById('lbl-fullscreen-sim').innerText = 'Expandir Simulador em Tela Cheia';
+      }
+    }
+
+    function simAbrirSecao(sec) {
+      ['dash', 'agenda', 'estudio', 'pacotes', 'catalogo', 'pdv', 'financeiro', 'manual'].forEach(id => {
+        const el = document.getElementById('sim-sec-' + id);
+        if (el) el.classList.add('hidden');
+        const nav = document.getElementById('sim-nav-' + id);
+        if (nav) {
+          nav.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-[#BAC2BC] hover:text-white hover:bg-[#0E1711] transition text-left';
+        }
+      });
+      const target = document.getElementById('sim-sec-' + sec);
+      if (target) target.classList.remove('hidden');
+      const activeNav = document.getElementById('sim-nav-' + sec);
+      if (activeNav) {
+        activeNav.className = 'w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-bold bg-[#0E2215] text-[#00FF41] border-l-2 border-[#00FF41] transition text-left';
+      }
+    }
+
+    function simFiltrarDash(p) {
+      const map = {
+        'hoje': { fat: 'R$ 2.480,00', at: '14 sessões', tk: 'R$ 177,14', pk: '19 pacotes' },
+        '7dias': { fat: 'R$ 14.920,00', at: '82 sessões', tk: 'R$ 181,95', pk: '27 pacotes' },
+        'mes': { fat: 'R$ 58.450,00', at: '318 sessões', tk: 'R$ 183,80', pk: '46 pacotes' }
+      }[p];
+      document.getElementById('sim-kpi-fat').innerText = map.fat;
+      document.getElementById('sim-kpi-at').innerText = map.at;
+      document.getElementById('sim-kpi-tk').innerText = map.tk;
+      document.getElementById('sim-kpi-pk').innerText = map.pk;
+      ['hoje', '7dias', 'mes'].forEach(k => {
+        document.getElementById('sim-per-' + k).className = (k === p)
+          ? 'px-3 py-1 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]'
+          : 'px-3 py-1 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]';
+      });
+    }
+
+    function simRenderAgenda() {
+      const tb = document.getElementById('sim-tabela-agenda');
+      if (!tb) return;
+      tb.innerHTML = '';
+      simAgendamentos.forEach((ag, i) => {
+        tb.innerHTML += `
+          <tr class="hover:bg-[#0E1812] transition">
+            <td class="p-3 font-mono font-bold text-[#00FF41]">${ag.hora}</td>
+            <td class="p-3 font-bold text-white">${ag.cliente}</td>
+            <td class="p-3 text-[#BAC2BC]">${ag.servico}</td>
+            <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold text-[#00FF41] bg-[#00FF41]/10">● ${ag.status}</span></td>
+            <td class="p-3 text-right">
+              <button type="button" onclick="simWhats(${i})" class="bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-[#040805] border border-[#25D366]/40 px-2.5 py-1 rounded-lg text-[11px] font-bold transition">
+                📲 WhatsApp 1 Clique
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+      const b = document.getElementById('sim-badge-agenda');
+      if (b) b.innerText = simAgendamentos.length;
+    }
+
+    function simAddAgendamento() {
+      const cli = document.getElementById('sim-ag-cliente').value.trim() || 'Paciente Teste Online';
+      const srv = document.getElementById('sim-ag-servico').value;
+      const hr = document.getElementById('sim-ag-hora').value || '17:00';
+      simAgendamentos.unshift({ hora: hr, cliente: cli, servico: srv, status: 'Confirmado' });
+      document.getElementById('sim-ag-cliente').value = '';
+      simRenderAgenda();
+      simFeedback(`✅ Agendamento Criado no Simulador!\n\nPaciente: ${cli}\nHorário: ${hr}\nProcedimento: ${srv}`);
+    }
+
+    function simWhats(idx) {
+      const ag = simAgendamentos[idx];
+      simFeedback(
+        `📲 MENSAGEM AUTOMÁTICA DE WHATSAPP:\n\n` +
+        `"Olá, *${ag.cliente}*! Tudo bem?\n` +
+        `Seu agendamento está confirmado às *${ag.hora}* na *Clínica NX Estética*! ✨\n\n` +
+        `💆 Procedimento: ${ag.servico}\n\n` +
+        `Esperamos por você!"`
+      );
+    }
+
+    function simTrocarEstudio(modo) {
+      const img = document.getElementById('sim-est-img');
+      if (modo === 'balao') img.src = 'assets/real_antes_depois.png';
+      else if (modo === 'medidor') img.src = 'assets/real_estudio_medidor.png';
+      else img.src = 'assets/real_atendimento_evolucao.png';
+      ['balao', 'medidor', 'projecao'].forEach(m => {
+        document.getElementById('sim-est-' + m).className = (m === modo)
+          ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#00FF41] text-[#060907]'
+          : 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D1610] text-[#BAC2BC] border border-[#1A2C20]';
+      });
+    }
+
+    function simAddMarcadorFoto(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      const layer = document.getElementById('sim-est-markers');
+      const d = document.createElement('div');
+      d.style.left = `${x}%`;
+      d.style.top = `${y}%`;
+      d.className = 'absolute -translate-x-1/2 -translate-y-1/2 bg-[#060907]/95 border-2 border-[#00FF41] text-[#00FF41] text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-lg';
+      d.innerText = '📌 Ponto Clínico (-1,4 cm)';
+      layer.appendChild(d);
+    }
+
+    function simRenderPacotes() {
+      const g = document.getElementById('sim-grid-pacotes');
+      if (!g) return;
+      g.innerHTML = '';
+      simPacotes.forEach((pk, idx) => {
+        const pct = Math.min(100, Math.round((pk.feitas / pk.total) * 100));
+        const restam = Math.max(0, pk.total - pk.feitas);
+        g.innerHTML += `
+          <div class="bg-[#0B110D] border border-[#1A281E] rounded-xl p-4 space-y-2.5 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-[#00FF41] font-bold">🎁 Pacote #0${pk.id}</span>
+                <span class="text-white font-bold">${pk.valor}</span>
+              </div>
+              <h4 class="text-white font-extrabold text-xs sm:text-sm">${pk.nome}</h4>
+              <p class="text-[#8C9990] text-[11px]">Paciente: ${pk.cliente}</p>
+              <div class="mt-2">
+                <div class="flex justify-between text-[11px] font-bold mb-1">
+                  <span class="text-[#00FF41]">Sessão ${pk.feitas} de ${pk.total}</span>
+                  <span class="text-[#BAC2BC]">Restam ${restam}</span>
+                </div>
+                <div class="w-full h-2 bg-[#142018] rounded-full overflow-hidden">
+                  <div class="h-full bg-[#00FF41] transition-all duration-300" style="width:${pct}%"></div>
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="simBaixaPacote(${idx})" class="w-full bg-[#0E2014] hover:bg-[#00FF41] text-[#00FF41] hover:text-[#060907] border border-[#00FF41]/40 font-extrabold text-xs py-2 rounded-lg transition">
+              ✅ Realizar +1 Sessão
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    function simBaixaPacote(idx) {
+      if (simPacotes[idx].feitas < simPacotes[idx].total) {
+        simPacotes[idx].feitas++;
+        simRenderPacotes();
+        const pk = simPacotes[idx];
+        simFeedback(`✅ Sessão Abatida com Sucesso!\n\nPacote: ${pk.nome}\nProgresso: Sessão ${pk.feitas} de ${pk.total} (Restam ${pk.total - pk.feitas})`);
+      } else {
+        simFeedback(`🎉 Todas as ${simPacotes[idx].total} sessões deste pacote já foram concluídas!`);
+      }
+    }
+
+    function simRenderPdv() {
+      const l = document.getElementById('sim-pdv-lista');
+      if (!l) return;
+      l.innerHTML = '';
+      let soma = 0;
+      simPdvItens.forEach(it => {
+        soma += it.preco;
+        l.innerHTML += `
+          <div class="flex justify-between bg-[#070B08] p-2 rounded border border-[#162219]">
+            <span class="text-white font-medium">${it.nome}</span>
+            <span class="text-[#00FF41] font-bold">R$ ${it.preco.toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+      });
+      document.getElementById('sim-pdv-total').innerText = 'R$ ' + soma.toFixed(2).replace('.', ',');
+    }
+
+    function simAddPdv(nome, preco) {
+      simPdvItens.push({ nome, preco });
+      simRenderPdv();
+    }
+
+    function simLimparPdv() {
+      simPdvItens = [];
+      simRenderPdv();
+    }
+
+    function simFinalizarPdv() {
+      if (simPdvItens.length === 0) {
+        simFeedback('Adicione pelo menos 1 item na comanda!');
+        return;
+      }
+      const total = simPdvItens.reduce((a, b) => a + b.preco, 0);
+      const linhas = simPdvItens.map(i => `• ${i.nome}: R$ ${i.preco.toFixed(2).replace('.', ',')}`).join('\n');
+      simFeedback(
+        `🧾 CUPOM TÉRMICO 80MM EMITIDO!\n` +
+        `------------------------------------\n` +
+        `${linhas}\n` +
+        `------------------------------------\n` +
+        `TOTAL PAGO (PIX): R$ ${total.toFixed(2).replace('.', ',')}\n` +
+        `Comissão Profissional (40%): R$ ${(total * 0.4).toFixed(2).replace('.', ',')}`
+      );
+    }
+
+    function simFeedback(msg) {
+      alert(msg);
+    }
+
+    simRenderAgenda();
+    simRenderPacotes();
+    simRenderPdv();
   </script>
 </body>
 </html>
