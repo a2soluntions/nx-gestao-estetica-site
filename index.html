@@ -1441,20 +1441,66 @@
     <span class="hidden sm:inline text-xs font-extrabold uppercase">Tirar Dúvidas no WhatsApp</span>
   </a>
 
-  <!-- Lightbox Modal for Real Screenshots -->
-  <div id="modal-imagem" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8" onclick="fecharModalImagem(event)">
-    <div class="max-w-6xl w-full flex items-center justify-between text-white pb-3">
-      <span id="modal-titulo" class="font-bold text-sm sm:text-base text-[#00FF41] flex items-center gap-2">
-        <i data-lucide="monitor" class="w-4 h-4"></i> Captura Real do Software
-      </span>
-      <button onclick="fecharModalImagem(null, true)" class="bg-[#0E1812] hover:bg-[#1A261E] text-white px-3 py-1.5 rounded-lg border border-[#1A3824] flex items-center gap-1.5 text-xs font-bold transition">
-        <i data-lucide="x" class="w-4 h-4"></i> Fechar (ESC)
+  <!-- Lightbox Modal for Real Screenshots with Previous / Next Navigation -->
+  <div id="modal-imagem" class="fixed inset-0 z-[100] bg-black/92 backdrop-blur-md hidden flex flex-col items-center justify-center p-3 sm:p-6 select-none" onclick="fecharModalImagem(event)">
+    <!-- Top Header Bar -->
+    <div class="max-w-6xl w-full flex flex-wrap items-center justify-between gap-3 text-white pb-3" onclick="event.stopPropagation()">
+      <div class="flex items-center gap-2.5">
+        <span id="modal-contador" class="bg-[#00FF41] text-[#060907] text-xs font-extrabold px-2.5 py-1 rounded-md">
+          1 / 11
+        </span>
+        <span id="modal-titulo" class="font-bold text-xs sm:text-base text-[#00FF41] flex items-center gap-2">
+          <i data-lucide="monitor" class="w-4 h-4"></i> Captura Real do Software
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="navegarModalImagem(-1)" class="bg-[#0E1812] hover:bg-[#00FF41] text-white hover:text-[#060907] px-3.5 py-1.5 rounded-lg border border-[#00FF41]/50 flex items-center gap-1.5 text-xs font-extrabold transition">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          <span>Anterior</span>
+        </button>
+        <button type="button" onclick="navegarModalImagem(1)" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-extrabold transition glow-neon">
+          <span>Próxima</span>
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+        <button type="button" onclick="fecharModalImagem(null, true)" class="bg-[#0E1812] hover:bg-[#1A261E] text-white px-3 py-1.5 rounded-lg border border-[#1A3824] flex items-center gap-1.5 text-xs font-bold transition ml-1">
+          <i data-lucide="x" class="w-4 h-4"></i>
+          <span>Fechar (ESC)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Image Container with Floating Left/Right Side Arrows -->
+    <div class="relative max-w-6xl w-full flex items-center justify-center" onclick="event.stopPropagation()">
+      <!-- Botão Retorno Lateral Esquerdo -->
+      <button type="button" onclick="navegarModalImagem(-1)" title="Tela Anterior (Seta Esquerda)"
+        class="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#060907]/90 hover:bg-[#00FF41] text-[#00FF41] hover:text-[#060907] border-2 border-[#00FF41] shadow-2xl flex items-center justify-center transition hover:scale-105">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+
+      <div class="w-full max-h-[80vh] overflow-auto rounded-xl border border-[#1A261E] bg-[#070B08] shadow-2xl">
+        <img id="modal-img-src" src="" alt="Tela Ampliada" class="w-full h-auto object-contain mx-auto">
+      </div>
+
+      <!-- Botão Avanço Lateral Direito -->
+      <button type="button" onclick="navegarModalImagem(1)" title="Próxima Tela (Seta Direita)"
+        class="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#060907]/90 hover:bg-[#00FF41] text-[#00FF41] hover:text-[#060907] border-2 border-[#00FF41] shadow-2xl flex items-center justify-center transition hover:scale-105">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
     </div>
-    <div class="max-w-6xl w-full max-h-[85vh] overflow-auto rounded-xl border border-[#1A261E] bg-[#070B08] shadow-2xl">
-      <img id="modal-img-src" src="" alt="Tela Ampliada" class="w-full h-auto object-contain">
+
+    <!-- Bottom Controls & Hint -->
+    <div class="max-w-6xl w-full flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 text-xs text-[#8C9990]" onclick="event.stopPropagation()">
+      <span>Dica: use os botões <strong>Anterior / Próxima</strong> ou as setas do teclado (⬅ ➡) para navegar por todas as telas.</span>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="navegarModalImagem(-1)" class="px-3 py-1 rounded bg-[#0E1812] hover:bg-[#16291D] text-[#00FF41] border border-[#1A3824] font-bold">
+          ⬅ Tela Anterior
+        </button>
+        <button type="button" onclick="navegarModalImagem(1)" class="px-3 py-1 rounded bg-[#0E1812] hover:bg-[#16291D] text-[#00FF41] border border-[#1A3824] font-bold">
+          Próxima Tela ➡
+        </button>
+      </div>
     </div>
-    <p class="text-[#8C9990] text-xs mt-3">Dica: clique fora da janela ou pressione a tecla ESC para fechar.</p>
   </div>
 
   <!-- Modal Visual Automático Pós-Download (Guia Windows SmartScreen) -->
@@ -1561,16 +1607,52 @@
       lucide.createIcons();
     }
 
+    // Lista Oficial das Telas Reais para Navegação em Tela Cheia (Avanço e Retorno)
+    const galeriaTelasReais = [
+      { src: 'assets/real_dashboard.png', titulo: 'Dashboard Executivo com Indicadores em Tempo Real', aba: 'tab-dash' },
+      { src: 'assets/real_agenda.png', titulo: 'Agenda Inteligente com Disparo WhatsApp em 1 Clique', aba: 'tab-agenda' },
+      { src: 'assets/real_atendimento_fotos.png', titulo: 'Sala de Atendimento Clínico, Cronômetro & Projeção', aba: 'tab-atendimento' },
+      { src: 'assets/real_estudio_antes_depois.png', titulo: 'Estúdio Antes e Depois • Paquímetro & Balões com Linha Esticável', aba: 'tab-atendimento' },
+      { src: 'assets/real_pacotes.png', titulo: 'Pacotes Multi-Sessões & Controle Automático de Saldo', aba: 'tab-pacotes' },
+      { src: 'assets/real_servicos_estetica.png', titulo: 'Catálogo de Serviços com Ícones Exclusivos de Estética', aba: 'tab-estoque' },
+      { src: 'assets/real_produtos_estetica.png', titulo: 'Produtos, Estoque & Lista Automática de Reposição', aba: 'tab-estoque' },
+      { src: 'assets/real_pdv.png', titulo: 'Frente de Caixa (PDV) & Comandas Rápidas', aba: 'tab-pdv' },
+      { src: 'assets/real_financeiro.png', titulo: 'Fluxo de Caixa, Despesas & Comissões da Equipe', aba: 'tab-financeiro' },
+      { src: 'assets/real_anamnese.png', titulo: 'Fichas de Anamnese & Histórico Clínico A4', aba: 'tab-anamnese' },
+      { src: 'assets/real_manual_interativo.png', titulo: 'Manual de Instruções Interativo Embutido no Sistema', aba: 'tab-manual' }
+    ];
+
+    let indiceModalAtual = 0;
+
+    function atualizarConteudoModalImagem() {
+      const item = galeriaTelasReais[indiceModalAtual];
+      const img = document.getElementById('modal-img-src');
+      const tit = document.getElementById('modal-titulo');
+      const cont = document.getElementById('modal-contador');
+      img.src = item.src;
+      tit.innerHTML = `<i data-lucide="monitor" class="w-4 h-4 text-[#00FF41]"></i> Tela Real: ${item.titulo}`;
+      if (cont) cont.innerText = `${indiceModalAtual + 1} / ${galeriaTelasReais.length}`;
+      if (item.aba) mudarAba(item.aba);
+      lucide.createIcons();
+    }
+
     // Modal Lightbox de Zoom das Telas Reais
     function abrirModalImagem(src, titulo) {
       const modal = document.getElementById('modal-imagem');
-      const img = document.getElementById('modal-img-src');
-      const tit = document.getElementById('modal-titulo');
-      img.src = src;
-      tit.innerHTML = `<i data-lucide="monitor" class="w-4 h-4 text-[#00FF41]"></i> Tela Real: ${titulo}`;
+      const idx = galeriaTelasReais.findIndex(item => item.src === src);
+      if (idx !== -1) {
+        indiceModalAtual = idx;
+      } else {
+        indiceModalAtual = 0;
+      }
+      atualizarConteudoModalImagem();
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      lucide.createIcons();
+    }
+
+    function navegarModalImagem(direcao) {
+      indiceModalAtual = (indiceModalAtual + direcao + galeriaTelasReais.length) % galeriaTelasReais.length;
+      atualizarConteudoModalImagem();
     }
 
     function fecharModalImagem(e, forcar = false) {
@@ -1582,7 +1664,12 @@
     }
 
     document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal-imagem');
+      const aberto = modal && !modal.classList.contains('hidden');
+      if (!aberto) return;
       if (e.key === 'Escape') fecharModalImagem(null, true);
+      else if (e.key === 'ArrowRight') navegarModalImagem(1);
+      else if (e.key === 'ArrowLeft') navegarModalImagem(-1);
     });
 
     // Processar Envio do Pedido Direto para nx49digital@gmail.com
