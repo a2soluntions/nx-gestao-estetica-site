@@ -1744,6 +1744,8 @@
 
       document.getElementById('val-outros').innerText = 'R$ ' + custoOutros.toLocaleString('pt-BR') + ',00';
       document.getElementById('val-economia').innerText = 'Você economiza R$ ' + economia.toLocaleString('pt-BR') + ',00!';
+    }
+
     // Iniciar Checkout Seguro Oficial no Mercado Pago (PIX / Cartão)
     async function iniciarCheckoutMercadoPago(planoId = '1pc', btnElement = null) {
       let textoOriginal = '';
