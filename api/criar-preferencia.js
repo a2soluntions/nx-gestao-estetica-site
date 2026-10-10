@@ -108,7 +108,17 @@ export default async function handler(req, res) {
       body: JSON.stringify(preferenceData)
     });
 
-    const data = await mpResponse.json();
+    const rawText = await mpResponse.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (parseErr) {
+      console.error('Resposta não-JSON do Mercado Pago:', mpResponse.status, rawText);
+      return res.status(502).json({
+        error: `Resposta inesperada do Mercado Pago (Status: ${mpResponse.status})`,
+        respostaBruta: rawText.slice(0, 300)
+      });
+    }
 
     if (!mpResponse.ok) {
       console.error('Erro na resposta do Mercado Pago:', data);
