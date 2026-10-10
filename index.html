@@ -109,10 +109,10 @@
           <i data-lucide="download" class="w-4 h-4 text-[#00FF41] shrink-0"></i>
           <span>Baixar Teste 15 Dias</span>
         </a>
-        <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="inline-flex items-center justify-center gap-2 h-10 px-5 bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-bold text-xs sm:text-[13px] rounded-lg transition duration-200 glow-neon whitespace-nowrap leading-none">
+        <button type="button" onclick="iniciarCheckoutMercadoPago('1pc', this)" class="inline-flex items-center justify-center gap-2 h-10 px-5 bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-bold text-xs sm:text-[13px] rounded-lg transition duration-200 glow-neon whitespace-nowrap leading-none cursor-pointer">
           <span>Garantir Licença</span>
           <i data-lucide="arrow-right" class="w-4 h-4 shrink-0"></i>
-        </a>
+        </button>
       </div>
     </div>
   </header>
@@ -143,10 +143,10 @@
 
       <!-- Action Buttons -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
-        <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="w-full sm:w-auto bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2">
+        <button type="button" onclick="iniciarCheckoutMercadoPago('1pc', this)" class="w-full sm:w-auto bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2 cursor-pointer">
           <i data-lucide="shield-check" class="w-5 h-5"></i>
-          <span>COMPRAR AGORA NO KIWIFY (R$ 97,00)</span>
-        </a>
+          <span>COMPRAR AGORA (PIX / CARTÃO R$ 97,00)</span>
+        </button>
         <a href="https://github.com/a2soluntions/nx-gestao-estetica-site/releases/download/v2.5/Instalador_NX_Gestao_Estetica.exe" onclick="abrirModalDownload()" class="w-full sm:w-auto bg-[#0E1812] hover:bg-[#14241A] text-[#00FF41] border-2 border-[#00FF41]/60 hover:border-[#00FF41] font-extrabold text-base px-7 py-4 rounded-xl transition flex items-center justify-center gap-2 glow-neon">
           <i data-lucide="download" class="w-5 h-5"></i>
           <span>BAIXAR INSTALADOR (TESTE GRÁTIS 15 DIAS)</span>
@@ -1054,10 +1054,10 @@
             </ul>
           </div>
 
-          <a href="https://pay.kiwify.com.br/Rveur3R" target="_blank" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon">
+          <button type="button" onclick="iniciarCheckoutMercadoPago('1pc', this)" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon cursor-pointer">
             <i data-lucide="shield-check" class="w-4 h-4"></i>
             <span>Comprar 1 PC (R$ 97)</span>
-          </a>
+          </button>
         </div>
 
         <!-- PLANO 2: 3 PCS (DESTAQUE) -->
@@ -1094,10 +1094,10 @@
             </ul>
           </div>
 
-          <a href="https://pay.kiwify.com.br/pvzXv3P" target="_blank" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs py-3 px-4 rounded-xl transition duration-200 glow-neon-strong text-center flex items-center justify-center gap-1.5">
+          <button type="button" onclick="iniciarCheckoutMercadoPago('3pcs', this)" class="w-full bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs py-3 px-4 rounded-xl transition duration-200 glow-neon-strong text-center flex items-center justify-center gap-1.5 cursor-pointer">
             <i data-lucide="zap" class="w-4 h-4"></i>
             <span>Comprar 3 PCs (R$ 197)</span>
-          </a>
+          </button>
         </div>
 
         <!-- PLANO 3: 6 PCS -->
@@ -1130,10 +1130,10 @@
             </ul>
           </div>
 
-          <a href="https://pay.kiwify.com.br/SuiVGuN" target="_blank" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon">
+          <button type="button" onclick="iniciarCheckoutMercadoPago('6pcs', this)" class="w-full bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] text-[#00FF41] border border-[#1E4629] font-extrabold text-xs py-3 px-4 rounded-xl transition text-center flex items-center justify-center gap-1.5 glow-neon cursor-pointer">
             <i data-lucide="shield-check" class="w-4 h-4"></i>
             <span>Comprar 6 PCs (R$ 297)</span>
-          </a>
+          </button>
         </div>
 
         <!-- PLANO 4: ACIMA DE 6 PCS -->
@@ -1744,6 +1744,42 @@
 
       document.getElementById('val-outros').innerText = 'R$ ' + custoOutros.toLocaleString('pt-BR') + ',00';
       document.getElementById('val-economia').innerText = 'Você economiza R$ ' + economia.toLocaleString('pt-BR') + ',00!';
+    // Iniciar Checkout Seguro Oficial no Mercado Pago (PIX / Cartão)
+    async function iniciarCheckoutMercadoPago(planoId = '1pc', btnElement = null) {
+      let textoOriginal = '';
+      if (btnElement) {
+        textoOriginal = btnElement.innerHTML;
+        btnElement.innerHTML = '<span class="inline-block animate-spin mr-2">⏳</span> Conectando Mercado Pago...';
+        btnElement.disabled = true;
+      }
+
+      try {
+        const response = await fetch('/api/criar-preferencia', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ planoId: planoId })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.init_point) {
+          // Redirecionamento transparente para o Checkout Oficial do Mercado Pago
+          window.location.href = data.init_point;
+        } else {
+          alert('Aviso: ' + (data.error || 'Não foi possível iniciar o pagamento no momento.'));
+          if (btnElement) {
+            btnElement.innerHTML = textoOriginal;
+            btnElement.disabled = false;
+          }
+        }
+      } catch (err) {
+        console.error('Erro no checkout Mercado Pago:', err);
+        alert('Ocorreu uma oscilação na conexão ao gerar o checkout. Por favor, tente novamente em alguns instantes.');
+        if (btnElement) {
+          btnElement.innerHTML = textoOriginal;
+          btnElement.disabled = false;
+        }
+      }
     }
 
   </script>

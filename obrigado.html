@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento Confirmado! • NX Gestão Estética v2.5</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #060907;
+      color: #D2DDD5;
+    }
+    .glow-neon {
+      box-shadow: 0 0 35px rgba(0, 255, 65, 0.35);
+    }
+    .glow-neon-strong {
+      box-shadow: 0 0 50px rgba(0, 255, 65, 0.55);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#00FF41] selection:text-black">
+
+  <!-- Top Bar -->
+  <header class="border-b border-[#1A261E] bg-[#070B08]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="NX Gestão Estética" class="h-9 w-auto">
+        <span class="text-white font-extrabold text-base tracking-tight">NX GESTÃO ESTÉTICA</span>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Acabei%20de%20comprar%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20e%20preciso%20de%20suporte." target="_blank" class="text-xs font-bold text-[#00FF41] hover:underline flex items-center gap-1.5">
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span>Suporte WhatsApp: (34) 9840-8962</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-4xl mx-auto px-4 py-12 sm:py-16 text-center">
+    
+    <!-- Celebratory Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0E1F14] border border-[#00FF41] text-[#00FF41] text-xs font-extrabold uppercase tracking-wider mb-6 animate-pulse">
+      <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+      PAGAMENTO APROVADO COM SUCESSO!
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+      Parabéns! Seu sistema <span class="text-[#00FF41]">NX Gestão Estética</span> está liberado.
+    </h1>
+    
+    <p class="text-[#8C9990] text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+      Sua licença vitalícia foi autorizada. Baixe agora mesmo o instalador no botão abaixo e comece a usar no seu computador em menos de 2 minutos.
+    </p>
+
+    <!-- Download Card (Destaque Principal) -->
+    <div class="bg-[#0B110D] border-2 border-[#00FF41] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden glow-neon mb-12 text-left">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-[#1A2E20] pb-6 mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-[#00FF41]/15 border border-[#00FF41]/40 text-[#00FF41] flex items-center justify-center shrink-0">
+            <i data-lucide="download" class="w-7 h-7"></i>
+          </div>
+          <div>
+            <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block">Versão Oficial Windows (v2.5)</span>
+            <h3 class="text-white font-extrabold text-lg sm:text-xl">Instalador Completo NX Gestão Estética</h3>
+            <span class="text-[#8C9990] text-xs">Instalação 100% no seu PC • Licença Vitalícia Ativa • Zero Nuvem</span>
+          </div>
+        </div>
+
+        <a id="btn-download-instalador"
+           href="https://github.com/a2soluntions/nx-gestao-estetica-site/releases/download/v2.5/Instalador_NX_Gestao_Estetica.exe"
+           class="w-full sm:w-auto bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 glow-neon-strong flex items-center justify-center gap-2 shrink-0">
+          <i data-lucide="download" class="w-5 h-5"></i>
+          <span>BAIXAR INSTALADOR AGORA</span>
+        </a>
+      </div>
+
+      <!-- Credenciais Iniciais de Acesso -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-[#070B08] p-4 rounded-2xl border border-[#16221A] text-xs">
+        <div>
+          <span class="text-[#8C9990] block">Login de Acesso:</span>
+          <span class="text-white font-mono font-bold text-sm">admin@admin.com</span>
+        </div>
+        <div>
+          <span class="text-[#8C9990] block">Senha Inicial:</span>
+          <span class="text-white font-mono font-bold text-sm">admin</span>
+        </div>
+        <div>
+          <span class="text-[#8C9990] block">Banco de Dados:</span>
+          <span class="text-[#00FF41] font-bold">100% no seu PC (Offline)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guia Rápido de Instalação (3 Passos) -->
+    <div class="text-left max-w-3xl mx-auto space-y-4">
+      <h3 class="text-white font-extrabold text-lg flex items-center gap-2">
+        <i data-lucide="help-circle" class="w-5 h-5 text-[#00FF41]"></i>
+        Como instalar em 3 passos simples no seu Windows:
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-[#0B110D] border border-[#1A261E] rounded-2xl p-5 space-y-2">
+          <span class="w-7 h-7 rounded-full bg-[#00FF41] text-[#060907] font-extrabold text-xs flex items-center justify-center">1</span>
+          <h4 class="text-white font-bold text-sm">Baixe o Arquivo</h4>
+          <p class="text-[#8C9990] text-xs leading-relaxed">
+            Clique no botão verde acima para baixar o arquivo <strong>Instalador_NX_Gestao_Estetica.exe</strong>.
+          </p>
+        </div>
+
+        <div class="bg-[#0B110D] border border-[#1A261E] rounded-2xl p-5 space-y-2">
+          <span class="w-7 h-7 rounded-full bg-[#00FF41] text-[#060907] font-extrabold text-xs flex items-center justify-center">2</span>
+          <h4 class="text-white font-bold text-sm">Execute o Instalador</h4>
+          <p class="text-[#8C9990] text-xs leading-relaxed">
+            Dê 2 cliques no arquivo baixado. Se o Windows exibir a tela azul de proteção, clique em <strong>"Mais informações"</strong> e depois em <strong>"Executar assim mesmo"</strong>.
+          </p>
+        </div>
+
+        <div class="bg-[#0B110D] border border-[#1A261E] rounded-2xl p-5 space-y-2">
+          <span class="w-7 h-7 rounded-full bg-[#00FF41] text-[#060907] font-extrabold text-xs flex items-center justify-center">3</span>
+          <h4 class="text-white font-bold text-sm">Pronto para Usar</h4>
+          <p class="text-[#8C9990] text-xs leading-relaxed">
+            O atalho será criado na sua Área de Trabalho. Abra o sistema, entre com seu login e use para sempre sem mensalidades!
+          </p>
+        </div>
+      </div>
+
+      <!-- Suporte Direto -->
+      <div class="bg-[#0A140E] border border-[#1A3824] rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 mt-6">
+        <div class="flex items-center gap-3">
+          <i data-lucide="shield-check" class="w-5 h-5 text-[#00FF41] shrink-0"></i>
+          <span class="text-xs text-[#BAC2BC]">Precisa de ajuda para instalar no seu computador ou transferir para outro PC?</span>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=553498408962&text=Ol%C3%A1!%20Acabei%20de%20comprar%20o%20NX%20Gest%C3%A3o%20Est%C3%A9tica%20e%20gostaria%20de%20ajuda%20para%20instalar." target="_blank" class="bg-[#122B1B] hover:bg-[#1A3D27] text-[#00FF41] border border-[#00FF41]/40 text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 whitespace-nowrap transition">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Falar com o Suporte</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#1A261E] py-6 text-center text-xs text-[#6E8073]">
+    <p>NX Gestão Estética v2.5 • Desenvolvido para Clínicas, Spas e Salões.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Iniciar download automático após 2 segundos para comodidade do comprador
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const link = document.getElementById('btn-download-instalador');
+        if (link && link.href) {
+          const a = document.createElement('a');
+          a.href = link.href;
+          a.setAttribute('download', '');
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
