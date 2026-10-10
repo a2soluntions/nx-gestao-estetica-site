@@ -95,6 +95,10 @@
           <i data-lucide="lock" class="w-3.5 h-3.5 text-[#00FF41] shrink-0"></i>
           <span>Zero Nuvem (LGPD)</span>
         </a>
+        <a href="#comparativo" class="text-white hover:text-[#00FF41] font-semibold transition flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="scale" class="w-3.5 h-3.5 text-[#00FF41] shrink-0"></i>
+          <span>NX vs. Nuvem</span>
+        </a>
         <a href="#demonstracao" class="hover:text-[#00FF41] transition flex items-center gap-1.5 whitespace-nowrap">
           <span class="w-1.5 h-1.5 rounded-full bg-[#00FF41] shrink-0"></span>
           <span>Telas do Sistema</span>
@@ -937,16 +941,127 @@
         <!-- Card 3 -->
         <div class="glass-card p-8 rounded-2xl border border-[#1A261E] hover:border-[#00FF41]/40 transition relative group">
           <div class="w-14 h-14 rounded-2xl bg-[#0E1812] border border-[#1A3824] flex items-center justify-center text-[#00FF41] mb-6 group-hover:scale-110 transition">
-            <i data-lucide="gift" class="w-7 h-7"></i>
+            <i data-lucide="refresh-cw" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-white font-bold text-xl mb-3">15 Dias de Teste Grátis</h3>
+          <h3 class="text-white font-bold text-xl mb-3">Backup Automático Diário</h3>
           <p class="text-[#8C9990] text-sm leading-relaxed mb-4">
-            Baixe agora mesmo e experimente o sistema completo por 15 dias sem nenhum custo. Conheça na prática todas as ferramentas na rotina da sua clínica.
+            O software gera cópias de segurança compactadas automaticamente a cada fechamento com histórico dos últimos 15 dias.
           </p>
-          <a href="https://github.com/a2soluntions/nx-gestao-estetica-site/releases/download/v2.5/Instalador_NX_Gestao_Estetica.exe" onclick="abrirModalDownload()" class="bg-[#0E1812] hover:bg-[#00FF41] hover:text-[#060907] p-3 rounded-lg border border-[#00FF41]/50 text-xs text-[#00FF41] font-extrabold flex items-center justify-center gap-2 transition">
-            <i data-lucide="download" class="w-4 h-4 shrink-0"></i>
-            <span>Baixar Agora • 15 Dias Grátis (.EXE)</span>
-          </a>
+          <div class="bg-[#060907] p-3 rounded-lg border border-[#1E2B21] text-xs text-[#00FF41] font-semibold flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i>
+            <span>Facilidade total para salvar em Pen Drive ou HD Externo.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela Comparativa: NX Gestão Estética vs. Softwares Web (SaaS) -->
+      <div id="comparativo" class="mt-16 glass-card rounded-3xl p-6 sm:p-10 border border-[#1A3824] relative overflow-hidden">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">⚖️ Comparativo Real de Mercado</span>
+          <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+            Por que o NX Gestão Estética supera os Sistemas Web (SaaS)?
+          </h3>
+          <p class="text-[#8C9990] text-xs sm:text-sm">
+            Entenda a diferença técnica e financeira entre ser dono do seu sistema versus pagar aluguel mensal na nuvem de terceiros.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[620px]">
+            <thead>
+              <tr class="border-b border-[#1A3824] text-xs font-extrabold uppercase">
+                <th class="py-4 px-4 text-[#BAC2BC]">Critério de Comparação</th>
+                <th class="py-4 px-4 text-red-400 bg-red-950/20 rounded-t-xl">Sistemas Web Comuns (SaaS Nuvem)</th>
+                <th class="py-4 px-4 text-[#00FF41] bg-[#0E2A18]/60 rounded-t-xl border-t border-x border-[#00FF41]/40">NX Gestão Estética (Vitalício)</th>
+              </tr>
+            </thead>
+            <tbody class="text-xs divide-y divide-[#152319]">
+              <!-- Linha 1: Custo / Mensalidade -->
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Mensalidades & Custos</td>
+                <td class="py-4 px-4 text-[#BAC2BC] bg-red-950/10">
+                  <div class="flex items-center gap-1.5 text-red-400 font-semibold mb-1">
+                    <i data-lucide="x-circle" class="w-4 h-4 shrink-0"></i> Cobrança infinita (R$ 150 a R$ 350/mês)
+                  </div>
+                  <span>Se atrasar 1 mês, cortam seu acesso aos seus próprios pacientes.</span>
+                </td>
+                <td class="py-4 px-4 text-white bg-[#0E2A18]/30 border-x border-[#00FF41]/20">
+                  <div class="flex items-center gap-1.5 text-[#00FF41] font-bold mb-1">
+                    <i data-lucide="check-circle" class="w-4 h-4 shrink-0"></i> Pagamento Único a partir de R$ 97
+                  </div>
+                  <span>Zero mensalidades. O sistema é seu para sempre, sem nenhuma anuidade.</span>
+                </td>
+              </tr>
+
+              <!-- Linha 2: Onde ficam os dados -->
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Privacidade de Fotos & Prontuários</td>
+                <td class="py-4 px-4 text-[#BAC2BC] bg-red-950/10">
+                  <div class="flex items-center gap-1.5 text-red-400 font-semibold mb-1">
+                    <i data-lucide="x-circle" class="w-4 h-4 shrink-0"></i> Servidor de Terceiros na Nuvem
+                  </div>
+                  <span>Fotos de Antes/Depois e fichas clínicas armazenadas em servidores externos vulneráveis a vazamento.</span>
+                </td>
+                <td class="py-4 px-4 text-white bg-[#0E2A18]/30 border-x border-[#00FF41]/20">
+                  <div class="flex items-center gap-1.5 text-[#00FF41] font-bold mb-1">
+                    <i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i> 100% no seu Computador (SQLite Local)
+                  </div>
+                  <span>Sigilo profissional total e conformidade com a LGPD. Ninguém tem acesso aos dados além de você.</span>
+                </td>
+              </tr>
+
+              <!-- Linha 3: Quedas de Internet -->
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Quedas de Internet no Bairro</td>
+                <td class="py-4 px-4 text-[#BAC2BC] bg-red-950/10">
+                  <div class="flex items-center gap-1.5 text-red-400 font-semibold mb-1">
+                    <i data-lucide="x-circle" class="w-4 h-4 shrink-0"></i> Clínica Para Completamente
+                  </div>
+                  <span>Sem internet você não abre a agenda, não fecha comanda e não atende seus clientes.</span>
+                </td>
+                <td class="py-4 px-4 text-white bg-[#0E2A18]/30 border-x border-[#00FF41]/20">
+                  <div class="flex items-center gap-1.5 text-[#00FF41] font-bold mb-1">
+                    <i data-lucide="zap" class="w-4 h-4 shrink-0"></i> Funciona 100% Offline
+                  </div>
+                  <span>Se a internet oscilar ou cair, sua clínica continua operando normalmente e registrando atendimentos.</span>
+                </td>
+              </tr>
+
+              <!-- Linha 4: Velocidade e Travamentos -->
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Velocidade de Navegação</td>
+                <td class="py-4 px-4 text-[#BAC2BC] bg-red-950/10">
+                  <div class="flex items-center gap-1.5 text-red-400 font-semibold mb-1">
+                    <i data-lucide="x-circle" class="w-4 h-4 shrink-0"></i> Páginas lentas que recarregam
+                  </div>
+                  <span>Depende da velocidade do servidor web e de provedores congestionados.</span>
+                </td>
+                <td class="py-4 px-4 text-white bg-[#0E2A18]/30 border-x border-[#00FF41]/20">
+                  <div class="flex items-center gap-1.5 text-[#00FF41] font-bold mb-1">
+                    <i data-lucide="gauge" class="w-4 h-4 shrink-0"></i> Instantâneo no Windows
+                  </div>
+                  <span>Software nativo ultrarrápido com resposta em milissegundos na tela da recepção.</span>
+                </td>
+              </tr>
+
+              <!-- Linha 5: Rede Local (Multi-PC) -->
+              <tr>
+                <td class="py-4 px-4 font-bold text-white">Uso em Vários PCs na Clínica</td>
+                <td class="py-4 px-4 text-[#BAC2BC] bg-red-950/10 rounded-b-xl">
+                  <div class="flex items-center gap-1.5 text-red-400 font-semibold mb-1">
+                    <i data-lucide="x-circle" class="w-4 h-4 shrink-0"></i> Cobrança extra por usuário
+                  </div>
+                  <span>Cada atendente ou sala conectada encarece ainda mais o valor da mensalidade mensal.</span>
+                </td>
+                <td class="py-4 px-4 text-white bg-[#0E2A18]/30 rounded-b-xl border-x border-b border-[#00FF41]/20">
+                  <div class="flex items-center gap-1.5 text-[#00FF41] font-bold mb-1">
+                    <i data-lucide="network" class="w-4 h-4 shrink-0"></i> Rede Local Nativa (LAN)
+                  </div>
+                  <span>Planos para 3 ou até 6 PCs conectam recepção e salas simultaneamente sem mensalidade adicional!</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
