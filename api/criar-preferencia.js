@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Método não permitido. Utilize POST.' });
   }
 
-  const token = process.env.MP_ACCESS_TOKEN;
+  const token = process.env.MP_ACCESS_TOKEN ? process.env.MP_ACCESS_TOKEN.trim() : '';
   if (!token) {
     console.error('ERRO: MP_ACCESS_TOKEN não está definido nas variáveis de ambiente da Vercel.');
     return res.status(500).json({
@@ -55,11 +55,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const host = req.headers['x-forwarded-proto'] && req.headers['x-forwarded-host']
-      ? `${req.headers['x-forwarded-proto']}://${req.headers['x-forwarded-host']}`
-      : 'https://nx-gestao-estetica-site.vercel.app';
+    let body = req.body || {};
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        body = {};
+      }
+    }
 
-    const body = req.body || {};
+    const host = 'https://nx-gestao-estetica-site.vercel.app';
     const planoId = body.planoId && PLANOS_DISPONIVEIS[body.planoId] ? body.planoId : '1pc';
     const planoEscolhido = PLANOS_DISPONIVEIS[planoId];
 
@@ -73,28 +78,26 @@ export default async function handler(req, res) {
           title: planoEscolhido.title,
           description: planoEscolhido.description,
           picture_url: `${host}/assets/logo.png`,
-          category_id: 'software',
+          category_id: 'services',
           quantity: 1,
           currency_id: 'BRL',
-          unit_price: planoEscolhido.price
+          unit_price: Number(planoEscolhido.price)
         }
       ],
-      payer: email ? {
-        email: email,
-        name: nome || undefined
-      } : undefined,
       back_urls: {
         success: `${host}/obrigado.html`,
         pending: `${host}/obrigado.html`,
         failure: `${host}/index.html`
       },
-      auto_return: 'approved',
-      statement_descriptor: 'NX GESTAO',
-      notification_url: `${host}/api/webhook-mercadopago`,
-      payment_methods: {
-        installments: 12
-      }
+      auto_return: 'approved'
     };
+
+    if (email) {
+      preferenceData.payer = {
+        email: email,
+        name: nome || undefined
+      };
+    }
 
     const mpResponse = await fetch('https://api.mercadopago.com/checkout/preferences', {
       method: 'POST',
@@ -110,7 +113,8 @@ export default async function handler(req, res) {
     if (!mpResponse.ok) {
       console.error('Erro na resposta do Mercado Pago:', data);
       return res.status(mpResponse.status).json({
-        error: data.message || 'Falha ao gerar preferência no Mercado Pago'
+        error: data.message || data.error || 'Falha ao gerar preferência no Mercado Pago',
+        detalhes: data
       });
     }
 
@@ -123,7 +127,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Erro interno ao processar preferência:', error);
     return res.status(500).json({
-      error: 'Erro interno ao comunicar com o Mercado Pago.'
+      error: 'Erro interno ao comunicar com o Mercado Pago: ' + (error.message || String(error))
     });
   }
 }
