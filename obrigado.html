@@ -130,61 +130,38 @@
         </div>
       </div>
 
-      <!-- Gerador Automático de Chave Vitalícia (Ativação 100% no Navegador) -->
+      <!-- Gerador Automático de Chave Vitalícia (Multi-Estações por Plano) -->
       <div class="bg-[#0B150E] border-2 border-[#00FF41] rounded-3xl p-6 sm:p-8 text-left shadow-2xl relative glow-neon mt-8">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-[#00FF41]/20 text-[#00FF41] flex items-center justify-center font-extrabold shrink-0">
-            <i data-lucide="key" class="w-5 h-5"></i>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 border-b border-[#1A3824] pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#00FF41]/20 text-[#00FF41] flex items-center justify-center font-extrabold shrink-0">
+              <i data-lucide="key" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-white font-extrabold text-lg">Ativação de Licenças da sua Clínica</h3>
+              <span class="text-[#8C9990] text-xs">Gere as chaves vitálicias oficiais para seus computadores</span>
+            </div>
           </div>
-          <div>
-            <h3 class="text-white font-extrabold text-lg">Ativação Definitiva da sua Máquina</h3>
-            <span class="text-[#8C9990] text-xs">Gere sua Chave de Ativação Vitalícia automaticamente em 1 segundo</span>
+          <div id="badge-plano-adquirido" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#122B1B] border border-[#00FF41] text-[#00FF41] text-xs font-bold self-start sm:self-auto">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span id="txt-nome-plano">Plano: 1 Computador (Vitalício)</span>
           </div>
         </div>
 
-        <p class="text-xs text-[#BAC2BC] leading-relaxed mb-4">
-          Ao abrir o sistema no seu computador, abra a janela de <strong>Ativação de Licença</strong>, copie o seu <strong>Código deste Computador (Hardware ID)</strong> e cole no campo abaixo para liberar sua chave perpétua imediatamente:
+        <p class="text-xs text-[#BAC2BC] leading-relaxed mb-4" id="txt-instrucao-plano">
+          Ao abrir o sistema em cada computador da sua clínica, abra a janela de <strong>Ativação de Licença</strong>, copie o <strong>Código deste Computador (Hardware ID)</strong> e gere a chave correspondente abaixo:
         </p>
 
-        <div class="space-y-4">
-          <div class="flex flex-col sm:flex-row gap-3">
-            <input type="text" id="input-hwid" placeholder="Ex: NX-C74B-2035-878C-3B87" class="flex-1 bg-[#060907] border border-[#1A3824] focus:border-[#00FF41] rounded-xl px-4 py-3 text-white font-mono text-sm tracking-wider outline-none uppercase transition placeholder-[#4F6355]">
-            <button type="button" onclick="gerarMinhaChaveVitalicia(this)" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-sm px-6 py-3 rounded-xl transition duration-200 glow-neon whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer">
-              <i data-lucide="sparkles" class="w-4 h-4"></i>
-              <span>GERAR MINHA CHAVE</span>
-            </button>
-          </div>
-
-          <!-- Mensagem de Erro -->
-          <div id="msg-erro-hwid" class="hidden bg-red-950/40 border border-red-500/40 p-3 rounded-xl text-red-300 text-xs flex items-center gap-2">
-            <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
-            <span id="txt-erro-hwid"></span>
-          </div>
-
-          <!-- Card de Sucesso com a Chave Gerada -->
-          <div id="painel-chave-gerada" class="hidden bg-[#070D09] border border-[#00FF41] p-5 rounded-2xl space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="check-circle" class="w-4 h-4"></i> Chave Vitalícia Gerada com Sucesso:
-              </span>
-              <span class="text-[10px] bg-[#122B1B] text-[#00FF41] px-2.5 py-0.5 rounded-full font-bold">VITALÍCIA • SEM EXPIRAÇÃO</span>
-            </div>
-
-            <div class="flex flex-col sm:flex-row items-center gap-3">
-              <div id="valor-chave-gerada" class="w-full bg-[#040705] border border-[#16291C] px-4 py-3 rounded-xl font-mono text-[#00FF41] font-bold text-sm sm:text-base tracking-wider break-all select-all">
-                NXV-PERP-XXXX-XXXX-XXXX-XXXX
-              </div>
-              <button type="button" onclick="copiarChaveGerada()" id="btn-copiar-chave" class="w-full sm:w-auto bg-[#122B1B] hover:bg-[#1A3D27] text-[#00FF41] border border-[#00FF41]/40 font-bold text-xs px-5 py-3 rounded-xl transition whitespace-nowrap flex items-center justify-center gap-1.5">
-                <i data-lucide="copy" class="w-4 h-4"></i>
-                <span id="txt-btn-copiar">COPIAR CHAVE</span>
-              </button>
-            </div>
-
-            <p class="text-[11px] text-[#8C9990] pt-1">
-              📌 <strong>Como ativar no sistema:</strong> No seu sistema NX Gestão Estética, cole esta chave no campo <em>"Chave de Ativação (Serial)"</em> e clique em <em>"Ativar Licença Definitiva"</em>. Seu software estará liberado permanentemente!
-            </p>
-          </div>
+        <!-- Slots de Ativação (Renderizados Dinamicamente de acordo com o Plano) -->
+        <div id="container-slots-chaves" class="space-y-4">
+          <!-- Os campos de cada PC serão inseridos via JavaScript -->
         </div>
+
+        <!-- Histórico / Suporte -->
+        <p class="text-[11px] text-[#8C9990] pt-2 flex items-center gap-1.5">
+          <i data-lucide="info" class="w-3.5 h-3.5 text-[#00FF41] shrink-0"></i>
+          <span>Cada computador possui um código único. Se trocar de máquina no futuro, nosso suporte transfere sua licença gratuitamente.</span>
+        </p>
       </div>
 
       <!-- Suporte Direto -->
@@ -225,26 +202,92 @@
       }, 1500);
     });
 
-    // Gerador de Chave de Ativação Automática via API Vercel
-    async function gerarMinhaChaveVitalicia(btnElement) {
-      const input = document.getElementById('input-hwid');
-      const msgErro = document.getElementById('msg-erro-hwid');
-      const txtErro = document.getElementById('txt-erro-hwid');
-      const painelSucesso = document.getElementById('painel-chave-gerada');
-      const valorChave = document.getElementById('valor-chave-gerada');
+    // Definição dos Planos e Quantidade de PCs Autorizados
+    const CONFIG_PLANOS = {
+      '1pc': { nome: 'Plano 1 Computador (Vitalício)', totalPCs: 1, rotulos: ['Computador Principal (Recepção)'] },
+      '3pcs': { nome: 'Plano 3 Computadores (Rede Local)', totalPCs: 3, rotulos: ['PC 1 (Servidor / Recepção)', 'PC 2 (Sala de Procedimento 1)', 'PC 3 (Sala de Procedimento 2)'] },
+      '6pcs': { nome: 'Plano Até 6 Computadores (Clínica Completa)', totalPCs: 6, rotulos: ['PC 1 (Servidor / Caixa)', 'PC 2 (Recepção)', 'PC 3 (Procedimento 1)', 'PC 4 (Procedimento 2)', 'PC 5 (Procedimento 3)', 'PC 6 (Procedimento 4)'] }
+    };
 
-      msgErro.classList.add('hidden');
+    // Obter plano da URL (ex: ?plano=3pcs) ou padrão '1pc'
+    const urlParams = new URLSearchParams(window.location.search);
+    const planoParam = (urlParams.get('plano') || '1pc').toLowerCase();
+    const planoInfo = CONFIG_PLANOS[planoParam] || CONFIG_PLANOS['1pc'];
+
+    // Renderizar slots na inicialização
+    function renderizarSlots() {
+      document.getElementById('txt-nome-plano').innerText = planoInfo.nome;
+      const instrucao = document.getElementById('txt-instrucao-plano');
+      if (planoInfo.totalPCs > 1) {
+        instrucao.innerHTML = `Seu plano autoriza <strong>${planoInfo.totalPCs} computadores</strong> em Rede Local. Abra o sistema em cada computador, copie o <strong>Código deste Computador (Hardware ID)</strong> e gere as chaves correspondentes:`;
+      }
+
+      const container = document.getElementById('container-slots-chaves');
+      container.innerHTML = '';
+
+      for (let i = 0; i < planoInfo.totalPCs; i++) {
+        const slotDiv = document.createElement('div');
+        slotDiv.className = 'bg-[#070D09] border border-[#1A3824] p-4 sm:p-5 rounded-2xl space-y-3';
+        slotDiv.innerHTML = `
+          <div class="flex items-center justify-between border-b border-[#122618] pb-2">
+            <span class="text-white font-bold text-xs flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-[#00FF41] text-[#060907] font-extrabold text-[11px] flex items-center justify-center">${i + 1}</span>
+              ${planoInfo.rotulos[i] || `Computador ${i + 1}`}
+            </span>
+            <span class="text-[10px] text-[#00FF41] font-semibold">Chave Vitalícia</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2.5">
+            <input type="text" id="input-hwid-${i}" placeholder="Cole o Hardware ID deste PC (ex: NX-XXXX-...)" class="flex-1 bg-[#040705] border border-[#16291C] focus:border-[#00FF41] rounded-xl px-3.5 py-2.5 text-white font-mono text-xs tracking-wider outline-none uppercase transition placeholder-[#4F6355]">
+            <button type="button" onclick="gerarChaveSlot(${i}, this)" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-xs px-5 py-2.5 rounded-xl transition duration-200 glow-neon whitespace-nowrap flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Gerar Chave</span>
+            </button>
+          </div>
+
+          <div id="erro-slot-${i}" class="hidden text-red-400 text-[11px] flex items-center gap-1">
+            <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+            <span id="txt-erro-slot-${i}"></span>
+          </div>
+
+          <div id="painel-chave-${i}" class="hidden bg-[#040705] border border-[#00FF41] p-3 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-2.5">
+            <div class="font-mono text-[#00FF41] font-bold text-xs sm:text-sm tracking-wider select-all" id="valor-chave-${i}">
+              NXV-PERP-...
+            </div>
+            <button type="button" onclick="copiarChaveSlot(${i}, this)" class="w-full sm:w-auto bg-[#122B1B] hover:bg-[#1A3D27] text-[#00FF41] border border-[#00FF41]/40 font-bold text-xs px-3.5 py-1.5 rounded-lg transition whitespace-nowrap flex items-center justify-center gap-1">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>COPIAR</span>
+            </button>
+          </div>
+        `;
+        container.appendChild(slotDiv);
+      }
+      lucide.createIcons();
+    }
+
+    renderizarSlots();
+
+    // Gerar Chave para o Slot Específico
+    async function gerarChaveSlot(slotIndex, btnElement) {
+      const input = document.getElementById(`input-hwid-${slotIndex}`);
+      const erroDiv = document.getElementById(`erro-slot-${slotIndex}`);
+      const txtErro = document.getElementById(`txt-erro-slot-${slotIndex}`);
+      const painelChave = document.getElementById(`painel-chave-${slotIndex}`);
+      const valorChave = document.getElementById(`valor-chave-${slotIndex}`);
+
+      erroDiv.classList.add('hidden');
       const hwid = (input.value || '').trim().toUpperCase();
 
       if (!hwid) {
-        txtErro.innerText = 'Por favor, cole ou digite o Código do seu Computador (Hardware ID).';
-        msgErro.classList.remove('hidden');
+        txtErro.innerText = 'Por favor, cole o Hardware ID exibido neste computador.';
+        erroDiv.classList.remove('hidden');
         input.focus();
+        lucide.createIcons();
         return;
       }
 
       const textoOriginal = btnElement.innerHTML;
-      btnElement.innerHTML = '<span class="inline-block animate-spin mr-1.5">⏳</span> Gerando Chave...';
+      btnElement.innerHTML = '<span class="inline-block animate-spin mr-1">⏳</span> Gerando...';
       btnElement.disabled = true;
 
       try {
@@ -258,17 +301,16 @@
 
         if (resp.ok && data.chave) {
           valorChave.innerText = data.chave;
-          painelSucesso.classList.remove('hidden');
+          painelChave.classList.remove('hidden');
           lucide.createIcons();
-          painelSucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          txtErro.innerText = data.error || 'Não foi possível gerar a chave. Verifique o código digitado.';
-          msgErro.classList.remove('hidden');
+          txtErro.innerText = data.error || 'Código inválido. Verifique o padrão NX-XXXX-XXXX-XXXX-XXXX.';
+          erroDiv.classList.remove('hidden');
           lucide.createIcons();
         }
       } catch (e) {
-        txtErro.innerText = 'Oscilação na conexão. Por favor, tente novamente em instantes.';
-        msgErro.classList.remove('hidden');
+        txtErro.innerText = 'Erro de conexão. Tente novamente.';
+        erroDiv.classList.remove('hidden');
         lucide.createIcons();
       } finally {
         btnElement.innerHTML = textoOriginal;
@@ -276,14 +318,13 @@
       }
     }
 
-    function copiarChaveGerada() {
-      const valor = document.getElementById('valor-chave-gerada').innerText.trim();
+    function copiarChaveSlot(slotIndex, btnElement) {
+      const valor = document.getElementById(`valor-chave-${slotIndex}`).innerText.trim();
       if (!valor) return;
       navigator.clipboard.writeText(valor).then(() => {
-        const txt = document.getElementById('txt-btn-copiar');
-        const orig = txt.innerText;
-        txt.innerText = '✓ COPIADA!';
-        setTimeout(() => { txt.innerText = orig; }, 3000);
+        const orig = btnElement.innerHTML;
+        btnElement.innerHTML = '✓ COPIADA!';
+        setTimeout(() => { btnElement.innerHTML = orig; }, 3000);
       });
     }
   </script>

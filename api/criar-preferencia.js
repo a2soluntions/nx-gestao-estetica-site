@@ -85,8 +85,8 @@ export default async function handler(req, res) {
         }
       ],
       back_urls: {
-        success: `${host}/obrigado.html`,
-        pending: `${host}/obrigado.html`,
+        success: `${host}/obrigado.html?plano=${planoId}`,
+        pending: `${host}/obrigado.html?plano=${planoId}`,
         failure: `${host}/index.html`
       },
       auto_return: 'approved'
