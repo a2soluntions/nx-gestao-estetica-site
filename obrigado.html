@@ -130,6 +130,63 @@
         </div>
       </div>
 
+      <!-- Gerador Automático de Chave Vitalícia (Ativação 100% no Navegador) -->
+      <div class="bg-[#0B150E] border-2 border-[#00FF41] rounded-3xl p-6 sm:p-8 text-left shadow-2xl relative glow-neon mt-8">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-[#00FF41]/20 text-[#00FF41] flex items-center justify-center font-extrabold shrink-0">
+            <i data-lucide="key" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-white font-extrabold text-lg">Ativação Definitiva da sua Máquina</h3>
+            <span class="text-[#8C9990] text-xs">Gere sua Chave de Ativação Vitalícia automaticamente em 1 segundo</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-[#BAC2BC] leading-relaxed mb-4">
+          Ao abrir o sistema no seu computador, abra a janela de <strong>Ativação de Licença</strong>, copie o seu <strong>Código deste Computador (Hardware ID)</strong> e cole no campo abaixo para liberar sua chave perpétua imediatamente:
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input type="text" id="input-hwid" placeholder="Ex: NX-C74B-2035-878C-3B87" class="flex-1 bg-[#060907] border border-[#1A3824] focus:border-[#00FF41] rounded-xl px-4 py-3 text-white font-mono text-sm tracking-wider outline-none uppercase transition placeholder-[#4F6355]">
+            <button type="button" onclick="gerarMinhaChaveVitalicia(this)" class="bg-[#00FF41] hover:bg-[#1AFF53] text-[#060907] font-extrabold text-sm px-6 py-3 rounded-xl transition duration-200 glow-neon whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>GERAR MINHA CHAVE</span>
+            </button>
+          </div>
+
+          <!-- Mensagem de Erro -->
+          <div id="msg-erro-hwid" class="hidden bg-red-950/40 border border-red-500/40 p-3 rounded-xl text-red-300 text-xs flex items-center gap-2">
+            <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
+            <span id="txt-erro-hwid"></span>
+          </div>
+
+          <!-- Card de Sucesso com a Chave Gerada -->
+          <div id="painel-chave-gerada" class="hidden bg-[#070D09] border border-[#00FF41] p-5 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-4 h-4"></i> Chave Vitalícia Gerada com Sucesso:
+              </span>
+              <span class="text-[10px] bg-[#122B1B] text-[#00FF41] px-2.5 py-0.5 rounded-full font-bold">VITALÍCIA • SEM EXPIRAÇÃO</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+              <div id="valor-chave-gerada" class="w-full bg-[#040705] border border-[#16291C] px-4 py-3 rounded-xl font-mono text-[#00FF41] font-bold text-sm sm:text-base tracking-wider break-all select-all">
+                NXV-PERP-XXXX-XXXX-XXXX-XXXX
+              </div>
+              <button type="button" onclick="copiarChaveGerada()" id="btn-copiar-chave" class="w-full sm:w-auto bg-[#122B1B] hover:bg-[#1A3D27] text-[#00FF41] border border-[#00FF41]/40 font-bold text-xs px-5 py-3 rounded-xl transition whitespace-nowrap flex items-center justify-center gap-1.5">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+                <span id="txt-btn-copiar">COPIAR CHAVE</span>
+              </button>
+            </div>
+
+            <p class="text-[11px] text-[#8C9990] pt-1">
+              📌 <strong>Como ativar no sistema:</strong> No seu sistema NX Gestão Estética, cole esta chave no campo <em>"Chave de Ativação (Serial)"</em> e clique em <em>"Ativar Licença Definitiva"</em>. Seu software estará liberado permanentemente!
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Suporte Direto -->
       <div class="bg-[#0A140E] border border-[#1A3824] rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 mt-6">
         <div class="flex items-center gap-3">
@@ -167,6 +224,68 @@
         }
       }, 1500);
     });
+
+    // Gerador de Chave de Ativação Automática via API Vercel
+    async function gerarMinhaChaveVitalicia(btnElement) {
+      const input = document.getElementById('input-hwid');
+      const msgErro = document.getElementById('msg-erro-hwid');
+      const txtErro = document.getElementById('txt-erro-hwid');
+      const painelSucesso = document.getElementById('painel-chave-gerada');
+      const valorChave = document.getElementById('valor-chave-gerada');
+
+      msgErro.classList.add('hidden');
+      const hwid = (input.value || '').trim().toUpperCase();
+
+      if (!hwid) {
+        txtErro.innerText = 'Por favor, cole ou digite o Código do seu Computador (Hardware ID).';
+        msgErro.classList.remove('hidden');
+        input.focus();
+        return;
+      }
+
+      const textoOriginal = btnElement.innerHTML;
+      btnElement.innerHTML = '<span class="inline-block animate-spin mr-1.5">⏳</span> Gerando Chave...';
+      btnElement.disabled = true;
+
+      try {
+        const resp = await fetch('/api/gerar-chave', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ hwid: hwid })
+        });
+
+        const data = await resp.json();
+
+        if (resp.ok && data.chave) {
+          valorChave.innerText = data.chave;
+          painelSucesso.classList.remove('hidden');
+          lucide.createIcons();
+          painelSucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          txtErro.innerText = data.error || 'Não foi possível gerar a chave. Verifique o código digitado.';
+          msgErro.classList.remove('hidden');
+          lucide.createIcons();
+        }
+      } catch (e) {
+        txtErro.innerText = 'Oscilação na conexão. Por favor, tente novamente em instantes.';
+        msgErro.classList.remove('hidden');
+        lucide.createIcons();
+      } finally {
+        btnElement.innerHTML = textoOriginal;
+        btnElement.disabled = false;
+      }
+    }
+
+    function copiarChaveGerada() {
+      const valor = document.getElementById('valor-chave-gerada').innerText.trim();
+      if (!valor) return;
+      navigator.clipboard.writeText(valor).then(() => {
+        const txt = document.getElementById('txt-btn-copiar');
+        const orig = txt.innerText;
+        txt.innerText = '✓ COPIADA!';
+        setTimeout(() => { txt.innerText = orig; }, 3000);
+      });
+    }
   </script>
 </body>
 </html>
