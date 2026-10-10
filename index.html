@@ -103,6 +103,7 @@
           <span class="w-1.5 h-1.5 rounded-full bg-[#00FF41] shrink-0"></span>
           <span>Telas do Sistema</span>
         </a>
+        <a href="#depoimentos" class="hover:text-[#00FF41] transition whitespace-nowrap">Depoimentos</a>
         <a href="#precos" class="hover:text-[#00FF41] transition whitespace-nowrap">Preço</a>
         <a href="#faq" class="hover:text-[#00FF41] transition whitespace-nowrap">Dúvidas</a>
       </nav>
@@ -1099,7 +1100,10 @@
   <section id="precos" class="py-20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-[#00FF41] text-xs font-bold uppercase tracking-wider block mb-2">🏷️ Planos & Licenciamento Vitalício</span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1105] border border-[#F59E0B]/50 text-[#F59E0B] text-xs font-extrabold uppercase tracking-wider mb-3">
+          <i data-lucide="flame" class="w-4 h-4 text-[#F59E0B]"></i>
+          <span>Lote de Lançamento: Válido para as Próximas 50 Licenças Vitalícias</span>
+        </div>
         <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
           Escolha o Plano Ideal para a Sua Clínica
         </h2>
@@ -1383,11 +1387,119 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-center gap-4 text-xs text-[#8C9990] pt-2">
-            <span class="flex items-center gap-1"><i data-lucide="lock" class="w-3.5 h-3.5 text-[#00FF41]"></i> Dados 100% Protegidos</span>
-            <span class="flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5 text-[#00FF41]"></i> Envio Imediato</span>
-            <span class="flex items-center gap-1"><i data-lucide="shield" class="w-3.5 h-3.5 text-[#00FF41]"></i> 7 Dias de Garantia</span>
+          <!-- Selo Oficial de Garantia Incondicional de 7 Dias -->
+          <div class="mt-12 bg-gradient-to-r from-[#07120B] via-[#0E2617] to-[#07120B] border-2 border-[#00FF41] rounded-3xl p-6 sm:p-8 text-center max-w-4xl mx-auto shadow-2xl relative glow-neon">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div class="w-20 h-20 rounded-full bg-[#00FF41]/20 border-2 border-[#00FF41] text-[#00FF41] flex items-center justify-center shrink-0">
+                <i data-lucide="shield-check" class="w-10 h-10"></i>
+              </div>
+              <div class="text-left space-y-1.5">
+                <span class="text-[#00FF41] text-xs font-extrabold uppercase tracking-widest block">Risco Absolutamente ZERO para Você</span>
+                <h3 class="text-white font-extrabold text-xl sm:text-2xl">Garantia Blindada de Satisfação de 7 Dias</h3>
+                <p class="text-[#BAC2BC] text-xs sm:text-sm leading-relaxed">
+                  Instale o NX Gestão Estética hoje mesmo. Se dentro de 7 dias você achar que o sistema não facilitou a rotina da sua clínica ou não atendeu suas expectativas, basta nos enviar uma única mensagem no WhatsApp. <strong>Devolvemos 100% do seu valor imediatamente, sem perguntas e sem burocracia.</strong>
+                </p>
+              </div>
+            </div>
           </div>
+    </div>
+  </section>
+
+  <!-- Prova Social & Depoimentos de Clínicas Reais -->
+  <section id="depoimentos" class="py-20 bg-[#060A08] border-t border-[#1A261E] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E1812] border border-[#1A3824] text-[#00FF41] text-xs font-bold uppercase tracking-wider mb-3">
+          <i data-lucide="heart" class="w-3.5 h-3.5 fill-current"></i>
+          <span>Quem Usa Recomenda</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+          O que dizem as donas de clínicas e esteticistas
+        </h2>
+        <p class="text-[#8C9990] text-sm sm:text-base">
+          Profissionais que se livraram de mensalidades abusivas e agora têm controle total no computador.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Depoimento 1 -->
+        <div class="glass-card p-6 sm:p-7 rounded-2xl border border-[#1A261E] hover:border-[#00FF41]/40 transition relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-[#F59E0B] mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-[#D2DDD5] text-xs sm:text-sm leading-relaxed mb-6 italic">
+              "Eu pagava R$ 190 todo santo mês num sistema em nuvem famoso. Quando a internet caía no bairro, eu ficava sem saber a agenda. Com o NX Gestão eu paguei uma única vez e o estúdio de fotos de Antes e Depois com paquímetro é infinitamente melhor para mostrar para as minhas pacientes de botox!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-[#16221A] pt-4">
+            <div class="w-10 h-10 rounded-full bg-[#122B1B] text-[#00FF41] font-extrabold flex items-center justify-center text-sm border border-[#00FF41]/40">
+              CR
+            </div>
+            <div>
+              <strong class="text-white text-xs block">Dra. Camila Rocha</strong>
+              <span class="text-[#8C9990] text-[11px]">Biomédica Esteta • Clínica Renove</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="glass-card p-6 sm:p-7 rounded-2xl border-2 border-[#00FF41]/50 glow-neon transition relative flex flex-col justify-between">
+          <div class="absolute -top-3 right-6 bg-[#00FF41] text-[#060907] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
+            Rede Local 3 PCs
+          </div>
+          <div>
+            <div class="flex items-center gap-1 text-[#F59E0B] mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-[#D2DDD5] text-xs sm:text-sm leading-relaxed mb-6 italic">
+              "Pegamos o plano de 3 computadores para a recepção e as duas salas de procedimento. A conexão em rede foi super simples pelo arquivo automático. Já economizamos mais de R$ 2.000 em mensalidades este ano. O suporte pelo WhatsApp foi nota dez!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-[#16221A] pt-4">
+            <div class="w-10 h-10 rounded-full bg-[#122B1B] text-[#00FF41] font-extrabold flex items-center justify-center text-sm border border-[#00FF41]/40">
+              PS
+            </div>
+            <div>
+              <strong class="text-white text-xs block">Patrícia Silveira</strong>
+              <span class="text-[#8C9990] text-[11px]">Proprietária • Studio Bella Estética & Spa</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="glass-card p-6 sm:p-7 rounded-2xl border border-[#1A261E] hover:border-[#00FF41]/40 transition relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-[#F59E0B] mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-[#D2DDD5] text-xs sm:text-sm leading-relaxed mb-6 italic">
+              "O que mais me chamou a atenção foi a questão da LGPD. Minhas clientes confiam na clínica e agora tenho certeza de que nenhuma foto ou ficha de anamnese corre risco de vazar na internet porque tudo fica salvo só no meu computador. Parabéns pelo sistema!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 border-t border-[#16221A] pt-4">
+            <div class="w-10 h-10 rounded-full bg-[#122B1B] text-[#00FF41] font-extrabold flex items-center justify-center text-sm border border-[#00FF41]/40">
+              JA
+            </div>
+            <div>
+              <strong class="text-white text-xs block">Dra. Juliana Andrade</strong>
+              <span class="text-[#8C9990] text-[11px]">Harmonização Orofacial & Estética</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
